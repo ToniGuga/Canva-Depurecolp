@@ -5,6 +5,6 @@ desktop.ini
 node_modules/
 .vscode/
 .vscode/ftp*
-*frontend.min*
-*frontend.min*
+frontend.min.css
+frontend.min.js
 # style.css

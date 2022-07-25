@@ -1,488 +1,138 @@
 <?php
-if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly
-}
-function cptui_register_my_cpts()
+defined('ABSPATH') || exit;
+
+
+function abc_register_cpt_elements()
 {
-
 	/**
-	 * Post Type: Centri.
+	 * Post Type: Elements.
 	 */
-
 	$labels = [
-		"name" => __("Centri", "canva"),
-		"singular_name" => __("Centro", "canva"),
-		"menu_name" => __("Centri", "canva"),
-		"all_items" => __("Tutti i Centri", "canva"),
-		"add_new" => __("Aggiungi nuovo", "canva"),
-		"add_new_item" => __("Aggiungi nuovo Centro", "canva"),
-		"edit_item" => __("Modifica Centro", "canva"),
-		"new_item" => __("Nuovo Centro", "canva"),
-		"view_item" => __("Visualizza Centro", "canva"),
-		"view_items" => __("Visualizza Centri", "canva"),
-		"search_items" => __("Cerca Centri", "canva"),
-		"not_found" => __("No Centri", "canva"),
-		"not_found_in_trash" => __("No Centri found in trash", "canva"),
-		"parent" => __("Genitore Centro:", "canva"),
-		"featured_image" => __("Featured image for this Centro", "canva"),
-		"set_featured_image" => __("Set featured image for this Centro", "canva"),
-		"remove_featured_image" => __("Remove featured image for this Centro", "canva"),
-		"use_featured_image" => __("Use as featured image for this Centro", "canva"),
-		"archives" => __("Centro archives", "canva"),
-		"insert_into_item" => __("Insert into Centro", "canva"),
-		"uploaded_to_this_item" => __("Upload to this Centro", "canva"),
-		"filter_items_list" => __("Filter Centri list", "canva"),
-		"items_list_navigation" => __("Centri list navigation", "canva"),
-		"items_list" => __("Centri list", "canva"),
-		"attributes" => __("Centri attributes", "canva"),
-		"name_admin_bar" => __("Centro", "canva"),
-		"item_published" => __("Centro published", "canva"),
-		"item_published_privately" => __("Centro published privately.", "canva"),
-		"item_reverted_to_draft" => __("Centro reverted to draft.", "canva"),
-		"item_scheduled" => __("Centro scheduled", "canva"),
-		"item_updated" => __("Centro updated.", "canva"),
-		"parent_item_colon" => __("Genitore Centro:", "canva"),
+		'name' 					=> __('Elements', 'canva-backend'),
+		'singular_name' 		=> __('Elements', 'canva-backend'),
+		'menu_name' 			=> __('Elements', 'canva-backend'),
+		'all_items' 			=> __('All Elements', 'canva-backend'),
+		'add_new' 				=> __('Add Element', 'canva-backend'),
+		'add_new_item' 			=> __('Add new Element', 'canva-backend'),
+		'edit_item' 			=> __('Edit Element', 'canva-backend'),
+		'new_item' 				=> __('New Element', 'canva-backend'),
+		'view_item' 			=> __('View Element', 'canva-backend'),
+		'view_items' 			=> __('View Elements', 'canva-backend'),
+		'search_items' 			=> __('Search a Element', 'canva-backend'),
+		'not_found' 			=> __('No Elements found', 'canva-backend'),
+		'not_found_in_trash' 	=> __('No Elements found in trash', 'canva-backend'),
 	];
 
 	$args = [
-		"label" => __("Centri", "canva"),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => true,
-		"rest_base" => "",
-		"rest_controller_class" => "WP_REST_Posts_Controller",
-		"has_archive" => false,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"delete_with_user" => false,
-		"exclude_from_search" => false,
-		"capability_type" => ["centro", "centri"],
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => ["slug" => "centro", "with_front" => true],
-		"query_var" => true,
-		"supports" => ["title", "editor", "thumbnail"],
-		"show_in_graphql" => false,
+		'label' 				=> __('Elements', 'canva-backend'),
+		'labels' 				=> $labels,
+		'description' 			=> '',
+		'public' 				=> true,
+		'publicly_queryable' 	=> true,
+		'show_ui' 				=> true,
+		'show_in_rest' 			=> true,
+		'rest_base' 			=> '',
+		'rest_controller_class' => 'WP_REST_Posts_Controller',
+		'has_archive' 			=> false,
+		'show_in_menu' 			=> true,
+		'show_in_nav_menus' 	=> false,
+		'delete_with_user' 		=> false,
+		'exclude_from_search' 	=> true,
+		'capability_type' 		=> ['element', 'elements'],
+		'map_meta_cap' 			=> true,
+		'hierarchical' 			=> false,
+		'rewrite' 				=> ['slug' => 'element', 'with_front' => true],
+		// 'menu_icon' 			=> 'data:image/svg+xml;base64,' . base64_encode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="#FFFFFF"><path d="M437.983 261.352c-4.321 2.778-10.839 6.969-13.122 7.279-24.067-.092.757-103.841 5.813-124.714-29.614 5.697-134.448 26.337-159.932 7.046C271.197 132.585 304 116.55 304 73.588 304 28.222 261.986 0 216.994 0 171.147 0 112 25.756 112 75.063c0 40.881 28.702 64.642 31.994 74.559-.739 28.838-115.981 1.752-143.994-5.469v351.556C10.464 498.412 56.682 512 104 512c45.3-.001 88-15.737 88-60.854 0-31.773-32-45.657-32-73.834 0-16.521 29.235-27.063 49.361-27.063 21.125 0 46.639 11.414 46.639 25.588 0 24.02-32 36.882-32 77.924 0 66.838 81.555 58.073 134.44 51.225 37.039-4.797 33.159-3.906 73.069-3.906-2.799-8.954-28.061-81.125-13.892-100.4 10.021-13.639 39.371 31.32 84.037 31.32C548.715 432 576 380.487 576 336c0-57.793-45.975-133.814-138.017-74.648zM501.654 384c-24.507 0-37.496-32.763-79.116-32.763-35.286 0-67.12 27.143-53.431 104.031-19.03 2.234-84.249 12.922-96.329 2.29C261.633 447.771 304 419.385 304 375.837c0-46.326-49.475-73.588-94.639-73.588-46.686 0-97.361 27.417-97.361 75.063 0 50.809 41.414 70.396 29.601 79.554-16.851 13.064-71.854 5.122-93.601.935V204.584c63.934 10.948 144 9.33 144-55.435 0-31.802-32-45.775-32-74.086C160 58.488 199.338 48 216.994 48 233.19 48 256 55.938 256 73.588c0 23.524-33.264 36.842-33.264 77.924 0 60.396 86.897 58.813 146.508 51.68-6.592 53.714 1.669 113.439 55.691 113.439 31.223 0 45.141-28.631 75.22-28.631C517.407 288 528 315.957 528 336c0 21.606-12.157 48-26.346 48z"/></svg>'),
+		'menu_icon' 			=> 'dashicons-editor-table',
+		// "rewrite" 			=> false,
+		'query_var' 			=> true,
+		'supports' 				=> ['title', 'editor', 'thumbnail', 'author', 'revisions'],
 	];
 
-	register_post_type("centro", $args);
-
-	/**
-	 * Post Type: Servizi.
-	 */
-
-	$labels = [
-		"name" => __("Servizi", "canva"),
-		"singular_name" => __("Servizio", "canva"),
-		"menu_name" => __("Servizi", "canva"),
-		"all_items" => __("Tutto i Servizi", "canva"),
-		"add_new" => __("Aggiungi nuovo", "canva"),
-		"add_new_item" => __("Aggiungi nuovo Servizio", "canva"),
-		"edit_item" => __("Modifica Servizio", "canva"),
-		"new_item" => __("Nuovo Servizio", "canva"),
-		"view_item" => __("Visualizza Servizio", "canva"),
-		"view_items" => __("Visualizza Servizi", "canva"),
-		"search_items" => __("Cerca Servizi", "canva"),
-		"not_found" => __("No Servizi found", "canva"),
-		"not_found_in_trash" => __("No Servizi found in trash", "canva"),
-		"parent" => __("Genitore Servizio:", "canva"),
-		"featured_image" => __("Featured image for this Servizio", "canva"),
-		"set_featured_image" => __("Set featured image for this Servizio", "canva"),
-		"remove_featured_image" => __("Remove featured image for this Servizio", "canva"),
-		"use_featured_image" => __("Use as featured image for this Servizio", "canva"),
-		"archives" => __("Servizio archives", "canva"),
-		"insert_into_item" => __("Insert into Servizio", "canva"),
-		"uploaded_to_this_item" => __("Upload to this Servizio", "canva"),
-		"filter_items_list" => __("Filter Servizi list", "canva"),
-		"items_list_navigation" => __("Servizi list navigation", "canva"),
-		"items_list" => __("Servizi list", "canva"),
-		"attributes" => __("Servizi attributes", "canva"),
-		"name_admin_bar" => __("Servizio", "canva"),
-		"item_published" => __("Servizio published", "canva"),
-		"item_published_privately" => __("Servizio published privately.", "canva"),
-		"item_reverted_to_draft" => __("Servizio reverted to draft.", "canva"),
-		"item_scheduled" => __("Servizio scheduled", "canva"),
-		"item_updated" => __("Servizio updated.", "canva"),
-		"parent_item_colon" => __("Genitore Servizio:", "canva"),
-	];
-
-	$args = [
-		"label" => __("Servizi", "canva"),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => true,
-		"rest_base" => "",
-		"rest_controller_class" => "WP_REST_Posts_Controller",
-		"has_archive" => false,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"delete_with_user" => false,
-		"exclude_from_search" => false,
-		"capability_type" => ["servizio", "servizi"],
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => ["slug" => "servizio", "with_front" => true],
-		"query_var" => true,
-		"supports" => ["title", "editor", "thumbnail","revisions"],
-		"show_in_graphql" => false,
-		"template" => [
-			['acf/hero-cta'],
-			['acf/bt-white-img-text'],
-			['acf/bt-gray-grid-items'],
-			['acf/bt-in-depth'],
-			['acf/bt-list-numbers'],
-			['acf/bt-list-ckeck'],
-		],
-	];
-
-	register_post_type("servizio", $args);
-
-	/**
-	 * Post Type: Candidature.
-	 */
-
-	// $labels = [
-	// 	"name" => __("Candidature", "canva"),
-	// 	"singular_name" => __("Candidatura", "canva"),
-	// 	"menu_name" => __("Candidature", "canva"),
-	// 	"all_items" => __("Tutte le Candidature", "canva"),
-	// 	"add_new" => __("Aggiungi nuovo", "canva"),
-	// 	"add_new_item" => __("Aggiungi nuova Candidatura", "canva"),
-	// 	"edit_item" => __("Modifica Candidatura", "canva"),
-	// 	"new_item" => __("Nuova Candidatura", "canva"),
-	// 	"view_item" => __("Visualizza Candidatura", "canva"),
-	// 	"view_items" => __("Visualizza Candidature", "canva"),
-	// 	"search_items" => __("Cerca Candidature", "canva"),
-	// 	"not_found" => __("No Candidature found", "canva"),
-	// 	"not_found_in_trash" => __("No Candidature found in trash", "canva"),
-	// 	"parent" => __("Genitore Candidatura:", "canva"),
-	// 	"featured_image" => __("Featured image for this Candidatura", "canva"),
-	// 	"set_featured_image" => __("Set featured image for this Candidatura", "canva"),
-	// 	"remove_featured_image" => __("Remove featured image for this Candidatura", "canva"),
-	// 	"use_featured_image" => __("Use as featured image for this Candidatura", "canva"),
-	// 	"archives" => __("Candidatura archives", "canva"),
-	// 	"insert_into_item" => __("Insert into Candidatura", "canva"),
-	// 	"uploaded_to_this_item" => __("Upload to this Candidatura", "canva"),
-	// 	"filter_items_list" => __("Filter Candidature list", "canva"),
-	// 	"items_list_navigation" => __("Candidature list navigation", "canva"),
-	// 	"items_list" => __("Candidature list", "canva"),
-	// 	"attributes" => __("Candidature attributes", "canva"),
-	// 	"name_admin_bar" => __("Candidatura", "canva"),
-	// 	"item_published" => __("Candidatura published", "canva"),
-	// 	"item_published_privately" => __("Candidatura published privately.", "canva"),
-	// 	"item_reverted_to_draft" => __("Candidatura reverted to draft.", "canva"),
-	// 	"item_scheduled" => __("Candidatura scheduled", "canva"),
-	// 	"item_updated" => __("Candidatura updated.", "canva"),
-	// 	"parent_item_colon" => __("Genitore Candidatura:", "canva"),
-	// ];
-
-	// $args = [
-	// 	"label" => __("Candidature", "canva"),
-	// 	"labels" => $labels,
-	// 	"description" => "",
-	// 	"public" => true,
-	// 	"publicly_queryable" => true,
-	// 	"show_ui" => true,
-	// 	"show_in_rest" => true,
-	// 	"rest_base" => "",
-	// 	"rest_controller_class" => "WP_REST_Posts_Controller",
-	// 	"has_archive" => false,
-	// 	"show_in_menu" => true,
-	// 	"show_in_nav_menus" => true,
-	// 	"delete_with_user" => false,
-	// 	"exclude_from_search" => false,
-	// 	"capability_type" => ["candidatura", "candidature"],
-	// 	"map_meta_cap" => true,
-	// 	"hierarchical" => false,
-	// 	"rewrite" => ["slug" => "candidatura", "with_front" => true],
-	// 	"query_var" => true,
-	// 	"supports" => ["title", "editor", "thumbnail"],
-	// 	"show_in_graphql" => false,
-	// ];
-
-	// register_post_type("candidatura", $args);
-
-	/**
-	 * Post Type: Candidature Ricevute.
-	 */
-
-	// $labels = [
-	// 	"name" => __("Candidature Ricevute", "canva"),
-	// 	"singular_name" => __("Candidatura Ricevuta", "canva"),
-	// 	"menu_name" => __("Candidature Ricevute", "canva"),
-	// 	"all_items" => __("Candidature Ricevute", "canva"),
-	// 	"add_new" => __("Aggiungi nuovo", "canva"),
-	// 	"add_new_item" => __("Aggiungi nuova Candidatura Ricevuta", "canva"),
-	// 	"edit_item" => __("Modifica Candidatura Ricevuta", "canva"),
-	// 	"new_item" => __("Nuova Candidatura Ricevuta", "canva"),
-	// 	"view_item" => __("Visualizza Candidatura Ricevuta", "canva"),
-	// 	"view_items" => __("Visualizza Candidature Ricevute", "canva"),
-	// 	"search_items" => __("Cerca Candidature Ricevute", "canva"),
-	// 	"not_found" => __("No Candidature Ricevute found", "canva"),
-	// 	"not_found_in_trash" => __("No Candidature Ricevute found in trash", "canva"),
-	// 	"parent" => __("Genitore Candidatura Ricevuta:", "canva"),
-	// 	"featured_image" => __("Featured image for this Candidatura Ricevuta", "canva"),
-	// 	"set_featured_image" => __("Set featured image for this Candidatura Ricevuta", "canva"),
-	// 	"remove_featured_image" => __("Remove featured image for this Candidatura Ricevuta", "canva"),
-	// 	"use_featured_image" => __("Use as featured image for this Candidatura Ricevuta", "canva"),
-	// 	"archives" => __("Candidatura Ricevuta archives", "canva"),
-	// 	"insert_into_item" => __("Insert into Candidatura Ricevuta", "canva"),
-	// 	"uploaded_to_this_item" => __("Upload to this Candidatura Ricevuta", "canva"),
-	// 	"filter_items_list" => __("Filter Candidature Ricevute list", "canva"),
-	// 	"items_list_navigation" => __("Candidature Ricevute list navigation", "canva"),
-	// 	"items_list" => __("Candidature Ricevute list", "canva"),
-	// 	"attributes" => __("Candidature Ricevute attributes", "canva"),
-	// 	"name_admin_bar" => __("Candidatura Ricevuta", "canva"),
-	// 	"item_published" => __("Candidatura Ricevuta published", "canva"),
-	// 	"item_published_privately" => __("Candidatura Ricevuta published privately.", "canva"),
-	// 	"item_reverted_to_draft" => __("Candidatura Ricevuta reverted to draft.", "canva"),
-	// 	"item_scheduled" => __("Candidatura Ricevuta scheduled", "canva"),
-	// 	"item_updated" => __("Candidatura Ricevuta updated.", "canva"),
-	// 	"parent_item_colon" => __("Genitore Candidatura Ricevuta:", "canva"),
-	// ];
-
-	// $args = [
-	// 	"label" => __("Candidature Ricevute", "canva"),
-	// 	"labels" => $labels,
-	// 	"description" => "",
-	// 	"public" => false,
-	// 	"publicly_queryable" => false,
-	// 	"show_ui" => true,
-	// 	"show_in_rest" => true,
-	// 	"rest_base" => "",
-	// 	"rest_controller_class" => "WP_REST_Posts_Controller",
-	// 	"has_archive" => false,
-	// 	"show_in_menu" => "edit.php?post_type=candidatura",
-	// 	"show_in_nav_menus" => false,
-	// 	"delete_with_user" => false,
-	// 	"exclude_from_search" => false,
-	// 	"capability_type" => ["candidatura", "candidature"],
-	// 	"map_meta_cap" => true,
-	// 	"hierarchical" => false,
-	// 	"rewrite" => ["slug" => "candidatura-ricevuta", "with_front" => true],
-	// 	"query_var" => true,
-	// 	"supports" => ["title", "editor", "thumbnail"],
-	// 	"show_in_graphql" => false,
-	// ];
-
-	// register_post_type("candidatura-ricevuta", $args);
-
-	/**
-	 * Post Type: Open Days.
-	 */
-
-	// $labels = [
-	// 	"name" => __("Open Days", "canva"),
-	// 	"singular_name" => __("Open Day", "canva"),
-	// 	"menu_name" => __("Open Days", "canva"),
-	// 	"all_items" => __("Tutti gli Open Days", "canva"),
-	// 	"add_new" => __("Aggiungi nuovo", "canva"),
-	// 	"add_new_item" => __("Aggiungi un nuovo Open Day", "canva"),
-	// 	"edit_item" => __("Modifica Open Day", "canva"),
-	// 	"new_item" => __("Nuovo Open Day", "canva"),
-	// 	"view_item" => __("Visualizza Open Day", "canva"),
-	// 	"view_items" => __("Visualizza Open Days", "canva"),
-	// 	"search_items" => __("Cerca Open Days", "canva"),
-	// 	"not_found" => __("No Open Days found", "canva"),
-	// 	"not_found_in_trash" => __("No Open Days found in trash", "canva"),
-	// 	"parent" => __("Genitore Open Day:", "canva"),
-	// 	"featured_image" => __("Featured image for this Open Day", "canva"),
-	// 	"set_featured_image" => __("Set featured image for this Open Day", "canva"),
-	// 	"remove_featured_image" => __("Remove featured image for this Open Day", "canva"),
-	// 	"use_featured_image" => __("Use as featured image for this Open Day", "canva"),
-	// 	"archives" => __("Open Day archives", "canva"),
-	// 	"insert_into_item" => __("Insert into Open Day", "canva"),
-	// 	"uploaded_to_this_item" => __("Upload to this Open Day", "canva"),
-	// 	"filter_items_list" => __("Filter Open Days list", "canva"),
-	// 	"items_list_navigation" => __("Open Days list navigation", "canva"),
-	// 	"items_list" => __("Open Days list", "canva"),
-	// 	"attributes" => __("Open Days attributes", "canva"),
-	// 	"name_admin_bar" => __("Open Day", "canva"),
-	// 	"item_published" => __("Open Day published", "canva"),
-	// 	"item_published_privately" => __("Open Day published privately.", "canva"),
-	// 	"item_reverted_to_draft" => __("Open Day reverted to draft.", "canva"),
-	// 	"item_scheduled" => __("Open Day scheduled", "canva"),
-	// 	"item_updated" => __("Open Day updated.", "canva"),
-	// 	"parent_item_colon" => __("Genitore Open Day:", "canva"),
-	// ];
-
-	// $args = [
-	// 	"label" => __("Open Days", "canva"),
-	// 	"labels" => $labels,
-	// 	"description" => "",
-	// 	"public" => true,
-	// 	"publicly_queryable" => true,
-	// 	"show_ui" => true,
-	// 	"show_in_rest" => true,
-	// 	"rest_base" => "",
-	// 	"rest_controller_class" => "WP_REST_Posts_Controller",
-	// 	"has_archive" => false,
-	// 	"show_in_menu" => true,
-	// 	"show_in_nav_menus" => true,
-	// 	"delete_with_user" => false,
-	// 	"exclude_from_search" => false,
-	// 	"capability_type" => ["openday", "opendays"],
-	// 	"map_meta_cap" => true,
-	// 	"hierarchical" => false,
-	// 	"rewrite" => ["slug" => "open-day", "with_front" => true],
-	// 	"query_var" => true,
-	// 	"supports" => ["title", "editor", "thumbnail"],
-	// 	"show_in_graphql" => false,
-	// ];
-
-	// register_post_type("open-day", $args);
+	register_post_type('element', $args);
 }
 
-add_action('init', 'cptui_register_my_cpts');
+add_action('init', 'abc_register_cpt_elements');
 
-
-
-function cptui_register_my_taxes()
-{
+function cptui_register_my_taxes() {
 
 	/**
-	 * Taxonomy: Brands.
+	 * Taxonomy: Pumping units.
 	 */
 
 	$labels = [
-		"name" => __("Brands", "canva"),
-		"singular_name" => __("Brand", "canva"),
+		"name" => __( "Pumping units", "canva" ),
+		"singular_name" => __( "Pumping unit", "canva" ),
 	];
 
 
 	$args = [
-		"label" => __("Brands", "canva"),
+		"label" => __( "Pumping units", "canva" ),
 		"labels" => $labels,
 		"public" => true,
-		"publicly_queryable" => false,
+		"publicly_queryable" => true,
 		"hierarchical" => true,
 		"show_ui" => true,
 		"show_in_menu" => true,
-		"show_in_nav_menus" => false,
+		"show_in_nav_menus" => true,
 		"query_var" => true,
-		"rewrite" => ['slug' => 'brand', 'with_front' => true,  'hierarchical' => true,],
+		"rewrite" => [ 'slug' => 'pumping_unit', 'with_front' => true, ],
 		"show_admin_column" => true,
 		"show_in_rest" => true,
-		"rest_base" => "brand",
+		"show_tagcloud" => false,
+		"rest_base" => "pumping_unit",
 		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"rest_namespace" => "wp/v2",
 		"show_in_quick_edit" => true,
+		"sort" => true,
 		"show_in_graphql" => false,
+		"capabilities" => array(
+			"manage_terms" => "manage_genre",
+			"edit_terms" => "edit_genre",
+			"delete_terms" => "delete_genre",
+			"assign_terms" => "assign_genre",
+		)
 	];
-	register_taxonomy("brand", ["centro"], $args);
+	register_taxonomy( "pumping_unit", [ "product" ], $args );
 
 	/**
-	 * Taxonomy: Open Day Types.
+	 * Taxonomy: Screw Hours.
 	 */
 
 	$labels = [
-		"name" => __("Open Day Types", "canva"),
-		"singular_name" => __("Open Day Type", "canva"),
+		"name" => __( "Screw Hours", "canva" ),
+		"singular_name" => __( "Screw Hours", "canva" ),
 	];
 
 
 	$args = [
-		"label" => __("Open Day Types", "canva"),
-		"labels" => $labels,
-		"public" => true,
-		"publicly_queryable" => false,
-		"hierarchical" => true,
-		"show_ui" => true,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => false,
-		"query_var" => true,
-		"rewrite" => ['slug' => 'open_day_types', 'with_front' => true,  'hierarchical' => true,],
-		"show_admin_column" => true,
-		"show_in_rest" => true,
-		"rest_base" => "open_day_types",
-		"rest_controller_class" => "WP_REST_Terms_Controller",
-		"show_in_quick_edit" => true,
-		"show_in_graphql" => false,
-	];
-	register_taxonomy("open_day_types", ["centro"], $args);
-
-	/**
-	 * Taxonomy: Tipologie Servizi.
-	 */
-
-	$labels = [
-		"name" => __("Tipologie Servizi", "canva"),
-		"singular_name" => __("Tipologia Servizo", "canva"),
-		"menu_name" => __("Tipologie Servizi", "canva"),
-		"all_items" => __("Tutte le Tipologie Servizi", "canva"),
-		"edit_item" => __("Modifica Tipologia Servizo", "canva"),
-		"view_item" => __("Visualizza Tipologia Servizo", "canva"),
-		"update_item" => __("Update Tipologia Servizo name", "canva"),
-		"add_new_item" => __("Aggiungi nuova Tipologia Servizo", "canva"),
-		"new_item_name" => __("Nuovo nome Tipologia Servizo", "canva"),
-		"parent_item" => __("Tipologia Servizo genitore", "canva"),
-		"parent_item_colon" => __("Genitore Tipologia Servizo:", "canva"),
-		"search_items" => __("Cerca Tipologie Servizi", "canva"),
-		"popular_items" => __("Tipologie Servizi popolari", "canva"),
-		"separate_items_with_commas" => __("Separa Tipologie Servizi con le virgole", "canva"),
-		"add_or_remove_items" => __("Aggiungi o rimuovi Tipologie Servizi", "canva"),
-		"choose_from_most_used" => __("Scegli tra i Tipologie Servizi più utilizzati", "canva"),
-		"not_found" => __("No Tipologie Servizi found", "canva"),
-		"no_terms" => __("No Tipologie Servizi", "canva"),
-		"items_list_navigation" => __("Tipologie Servizi list navigation", "canva"),
-		"items_list" => __("Tipologie Servizi list", "canva"),
-		"back_to_items" => __("Back to Tipologie Servizi", "canva"),
-	];
-
-
-	$args = [
-		"label" => __("Tipologie Servizi", "canva"),
+		"label" => __( "Screw Hours", "canva" ),
 		"labels" => $labels,
 		"public" => true,
 		"publicly_queryable" => true,
-		"hierarchical" => false,
+		"hierarchical" => true,
 		"show_ui" => true,
 		"show_in_menu" => true,
 		"show_in_nav_menus" => true,
 		"query_var" => true,
-		"rewrite" => ['slug' => 'servizio_cat', 'with_front' => true,],
-		"show_admin_column" => false,
+		"rewrite" => [ 'slug' => 'screw_hours', 'with_front' => true, ],
+		"show_admin_column" => true,
 		"show_in_rest" => true,
-		"rest_base" => "servizio_cat",
+		"show_tagcloud" => false,
+		"rest_base" => "screw_hours",
 		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"rest_namespace" => "wp/v2",
 		"show_in_quick_edit" => true,
+		"sort" => true,
 		"show_in_graphql" => false,
+		"capabilities" => array(
+			"manage_terms" => "manage_genre",
+			"edit_terms" => "edit_genre",
+			"delete_terms" => "delete_genre",
+			"assign_terms" => "assign_genre",
+		)
 	];
-	register_taxonomy("servizio_cat", ["servizio"], $args);
+	register_taxonomy( "screw_hours", [ "product" ], $args );
 
-	/**
-	 * Taxonomy: Keywords.
-	 */
-
-	$labels = [
-		"name" => __("Keywords", "canva"),
-		"singular_name" => __("Keywords", "canva"),
-	];
-
-
-	$args = [
-		"label" => __("Keywords", "canva"),
-		"labels" => $labels,
-		"public" => true,
-		"publicly_queryable" => false,
-		"hierarchical" => false,
-		"show_ui" => true,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => false,
-		"query_var" => true,
-		"rewrite" => ['slug' => 'keywords', 'with_front' => true,],
-		"show_admin_column" => false,
-		"show_in_rest" => true,
-		"rest_base" => "keywords",
-		"rest_controller_class" => "WP_REST_Terms_Controller",
-		"show_in_quick_edit" => false,
-		"show_in_graphql" => false,
-	];
-	register_taxonomy("keywords", ["centro"], $args);
 }
-add_action('init', 'cptui_register_my_taxes');
+add_action( 'init', 'cptui_register_my_taxes' );

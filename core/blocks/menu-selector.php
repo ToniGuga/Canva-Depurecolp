@@ -16,32 +16,30 @@ if (is_admin()) {
 			<figure class="canva-width-12 canva-m-0">
 
 				<!-- ICONA -->
-				<?php echo apply_filters('posts_selector_blocks_icon', canva_get_svg_icon('canva-icons/canva-icon-posts-selector', null)); ?>
+				<?php echo apply_filters('menu_selector_blocks_icon', canva_get_svg_icon('fontawesome/regular/hamburger', null)); ?>
 				<!-- Fine Icona -->
 
 			</figure>
 		</div>
 
 		<div class="_content canva-flex-1 canva-p-4 canva-bg-white">
-			<?php
-			$posts_object = get_field('post_object');
-			?>
-
-			<?php foreach ($posts_object as $post_object) { ?>
-
-				<h3 class="canva-flex canva-align-middle canva-mt-0 canva-mb-2 canva-p-2 canva-font-theme canva-fs-h5 canva-fw-700 canva-lh-10 canva-bg-grey-lighter">
-					<?php echo get_the_title(($post_object)); ?>
-				</h3>
-
-			<?php } ?>
+			<?php if (get_field('menu_id')) : ?>
+				<nav class="canva-pl-4">
+					<ul class="<?php echo esc_attr(get_field('ul_css_classes')) ?>">
+						<?php echo canva_menu(['menu_id' => esc_attr(get_field('menu_id')), 'depth' => 4, 'css_classes' => esc_attr(get_field('li_css_classes')), 'items_wrap' => '%3$s', 'walker' => '']); ?>
+					</ul>
+				</nav>
+			<?php else : ?>
+				<?php _e('Imposta il blocco', 'canva-be'); ?>
+			<?php endif; ?>
 
 		</div>
 
 	</div>
-
-	<?php
+<?php
 
 } else {
+
 	// Create id attribute allowing for custom "anchor" value.
 	$id = $block['id'];
 	if (!empty($block['anchor'])) {
@@ -54,25 +52,15 @@ if (is_admin()) {
 		$className .= ' ' . $block['className'];
 	}
 
-	$posts_object = get_field('post_object');
+?>
 
-	if (get_field('template_name')) {
-		$template_name = esc_attr(get_field('template_name'));
-	} else {
-		$template_name = 'render-blocks';
-	}
-
-	if ($posts_object) {
-	?>
-
-		<div id="<?php echo esc_attr($id); ?>" class="canva-block-posts-selector <?php echo esc_attr($className); ?>">
-			<?php
-			foreach ($posts_object as $post_object) {
-				canva_get_template($template_name, ['post_id' => $post_object, 'accordion' => false]);
-			}
-			?>
-		</div>
+	<?php if (get_field('menu_id')) : ?>
+		<nav id="<?php echo esc_attr($id); ?>" class="canva-block-menu-selector <?php echo esc_attr($className); ?> <?php echo esc_attr(get_field('ul_css_classes')) ?>">
+			<ul class="<?php echo esc_attr(get_field('ul_css_classes')) ?>">
+				<?php echo canva_menu(['menu_id' => esc_attr(get_field('menu_id')), 'depth' => 4, 'css_classes' => esc_attr(get_field('li_css_classes')), 'items_wrap' => '%3$s', 'walker' => '']); ?>
+			</ul>
+		</nav>
+	<?php endif; ?>
 
 <?php
-	}
 }

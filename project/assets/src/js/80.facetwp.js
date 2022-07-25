@@ -87,24 +87,31 @@
 
 	/* invia il pageview a google analytics mentre si utilizzano i filtri */
 	$(document).on('facetwp-loaded', function () {
-		if (FWP.loaded) {
-			ga('send', 'pageview', window.location.pathname + window.location.search);
+		var gtagCheck = isGtagLoaded();
+		if (FWP.loaded && gtagCheck === true) {
+			gtag('event', 'page_view', { 'page_location': window.location.pathname + window.location.search });
 		}
 	});
 
 	/* scrolla la pagina all'inizio dei risultati */
-	$(document).on("facetwp-refresh", function () {
-		if (FWP.loaded) {
-			scrollToAnchor('facetwp-results');
+	$(document).on("facetwp-loaded", function () {
+		// console.log(FWP.is_load_more);
+		var viewPortWidth = $(window).width();
+		var viewPortHeight = $(window).height();
+		if (FWP.loaded && FWP.load_more_paged == 1) {
+			// scrollToAnchor('facetwp-results');
+			if (viewPortWidth < 640) {
+				scrollToClass('facetwp-template', 200);
+			}
 		}
 	});
 
 	/* riattiva il b-lazy per il facetwp */
 	$(document).on("facetwp-loaded", function () {
-		if (FWP.loaded) {
+		// if (FWP.loaded || FWP.is_load_more != false) {
+		if (FWP.loaded && FWP.load_more_paged >= 1) {
 			var bLazy = new Blazy();
 			bLazy.revalidate();
 		}
 	});
 })(jQuery);
-

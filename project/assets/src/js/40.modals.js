@@ -13,22 +13,28 @@
 
 		var modalContentClass = $(this).attr('data-modal-content');
 		var modalContent = $('.' + modalContentClass).clone();
-		$(document).find('.modal-container ._modal-content-append').append(modalContent);
-		$('.modal-container ._modal-content-append .' + modalContentClass).removeClass('hidden');
 
-		$(".modal-container").removeClass("hidden");
-		$(".modal-container").removeClass("fade-out");
-		$(".modal-container").addClass("flex");
+		console.log(modalContentClass);
+		console.log(modalContent);
+
+		$(document).find('._modal-container ._modal-content-append').append(modalContent);
+		$('._modal-container ._modal-content-append .' + modalContentClass).removeClass('hidden');
+
+		$("._modal-container").removeClass("hidden");
+		$("._modal-container").removeClass("fade-out");
+		$("._modal-container").addClass("flex");
 		$("body").addClass("overflow-y-hidden");
 
-		var bLazy = new Blazy();
-		bLazy.revalidate();
+		setTimeout(() => {
+			var bLazy = new Blazy();
+			bLazy.revalidate();
 
-		document.querySelectorAll(".wpcf7 > form").forEach((
-			function (e) {
-				return wpcf7.init(e);
-			}
-		));
+			document.querySelectorAll(".wpcf7 > form").forEach((
+				function (e) {
+					return wpcf7.init(e);
+				}
+			));
+		}, 900);
 
 		setTimeout(function () {
 			document.addEventListener('wpcf7mailsent', function (event) {
@@ -36,10 +42,10 @@
 				$.each(canvaCf7Ids, function (index, value) {
 					if (value == event.detail.contactFormId) {
 						// alert("Messaggio inviato!");
-						$('._modal-content-append').addClass("fade-out");
+						$('.__modal-content-append').addClass("fade-out");
 
 						setTimeout(function () {
-							$('._modal-content-append').addClass("hidden");
+							$('.__modal-content-append').addClass("hidden");
 						}, 600);
 						setTimeout(function () {
 							$('._modal-content-msg').fadeToggle('slow');
@@ -56,17 +62,17 @@
 				});
 
 			}, false);
-		}, 1000);
+		}, 1200);
 
 		// remove duplicated ajax-loader in modals
-		$(".modal-container").find(".ajax-loader:not(:first)").remove();
+		$("._modal-container").find(".ajax-loader:not(:first)").remove();
 	}
 
 	function modalClose(jQuery) {
-		$(".modal-container, .off-canvas-desktop, .off-canvas-mobile").addClass("fade-out");
+		$("._modal-container, .off-canvas-desktop, .off-canvas-mobile").addClass("fade-out");
 		setTimeout(function () {
-			$(".modal-container, .off-canvas-desktop, .off-canvas-mobile").addClass("hidden");
-			$(".modal-container, .off-canvas-desktop, .off-canvas-mobile").removeClass("fade-out");
+			$("._modal-container, .off-canvas-desktop, .off-canvas-mobile").addClass("hidden");
+			$("._modal-container, .off-canvas-desktop, .off-canvas-mobile").removeClass("fade-out");
 			$("body").removeClass("overflow-y-hidden");
 			modalDestroy();
 			$('.hamburger-modal').toggleClass('open');
@@ -74,10 +80,10 @@
 	}
 
 	function modalDestroy(jQuery) {
-		// $(document).find('.modal-container ._modal-content-append').children().remove();
-		$('.modal-container ._modal-content-append').children().remove();
-		$('._modal-content-append').removeClass("hidden");
-		$('._modal-content-append').removeClass("fade-out");
+		// $(document).find('._modal-container .__modal-content-append').children().remove();
+		$('._modal-container .__modal-content-append').children().remove();
+		$('.__modal-content-append').removeClass("hidden");
+		$('.__modal-content-append').removeClass("fade-out");
 	}
 
 	// apre modale quando viene cliccato il pulsante o il link con la classe modal-open
@@ -184,6 +190,15 @@ Nella seconda bisogna aggiungere il behavior per il mobile (viewport e resize).
 		var modalIn = 'modal-in';
 		var modalOut = 'modal-out';
 
+		if ($(this).hasClass('modal-round-expansion')) {
+
+			$(this).addClass('active');
+			$(this).find('.text-wrapper, svg').hide();
+
+			$('#modal-post-opener').addClass('modal-round-opener');
+
+		}
+
 		$.ajax(ajaxUrl + '?action=' + actionName + '&id=' + id + '&template=' + templateName + '&nonce=' + nonce)
 			.done(function (content) {
 
@@ -216,7 +231,7 @@ Nella seconda bisogna aggiungere il behavior per il mobile (viewport e resize).
 							return wpcf7.init(e);
 						}
 					));
-				}, 900);
+				}, 2000);
 
 				setTimeout(function () {
 					document.addEventListener('wpcf7mailsent', function (event) {
@@ -248,7 +263,6 @@ Nella seconda bisogna aggiungere il behavior per il mobile (viewport e resize).
 	});
 
 	$(document).on('click', '.inline-modal-post-open', function (event) {
-
 		event.preventDefault();
 
 		var animationIn = $(this).attr('data-animation-in');
@@ -257,8 +271,20 @@ Nella seconda bisogna aggiungere il behavior per il mobile (viewport e resize).
 		var modalIn = 'modal-in';
 		var modalOut = 'modal-out';
 		var inlineModalContent = $(this).attr('data-post-id');
-
 		var modalContent = $('._modal-id-' + inlineModalContent).children().clone();
+
+		if ($('.modal-post-open').hasClass('modal-round-expansion')) {
+
+			$('.modal-post-open').removeClass('active');
+			$('#modal-post-opener').removeClass('modal-round-opener');
+
+			setTimeout(function () {
+
+				$('.modal-post-open .text-wrapper, .modal-post-open svg, .modal-post-open img').fadeIn();
+
+			}, 1000);
+
+		}
 
 		$('body').addClass('overflow-y-hidden relative');
 		$('#modal-post-opener').show();
@@ -279,7 +305,6 @@ Nella seconda bisogna aggiungere il behavior per il mobile (viewport e resize).
 			$('#modal-post-opener').find('._modal-content').addClass(containerClass);
 		}
 
-
 		setTimeout(() => {
 			var bLazy = new Blazy();
 			bLazy.revalidate();
@@ -289,7 +314,7 @@ Nella seconda bisogna aggiungere il behavior per il mobile (viewport e resize).
 					return wpcf7.init(e);
 				}
 			));
-		}, 900);
+		}, 2000);
 
 		setTimeout(function () {
 			document.addEventListener('wpcf7mailsent', function (event) {
@@ -300,6 +325,7 @@ Nella seconda bisogna aggiungere il behavior per il mobile (viewport e resize).
 						setTimeout(function () {
 							$('._modal-content').addClass("hidden");
 						}, 600);
+
 						setTimeout(function () {
 							$('._modal-content-messages').fadeToggle('slow');
 						}, 1200);
@@ -325,6 +351,17 @@ Nella seconda bisogna aggiungere il behavior per il mobile (viewport e resize).
 		var containerClass = $(this).attr('data-modal-container-class');
 		var modalIn = 'modal-in';
 		var modalOut = 'modal-out';
+
+		if ($('.modal-post-open').hasClass('modal-round-expansion')) {
+
+			$('.modal-post-open').removeClass('active');
+			$('#modal-post-opener').removeClass('modal-round-opener');
+
+		}
+
+		setTimeout(() => {
+			$('.modal-post-open .text-wrapper, .modal-post-open svg, .modal-post-open img').fadeIn();
+		}, 600);
 
 		$('body').removeClass('overflow-y-hidden relative');
 
@@ -378,6 +415,17 @@ Nella seconda bisogna aggiungere il behavior per il mobile (viewport e resize).
 			$('body').removeClass('overflow-y-hidden relative');
 			$('#modal-post-opener').addClass('modal-out-to-bottom');
 			$('#modal-post-opener').find('._modal-content').empty();
+
+			if ($('.modal-post-open').hasClass('modal-round-expansion')) {
+
+				$('.modal-post-open').removeClass('active');
+				$('#modal-post-opener').removeClass('modal-round-opener');
+
+			}
+
+			setTimeout(() => {
+				$('.modal-post-open .text-wrapper, .modal-post-open svg, .modal-post-open img').fadeIn();
+			}, 600);
 
 			setTimeout(function () {
 
@@ -440,5 +488,25 @@ Nella seconda bisogna aggiungere il behavior per il mobile (viewport e resize).
 		}, 2000);
 
 	});
+
+
+	// Apre modale di ricerca dal menu
+	// $(document).on('click', '.menu-item-icon-search', function () {
+	// 	$('._modal-search').fadeIn();
+	// });
+
+	// // Chiude modale di ricerca dal menu
+	// $(document).on('click', '._modal-search-close', function () {
+	// 	$('._modal-search').fadeOut();
+	// });
+
+
+
+	// tooltip
+	(function ($) {
+		$(document).on('click', '.tooltip', function () {
+			$('.tooltiptext').toggleClass('visibility');
+		});
+	})(jQuery);
 
 })(jQuery);

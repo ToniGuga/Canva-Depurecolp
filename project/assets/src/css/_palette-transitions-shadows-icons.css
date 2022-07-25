@@ -22,31 +22,38 @@ Prevariabili tipo sono
 			+Palette
 		\*------------------------------------*/
 
-		/* Colori Specifici Progetto */
-		--color-cnd-blue-100: #48CBFF;
-		--color-cnd-blue-300: #339df9;
-		--color-cnd-blue: #0084f8;
-		--color-cnd-blue-700: #006ac6;
-		--color-cnd-gray-300: #758189;
-		--color-cnd-gray: #52616b; /* Secondario, usato quasi ovunque al posto del black e nei titoli scuri */
-		--color-cnd-gray-700: #424e56;
+		--color-abc-blue-100: #D5E2F0; /* Ricreato aggiungendo bianco */
+		--color-abc-blue-300: #558AC3; /* Ricreato aggiungendo bianco */
+		--color-abc-blue: #2b6db4;
+		--color-abc-blue-700: #225790;
+
+        --color-abc-yellow-100: #Fdf3d0;
+        --color-abc-yellow-200: #FFd966;
+        --color-abc-yellow-300: #FFd24d;
+        --color-abc-yellow: #FFBF00;
+        --color-abc-yellow-700: #CC9900;
+
+        --color-abc-clear-gray: #f5f5f5; /* Usato per bg sovrascrive Gray-100 */
+        --color-abc-light-gray: #999999; /* Sovrascrive Gray-400 */
+        --color-abc-darkest-gray: #333333; /* Sovrascrive Gray-700 */
 
 
         /*------------------------------------*\
 			+Colori Main Progetto
 		\*------------------------------------*/
 
-		--color-primary-100: var(--color-cnd-blue-100);
-		--color-primary-300: var(--color-cnd-blue-300);
-		--color-primary: var(--color-cnd-blue); /* blu */
-		--color-primary-700: var(--color-cnd-blue-700);
-
-		--color-secondary: var(--color-cnd-gray); /* grigio */
-		--color-secondary-300: var(--color-cnd-blue-300); /* Blu chiaro marco*/
-		--color-secondary-700: var(--color-cnd-blue-700); /* Blu scuro marco*/
-
-		--color-accent: var(--color-cnd-blue);
-
+        --color-primary-100: var(--color-abc-blue-100);
+        --color-primary-300: var(--color-abc-blue-300);
+        --color-primary: var(--color-abc-blue); /*  */
+        --color-primary-700: var(--color-abc-blue-700);
+        --color-secondary-100: var(--color-abc-yellow-100);
+        --color-secondary-200: var(--color-abc-yellow-200);
+        --color-secondary-300: var(--color-abc-yellow-300);
+        --color-secondary: var(--color-abc-yellow); /* */
+        --color-secondary-700: var(--color-abc-yellow-700);
+        --color-accent-300: var(--color-abc-darkest-gray); /*  */
+        --color-accent: var(--color-abc-darkest-gray); /*  */
+        --color-accent-700: var(--color-abc-darkest-gray); /*  */
 
 		--color-success-50: #ecfdf5; /* TW Emerald-50 */
 		--color-success-300: #34d399; /* TW Emerald-400 */
@@ -63,8 +70,8 @@ Prevariabili tipo sono
 		--color-magenta: #ff00ff;
 		--color-yellow: #ffff00;
 
-        --color-white: #ffffff;
-        --color-black: #000000;
+        --color-white: #fff;
+        --color-black: #000;
 
 
 
@@ -76,9 +83,9 @@ Prevariabili tipo sono
 
 
 		/* Colori Islight */
-		--color-islight-full:  var(--color-cnd-gray-700); /* Il più scuro e pieno per gli elementi in evidenza */
-		--color-islight-default:  var(--color-cnd-gray); /* Un po' meno scuro e pieno del full */
-		--color-islight-weak:  var(--color-cnd-gray-300); /* Un po' meno scuro e pieno del full */
+		--color-islight-full:  var(--color-black); /* Il più scuro e pieno per gli elementi in evidenza */
+		--color-islight-default:  var(--color-abc-darkest-gray); /* Un po' meno scuro e pieno del full */
+		--color-islight-weak:  var(--color-abc-light-gray); /* Un po' meno scuro e pieno del full */
 		--color-islight-interactive:  var(--color-primary); /* Colore del link */
 		--color-islight-interactive-hover:  var(--color-primary-300); /* Colore del link hover*/
 		--color-islight-disabled:  #aaa; /* Di solito grigio chiaro del disabilitato */
@@ -86,7 +93,7 @@ Prevariabili tipo sono
 
 		/* Colori Isdark */
 		--color-isdark-full:  var(--color-white); /* Il più scuro e pieno per far risaltare le cose */
-		--color-isdark-default:  #fafafa; /* Un po' meno scuro e pieno del full */
+		--color-isdark-default:  var(--color-abc-clear-gray); /* Un po' meno scuro e pieno del full */
 		--color-isdark-weak:  #ddd; /* Colore del link */
 		--color-islight-interactive:  var(--color-primary); /* Colore del link */
 		--color-isdark-interactive-hover:  var(--color-primary-300); /* Colore del link hover*/
@@ -124,7 +131,8 @@ Prevariabili tipo sono
 		--duration-xslow: calc(var(--tempo-unit) * 6);
 		/* Queste duration sono riportate nel file di configurazione Tailwind js come extend */
 
-		--transition-bezier: cubic-bezier(0.4, 0, 0.2, 1);
+		/* Editor per curve bezier >> https://cubic-bezier.com/ */
+		--transition-bezier: cubic-bezier(0,.25,1,1); /* cubic-bezier(0.4, 0, 0.2, 1); */
 		--transition-ease-in-out: ease-in-out;
 		--transition-linear: linear;
 
@@ -153,8 +161,8 @@ Prevariabili tipo sono
 		Se servono concatenazioni di transition per usarle poi nel css finale come variabile unica allora si inseriscono qui sotto
 		*/
 
-		--transition-button-default: var(--transition-property-all) var(--transition-bezier) var(--duration-normal);
-		--transition-anchor-default: var(--transition-property-all) var(--transition-bezier) var(--duration-normal);
+		--button-default-transition: var(--transition-property-all) var(--transition-bezier) var(--duration-normal);
+		--anchor-default-transition: var(--transition-property-all) var(--transition-bezier) var(--duration-normal);
 
 
 
@@ -180,19 +188,17 @@ Prevariabili tipo sono
 
 		--icon-check-isdark: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-32 0 512 512'%3E%3Cpath fill='%23ffffff' d='M413.505 91.951L133.49 371.966l-98.995-98.995c-4.686-4.686-12.284-4.686-16.971 0L6.211 284.284c-4.686 4.686-4.686 12.284 0 16.971l118.794 118.794c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-11.314-11.314c-4.686-4.686-12.284-4.686-16.97 0z'/%3E%3C/svg%3E");
 
-		--icon-arrow-up: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 256 256'%3E%3Cpath fill='%2352616B' d='M136.8,248h-17.7V58.7c0,0.1-0.1,0.1-0.1,0.2c-16.9,27.2-39.8,41.6-66.3,41.6V82.8c49.3,0,66.1-67.4,66.2-68.1 l1.6-6.8h14.8l1.6,6.8c0,0,0,0,0,0c0.5,1.8,17.5,68,66.2,68v17.7c-26.5,0-49.4-14.4-66.2-41.6c-0.1-0.1-0.1-0.2-0.2-0.3V248z'/%3E%3C/svg%3E");
+		--icon-arrow-up: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 256 256' xml:space='preserve'%3E%3Cpath fill='none' stroke='%23333' stroke-width='32' stroke-linecap='round' stroke-linejoin='round' d='m28 180.5 100-105 100 105'/%3E%3C/svg%3E");
 
-		--icon-arrow-right: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 256 256'%3E%3Cpath fill='%2352616B' d='M7.9,136.8l0-17.7h189.3c-0.1,0-0.1-0.1-0.2-0.1c-27.2-16.9-41.6-39.8-41.6-66.3h17.7 c0,49.3,67.4,66.1,68.1,66.2l6.8,1.6v14.8l-6.8,1.6c0,0,0,0,0,0c-1.8,0.5-68,17.5-68,66.2h-17.7c0-26.5,14.4-49.4,41.6-66.2 c0.1-0.1,0.2-0.1,0.3-0.2H7.9z'/%3E%3C/svg%3E");
+		--icon-arrow-right: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 256 256' xml:space='preserve'%3E%3Cpath fill='none' stroke='%23333' stroke-width='32' stroke-linecap='round' stroke-linejoin='round' d='m75.5 28 105 100-105 100'/%3E%3C/svg%3E");
 
-		--icon-arrow-right-primary: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 256 256'%3E%3Cpath fill='%230084f8' d='M7.9,136.8l0-17.7h189.3c-0.1,0-0.1-0.1-0.2-0.1c-27.2-16.9-41.6-39.8-41.6-66.3h17.7 c0,49.3,67.4,66.1,68.1,66.2l6.8,1.6v14.8l-6.8,1.6c0,0,0,0,0,0c-1.8,0.5-68,17.5-68,66.2h-17.7c0-26.5,14.4-49.4,41.6-66.2 c0.1-0.1,0.2-0.1,0.3-0.2H7.9z'/%3E%3C/svg%3E");
+		--icon-arrow-down: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 256 256' xml:space='preserve'%3E%3Cpath fill='none' stroke='%23333' stroke-width='32' stroke-linecap='round' stroke-linejoin='round' d='m228 75.5-100 105-100-105'/%3E%3C/svg%3E");
 
-		--icon-arrow-down: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 256 256'%3E%3Cpath fill='%2352616B' d='M119.2,8l17.7,0v189.3c0-0.1,0.1-0.1,0.1-0.2c16.9-27.2,39.8-41.6,66.3-41.6v17.7c-49.3,0-66.1,67.4-66.2,68.1 l-1.6,6.8h-14.8l-1.6-6.8c0,0,0,0,0,0c-0.5-1.8-17.5-68-66.2-68v-17.7c26.5,0,49.4,14.4,66.2,41.6c0.1,0.1,0.1,0.2,0.2,0.3V8z'/%3E%3C/svg%3E");
-
-		--icon-arrow-left: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 256 256'%3E%3Cpath fill='%2352616B' d='M248,119.2v17.7H58.7c0.1,0,0.1,0.1,0.2,0.1c27.2,16.9,41.6,39.8,41.6,66.3H82.8c0-49.3-67.4-66.1-68.1-66.2 L8,135.4v-14.8l6.8-1.6c0,0,0,0,0,0c1.8-0.5,68-17.5,68-66.2h17.7c0,26.5-14.4,49.4-41.6,66.2c-0.1,0.1-0.2,0.1-0.3,0.2H248z'/%3E%3C/svg%3E");
+		--icon-arrow-left: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 256 256' xml:space='preserve'%3E%3Cpath fill='none' stroke='%23333' stroke-width='32' stroke-linecap='round' stroke-linejoin='round' d='m180.5 228-105-100 105-100'/%3E%3C/svg%3E");
 
 		--icon-arrows: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 512 512'%3E%3Cpath fill='%23000000' d='M337.782 434.704l-73.297 73.782c-4.686 4.686-12.284 4.686-16.971 0l-73.296-73.782c-4.686-4.686-4.686-12.284 0-16.97l7.07-7.07c4.686-4.686 12.284-4.686 16.971 0L239 451.887h1V272H60.113v1l41.224 40.741c4.686 4.686 4.686 12.284 0 16.971l-7.071 7.07c-4.686 4.686-12.284 4.686-16.97 0L3.515 264.485c-4.686-4.686-4.686-12.284 0-16.971l73.782-73.297c4.686-4.686 12.284-4.686 16.971 0l7.071 7.071c4.686 4.686 4.686 12.284 0 16.971L60.113 239v1H240V60.113h-1l-40.741 41.224c-4.686 4.686-12.284 4.686-16.971 0l-7.07-7.071c-4.686-4.686-4.687-12.284 0-16.97l73.297-73.782c4.686-4.686 12.284-4.686 16.971 0l73.297 73.782c4.686 4.686 4.686 12.284 0 16.971l-7.071 7.071c-4.686 4.686-12.284 4.686-16.971 0L273 60.113h-1V240h179.887v-1l-41.224-40.741c-4.686-4.686-4.686-12.284 0-16.971l7.071-7.07c4.686-4.686 12.284-4.686 16.97 0l73.782 73.297c4.687 4.686 4.686 12.284 0 16.971l-73.782 73.297c-4.686 4.686-12.284 4.686-16.97 0l-7.071-7.07c-4.686-4.686-4.686-12.284 0-16.971L451.887 273v-1H272v179.887h1l40.741-41.224c4.686-4.686 12.284-4.686 16.971 0l7.07 7.071c4.686 4.685 4.686 12.283 0 16.97z'/%3E%3C/svg%3E");
 
-		--icon-times: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 320 512'%3E%3Cpath fill='%23000000' d='M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z'/%3E%3C/svg%3E");
+		--icon-close: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 256 256' xml:space='preserve'%3E%3Cg fill='none' stroke='%23333' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M48 208 208 48M48 48l160 160'/%3E%3C/g%3E%3C/svg%3E");;
 
 		--icon-search-plus: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 512 512'%3E%3Cpath fill='%23000000' d='M319.8 204v8c0 6.6-5.4 12-12 12h-84v84c0 6.6-5.4 12-12 12h-8c-6.6 0-12-5.4-12-12v-84h-84c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h84v-84c0-6.6 5.4-12 12-12h8c6.6 0 12 5.4 12 12v84h84c6.6 0 12 5.4 12 12zm188.5 293L497 508.3c-4.7 4.7-12.3 4.7-17 0l-129-129c-2.3-2.3-3.5-5.3-3.5-8.5v-8.5C310.6 395.7 261.7 416 208 416 93.8 416 1.5 324.9 0 210.7-1.5 93.7 93.7-1.5 210.7 0 324.9 1.5 416 93.8 416 208c0 53.7-20.3 102.6-53.7 139.5h8.5c3.2 0 6.2 1.3 8.5 3.5l129 129c4.7 4.7 4.7 12.3 0 17zM384 208c0-97.3-78.7-176-176-176S32 110.7 32 208s78.7 176 176 176 176-78.7 176-176z'/%3E%3C/svg%3E");
 

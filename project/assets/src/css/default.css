@@ -1,10 +1,11 @@
 @layer base {
+
     html {
-        @apply bg-black;
+        background: var(--body-bg);
         scroll-behavior: smooth;
     }
     body {
-        @apply bg-white;
+        background: var(--body-bg);
     }
     figure {
         display: flex;
@@ -41,4 +42,10 @@
 	position: fixed !important;
 	top: auto !important;
 	bottom: 0;
+}
+
+/* format wp multisite messagges in front */
+
+.wp-activate-container {
+	@apply text-center;
 }

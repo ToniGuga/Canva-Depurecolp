@@ -14,7 +14,7 @@ add_filter('woocommerce_show_variation_price', '__return_true');
 add_filter('woocommerce_enqueue_styles', '__return_empty_array');
 
 //Mostra 40 prodotti per pagina product per page
-add_filter('loop_shop_per_page', 'new_loop_shop_per_page', 40);
+// add_filter('loop_shop_per_page', 'new_loop_shop_per_page', 40); // da errore su abac boooo !!!
 
 // Gallery Support
 //add_theme_support( 'wc-product-gallery-zoom' );
@@ -92,9 +92,9 @@ remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 
 // Add WooCommerce support for wrappers per http://docs.woothemes.com/document/third-party-custom-theme-compatibility/
 // !!! Verify if this feature is still in use
-// remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 // add_action('woocommerce_before_main_content', 'canva_before_content', 10);
-// remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 // add_action('woocommerce_after_main_content', 'canva_after_content', 10);
 
 

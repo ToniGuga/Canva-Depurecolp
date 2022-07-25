@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 if (!$post_id) {
 	$post_id = get_the_ID();
 }
-
+// echo $post_id;
 setup_postdata($post_id);
 ?>
 

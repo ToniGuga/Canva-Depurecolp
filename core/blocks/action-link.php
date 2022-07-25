@@ -34,7 +34,7 @@ if (is_admin()) {
 
 			<div class="_content canva-flex-1 canva-p-4 canva-bg-white">
 				<?php if ($action_link) { ?>
-					<a id="<?php echo esc_attr($id); ?>" class="button block camva-fs-h4<?php echo esc_attr($className); ?>" href="<?php echo esc_url($action_link['url']); ?>" <?php echo $target_link; ?>><?php echo esc_html($action_link['title']); ?></a>
+					<a id="<?php echo esc_attr($id); ?>" class="button block canva-fs-h4<?php echo esc_attr($className); ?>" href="<?php echo esc_url($action_link['url']); ?>" <?php echo $target_link; ?>><?php echo esc_html($action_link['title']); ?></a>
 				<?php } else { ?>
 					<span class="canva-block canva-fs-xsmall canva-lh-11">
 						<?php _e('Imposta il pulsante cliccando sull\'icona della matita', 'canva-backend'); ?>

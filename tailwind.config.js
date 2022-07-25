@@ -90,6 +90,7 @@ module.exports = {
 			},
 
 			primary: {
+				'50': 'var(--color-primary-50)',
 				'100': 'var(--color-primary-100)',
 				'300': 'var(--color-primary-300)',
 				DEFAULT: 'var(--color-primary)',
@@ -135,6 +136,7 @@ module.exports = {
 				'100vw': '100vw',
 				'50vh': '50vh',
 				'75vh': '75vh',
+				'100vh': '100vh',
 			},
 		},
 
@@ -149,7 +151,7 @@ module.exports = {
 			'66vw': '66vw',
 			'100vw': '100vw',
 			'50vh': '50vh',
-			'75vh': '75vh',
+			'100vh': '100vh',
 		},
 
 		maxHeight: (theme) => ({

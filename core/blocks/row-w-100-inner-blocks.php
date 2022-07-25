@@ -29,7 +29,7 @@ if (is_admin()) {
 				?>
 				<!-- Fine Icona -->
 			</figure>
-			<div class="canva-p-4">
+			<div class="canva-flex-1 canva-p-4">
 				<span class="title canva-block canva-mb-2 canva-fs-xxsmall canva-font-system canva-lh-12" style=""><?php _e('Row Width 100%', 'canva-backend'); ?></span>
 				<!-- <span>Contiene: Sopratitolo, Titolo, Sottotitolo</span> -->
 				<span class="canva-block canva-mt-0 canva-mb-2 canva-fs-small canva-font-theme canva-lh-11"><?php echo esc_html('Full width wrapper', 'canva-backend'); ?></span>

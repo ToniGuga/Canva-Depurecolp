@@ -5,7 +5,7 @@
     height: var(--map-height);
 }
 
-@media (min-width:920px) {
+@media (min-width:960px) {
     .acf-map {
         height: 75vh;
     }
@@ -13,4 +13,14 @@
 
 .gm-style-iw {
     min-width: 240px;
+}
+
+._google-maps {
+	height: var(--sm-map-height);
+}
+
+@media (min-width:960px) {
+	._google-maps {
+		height: var(--lg-map-height);
+	}
 }

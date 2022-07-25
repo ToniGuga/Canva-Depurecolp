@@ -19,9 +19,8 @@
 @import 'animations-lazyload.css';
 @import 'typography.css';
 @import 'tables.css';
-@import 'nav-main';
-@import 'nav-desktop-curtain-coind.css';
-@import 'buttons.css';
+@import 'nav-main.css';
+@import 'buttons-tags-close.css';
 @import 'layers.css';
 @import 'hero.css';
 @import 'photobuttons.css';
@@ -29,6 +28,8 @@
 @import 'modals-tooltips.css';
 @import 'isdark.css';
 @import 'accessibility.css';
+
+/*@import 'modals.css';*/
 
 
 /* Plugins */
@@ -43,7 +44,7 @@
 
 
 /* WooCommerce style */
-/* @import 'woocommerce.css'; */
+@import 'woocommerce.css';
 
 
 /* Use project.css for custom styles */

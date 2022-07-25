@@ -30,17 +30,17 @@ if (!defined('ABSPATH')) {
  */
 ?>
 
-<div class="modal-container hidden fixed justify-center inset-0 bg-white bg-opacity-95 z-50 fade-in w-full h-full overflow-y-auto p-8 md:p-16 ">
+<div class="_modal-container hidden fixed justify-center inset-0 bg-white bg-opacity-95 z-50 fade-in w-full h-full overflow-y-auto p-8 md:p-16 ">
 
 		<a class="modal-close cursor-pointer absolute top-0 right-0 p-4">
 			<?php echo canva_get_svg_icon($name = 'fontawesome/regular/times', $class = 'w-5 h-5'); ?>
 		</a>
 
-		<div class="modal-content-append w-full md:w-1/2">
+		<div class="_modal-content-append w-full md:w-1/2">
 			<?php // Jquery appends here the modal content ?>
 		</div>
 
-		<div class="modal-content-msg w-full md:w-1/2 hidden flex items-center">
+		<div class="_modal-content-msg w-full md:w-1/2 hidden flex items-center">
 			<?php _e('Grazie il tuo messaggio è stato inviato.', 'silmax'); ?>
 		</div>
 

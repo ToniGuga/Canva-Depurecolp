@@ -618,7 +618,7 @@ function canva_render_block_by_id($post_id = '', $block_id = '')
 
 			if ('acf/row-w-100-inner-blocks' == $block['blockName']) {
 				$output .= render_block($block);
-				var_dump($block);
+				// var_dump($block);
 			}
 		}
 		echo apply_filters('the_content', $output);
@@ -933,7 +933,7 @@ function canva_slider_post_ids($attributes = [])
 
 ?>
 		<!-- ///////// Slider Posts ///////// -->
-		<div id="<?php echo $element_id; ?>" class="hero-slider <?php echo esc_attr($swiper_hero_class); ?>">
+		<div id="<?php echo $element_id; ?>" class="<?php echo esc_attr($swiper_hero_class); ?>">
 
 			<div class="swiper-container <?php echo $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
 
@@ -966,7 +966,13 @@ function canva_slider_post_ids($attributes = [])
 				preloadImages: false,
 				lazy: false,
 				grabCursor: true,
-				autoplay: <?php echo $autoplay; ?>,
+				<?php if ($autoplay == 'true') { ?>
+					autoplay: {
+						delay: 8000,
+					},
+				<?php } else { ?>
+					autoplay: <?php echo $autoplay; ?>,
+				<?php } ?>
 				loop: <?php echo $loop; ?>,
 				centeredSlidesBounds: <?php echo $centered_slides_bounds; ?>,
 				centeredSlides: <?php echo $centered_slides; ?>,
@@ -1022,9 +1028,8 @@ function canva_slider_post_ids($attributes = [])
 			<?php echo $element_id; ?>.on('slideChange', function() {
 				// console.log('slide changed');
 				var bLazy = new Blazy();
-				bLazy.functionName(); // eg bLazy.revalidate()
+				bLazy.revalidate(); // eg bLazy.revalidate()
 			});
-
 		</script>
 	<?php
 	}
@@ -1194,7 +1199,7 @@ function canva_get_slider_posts_per_term($attributes = [])
 			<?php echo $element_id; ?>.on('slideChange', function() {
 				// console.log('slide changed');
 				var bLazy = new Blazy();
-				bLazy.functionName(); // eg bLazy.revalidate()
+				bLazy.revalidate(); // eg bLazy.revalidate()
 			});
 		</script>
 
@@ -1357,7 +1362,7 @@ function canva_get_slider_posts_per_field($attributes = [])
 			<?php echo $element_id; ?>.on('slideChange', function() {
 				// console.log('slide changed');
 				var bLazy = new Blazy();
-				bLazy.functionName(); // eg bLazy.revalidate()
+				bLazy.revalidate(); // eg bLazy.revalidate()
 			});
 		</script>
 
@@ -1493,7 +1498,7 @@ function canva_slider_acf_post_object($attributes = [])
 			<?php echo $element_id; ?>.on('slideChange', function() {
 				// console.log('slide changed');
 				var bLazy = new Blazy();
-				bLazy.functionName(); // eg bLazy.revalidate()
+				bLazy.revalidate(); // eg bLazy.revalidate()
 			});
 		</script>
 
@@ -1620,6 +1625,44 @@ function canva_get_modal($args = [])
 
 	return $html;
 }
+
+
+/**
+ * Local option for pages. In case you need to hide the content
+ * of the pageThis function hides the page content by replacing it
+ * with a default or custom message.
+ *
+ * @author Michele Tenaglia <info@micheletenaglia.it>
+ * @return void
+ */
+function canva_page_maintenance_mode()
+{
+
+	global $post;
+
+	if (get_field('page_maintenance_mode_toggle', $post->ID)) {
+
+		echo '<div class="page_maintenance_mode_wrap ' . esc_attr(get_field('page_maintenance_mode_wrapper_classes', $post->ID)) . '">';
+		echo '<div class="page_maintenance_mode ' . esc_attr(get_field('page_maintenance_mode_element_classes', $post->ID)) . '">';
+
+		if (get_field('page_maintenance_mode_message', $post->ID)) {
+
+			echo get_field('page_maintenance_mode_message', $post->ID);
+		} else {
+
+			echo '<h1>' . $post->post_title . '</h1>';
+			echo '<p>' . __('Pagina temporaneamente non disponibile.', 'canva') . '</p>';
+		}
+		echo '</div>';
+		echo '</div>';
+
+		get_footer();
+
+		exit;
+	}
+}
+add_action('canva_container_start', 'canva_page_maintenance_mode', 99);
+
 
 
 /**

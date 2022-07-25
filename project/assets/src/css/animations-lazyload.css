@@ -7,8 +7,7 @@
 
 .b-lazy {
 	opacity: 0;
-	transition: var(--transition-button-default);
-	transition-duration: var(--duration-slow);
+	transition: var(--button-default-transition);
 }
 
 .b-lazy.b-loaded {
@@ -16,11 +15,10 @@
 }
 
 
+
 /*------------------------------------*\
 	+Animations
 \*------------------------------------*/
-
-
 
 .fade-in {
     opacity: 0;
@@ -75,10 +73,13 @@
 @keyframes slide-in-left {
     0% {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateX(-30%);
+    }
+    80% {
+        opacity: 1;
     }
     100% {
-        opacity: 1;
-        transform: translateX(0px);
+		opacity: 1;
+        transform: translateX(0%);
     }
 }

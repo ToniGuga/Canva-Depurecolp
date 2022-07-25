@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-if (is_admin()) {
+if (is_admin() && !defined('DOING_AJAX')) {
 
 ?>
 	<div class="canva-wp-block" style="border: 1px dashed #aaaaaa;">
@@ -15,9 +15,9 @@ if (is_admin()) {
 				<!-- Fine Icona -->
 			</figure>
 			<div class="canva-flex-1 canva-p-4 canva-bg-grey-lightest">
-				<span class="title canva-block canva-mb-2 canva-fs-xxsmall canva-font-system canva-lh-12" style=""><?php _e('Block Icon + Inner Text', 'canva-backend'); ?></span>
+				<span class="title canva-block canva-mb-2 canva-fs-xxsmall canva-font-system canva-lh-12" style=""><?php _e('Icon Inner Text', 'canva-backend'); ?></span>
 				<!-- <span>Contiene: Sopratitolo, Titolo, Sottotitolo</span> -->
-				<!-- <span class="canva-block canva-mt-0 canva-mb-2 canva-fs-small canva-font-theme canva-lh-11"><?php echo esc_html('Icon & Text with inner blocks', 'canva-backend'); ?></span> -->
+				<span class="canva-block canva-mt-0 canva-mb-2 canva-fs-small canva-font-theme canva-lh-11"><?php echo esc_html('Icon & Text with inner blocks', 'canva-backend'); ?></span>
 			</div>
 		</div>
 
@@ -77,10 +77,10 @@ if (is_admin()) {
 			$icon_classes = 'w-8';
 			break;
 		case 'mini':
-			$icon_classes = 'w-12';
+			$icon_classes = 'w-16';
 			break;
 		case 'normal':
-			$icon_classes = 'w-16 sm:w-20';
+			$icon_classes = 'w-20';
 			break;
 		case 'medium':
 			$icon_classes = 'w-24';
@@ -111,9 +111,9 @@ if (is_admin()) {
 
 	?>
 
-	<div id="<?php echo esc_attr($id); ?>" class="_canva-block-icon-inner-text flex flex-wrap flex-col md:flex-row <?php echo esc_attr($className); ?>">
+	<div id="<?php echo esc_attr($id); ?>" class="_canva-block-icon-inner-text flex flex-wrap items-center <?php echo esc_attr($className); ?>">
 
-		<div class="_icon p-1 <?php echo esc_attr($icon_classes); ?>">
+		<div class="_icon p-2 mr-4 <?php echo esc_attr($icon_classes); ?>">
 			<?php
 			echo canva_get_img([
 				'img_id' => get_field('icon'),
@@ -132,7 +132,7 @@ if (is_admin()) {
 			?>
 		</div>
 
-		<div class="_content flex-1 p-1 pt-2 md:pl-4 md:pt-1">
+		<div class="_content flex-1 p-2">
 			<InnerBlocks />
 		</div>
 

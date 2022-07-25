@@ -49,7 +49,8 @@ function canva_script_version($script)
 			// return '5.2.4'; // non funzionante
 			break;
 		case 'swiper':
-			return '6.6.2';
+			// return '6.6.2';
+			return '6.8.4';
 			break;
 		case 'list':
 			return '2.3.1';
@@ -221,8 +222,33 @@ function canva_deregister_styles()
 	wp_dequeue_style('wc-blocks-style');  // Dequeue CSS file.
 	wp_dequeue_style('wc-blocks-vendors-style');  // Dequeue CSS file.
 
+	//removes new block style group flags
+	wp_dequeue_style('wp-block-columns');
+	wp_dequeue_style('wp-block-column');
 }
 add_action('wp_enqueue_scripts', 'canva_deregister_styles', PHP_INT_MAX);
+
+
+/**
+ * removes new block style group flags .wp-container-1
+ * @example https://fullsiteediting.com/lessons/how-to-remove-default-block-styles/#h-how-to-remove-the-inline-styles-on-the-front
+ */
+remove_filter('render_block', 'wp_render_layout_support_flag', 10, 2);
+
+add_filter('render_block', function ($block_content, $block) {
+	if ($block['blockName'] === 'core/columns') {
+		return $block_content;
+	}
+	if ($block['blockName'] === 'core/column') {
+		return $block_content;
+	}
+	if ($block['blockName'] === 'core/group') {
+		return $block_content;
+	}
+
+	return wp_render_layout_support_flag($block_content, $block);
+}, 10, 2);
+
 
 
 /**

@@ -5,31 +5,33 @@ content-type: application/json
 
 ###
 # PrimoGroup Rest API - Clinics#
-GET https://www.primoup.it/api/v1/clinics?api_token=euaB40Rw31oqMUMrhoZtkSycXIGacd6JU22voV8UULTvKA5GQxDp62VYDATK HTTP/1.1
+GET https://www.primoup.it/api/v1/clinics?api_token=FZ7jnNwQjddxkK93LtJI9rpaUYrZ1nD29phzCZo1BWEAWO1QauHe2V4GvHlu HTTP/1.1
 content-type: application/json
 
 ###
 # PrimoGroup Rest API - OpenDays#
-GET https://www.primoup.it/api/v1/open_days?page=2&api_token=euaB40Rw31oqMUMrhoZtkSycXIGacd6JU22voV8UULTvKA5GQxDp62VYDATK HTTP/1.1
+# GET https://www.primoup.it/api/v1/open_days?page=2&api_token=FZ7jnNwQjddxkK93LtJI9rpaUYrZ1nD29phzCZo1BWEAWO1QauHe2V4GvHlu HTTP/1.1
+# GET https://www.primoup.it/api/v1/open_days?api_token=lKtWINwEflM8z0e5XnlyQXwQVzxexC25hoOLnIIig1Z4CWqGxIHqjFdHn3wF&open_day_type=ortodonzia_trasparente  HTTP/1.1
+GET https://www.primoup.it/api/v1/open_days?api_token=R65Px0qsPkcLe5iA1fKctMC09GFpzOCPPciOP1x8UP2DDR2m165tofctChwa&openDayType=ortodonzia_trasparente&startDate=11/03/2022  HTTP/1.1
 content-type: application/json
 
 ###
 # PrimoGroup Rest API - OpenDay Singola#
-GET https://www.primoup.it/api/v1/open_days/13?api_token=euaB40Rw31oqMUMrhoZtkSycXIGacd6JU22voV8UULTvKA5GQxDp62VYDATK HTTP/1.1
+GET https://www.primoup.it/api/v1/open_days/13?api_token=FZ7jnNwQjddxkK93LtJI9rpaUYrZ1nD29phzCZo1BWEAWO1QauHe2V4GvHlu HTTP/1.1
 content-type: application/json
 
 ###
 # PrimoGroup Rest API - OpenDays Type#
-GET https://www.primoup.it/api/v1/open_day_types?api_token=euaB40Rw31oqMUMrhoZtkSycXIGacd6JU22voV8UULTvKA5GQxDp62VYDATK HTTP/1.1
+GET https://www.primoup.it/api/v1/open_day_types?api_token=FZ7jnNwQjddxkK93LtJI9rpaUYrZ1nD29phzCZo1BWEAWO1QauHe2V4GvHlu HTTP/1.1
 content-type: application/json
 
 ###
 # PrimoGroup Rest API - OpenDays Province#
-GET https://www.primoup.it/api/v1/open_days_provinces?api_token=euaB40Rw31oqMUMrhoZtkSycXIGacd6JU22voV8UULTvKA5GQxDp62VYDATK HTTP/1.1
+GET https://www.primoup.it/api/v1/open_days_provinces?api_token=FZ7jnNwQjddxkK93LtJI9rpaUYrZ1nD29phzCZo1BWEAWO1QauHe2V4GvHlu HTTP/1.1
 content-type: application/json
 
 ###
 # PrimoGroup Zucchetti HR #
-GET https://test-primogroup.intervieweb.it/annunci.php?lang=it&d=centridentisticiprimo.it&k=94a5e33a274a19b813e3d307345f591f&CodP=1&format=json_en&utype=0 HTTP/1.1
+GET https://primogroup.intervieweb.it/annunci.php?lang=it&d=centridentisticiprimo.it&k=94a5e33a274a19b813e3d307345f591f&CodP=1&format=json_en&utype=0 HTTP/1.1
 content-type: application/json
 

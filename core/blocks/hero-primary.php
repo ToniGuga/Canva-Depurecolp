@@ -80,7 +80,6 @@ if (is_admin()) {
 			<?php } ?>
 		</div>
 
-
 	</div>
 
 <?php } else { ?>
@@ -155,27 +154,24 @@ if (is_admin()) {
 	$layer_content_output = '';
 	if (get_field('toptitle') || get_field('title') || get_field('subtitle') || get_field('action_link')) {
 		$layer_content_output = '
-				<div class="wp-block-columns w-full h-full items-center">
+				<div class="flex h-full flex-col justify-end p-4 sm:p-8 lg:p-12 xl:p-16 pt-32">
 
-					<div class="wp-block-column col-span-12">
+					<span class="block h3 fw-300 text-white">
+						' . get_field('toptitle') . '
+					</span>
+					<h2 class="_title h1 lh-11 text-white">
+						' . get_field('title') . '
+					</h2>
+					<span class="block mt-2 h4 font-secondary text-primary">
+						' . get_field('subtitle') . '
+					</span>
 
-						<span class="block h3 fw-300 text-white">
-							' . get_field('toptitle') . '
-						</span>
-						<h2 class="_title h1 lh-11 text-white">
-							' . get_field('title') . '
-						</h2>
-						<span class="block mt-8 h4 font-secondary text-primary">
-							' . get_field('subtitle') . '
-						</span>
-						<div class="_hero-primary-content">
-							' . get_field('content') . '
-						</div>
-						<div class="_hero-button-box">
-							' . $cta . '
-							' . $cta_2 . '
-						</div>
+					<div class="_hero-primary-content mt-8">' . get_field('content') . '</div>
+					<div class="_hero-button-box pt-4 isdark">
+						' . $cta . '
+						' . $cta_2 . '
 					</div>
+
 				</div>
 			';
 	}
@@ -227,7 +223,7 @@ if (is_admin()) {
 		'layer_info_class' => '',
 
 		'layer_content' => $layer_content,
-		'layer_content_class' => 'relative w-full _main__section',
+		'layer_content_class' => 'relative',
 		'layer_content_output' => $layer_content_output,
 	]);
 }

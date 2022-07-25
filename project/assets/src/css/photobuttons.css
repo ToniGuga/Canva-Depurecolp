@@ -31,7 +31,7 @@ In questo caso
 		- _layer-visual absolute
 		- _layer-content relative perché deve potersi espandere
 			- Se i contenuti sono agganciati in alto, allora _layer-content non richiede nessun accorgimento.
-			- Se i contenuti invece vanno agganciati al fondo allora _layer-content contiene un altro div "_content-wrap" che deve essere "flex flex-col justify-end" e avere soprattutto classe "h-full" che gli dà la stessa altezza minima del photobutton completo (importante che il _photobutton sia flex, se no non gliela passa)
+			- Se i contenuti invece vanno agganciati al fondo allora _layer-content contiene un altro div "_content-wrap" che deve essere "flex flex-col justify-end" e avere soprattutto classe "h-full" che gli dà la stessa altezza minima del photobutton completo (importante che il _photobutton sia flex, se non non gliela passa)
 
 
 
@@ -82,7 +82,7 @@ Il contenuto viene tagliato se eccede
 	}
 
 	._pb-filter {
-		background: var(--pb-filter-bg);
+		background-color: var(--pb-filter-bg);
 		opacity: var(--pb-filter-opacity);
 		mix-blend-mode: var(--pb-filter-mix-blend-mode);
 		transition: var(--pb-global-transition);
@@ -98,7 +98,7 @@ Il contenuto viene tagliato se eccede
 	}
 
 	._photobutton:hover ._pb-filter {
-		background: var(--pb-hover-filter-bg);
+		background-color: var(--pb-hover-filter-bg);
 		opacity: var(--pb-hover-filter-opacity);
 	}
 

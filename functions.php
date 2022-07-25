@@ -1,10 +1,14 @@
 <?php
+// Acf fields for theme stuff
+require_once 'core/functions/acf-fields-theme.php';
+
 // Core
 require_once 'core/functions/fn-core.php';
 require_once 'core/functions/fn-development.php';
 
-// Acf fields for theme stuff
-require_once 'core/functions/acf-fields-theme.php';
+// Add theme support & Cleanup Things
+require_once 'core/functions/fn-theme-support.php';
+require_once 'core/functions/fn-cleanup.php';
 
 // Register Styles & Scripts
 require_once 'core/functions/fn-images.php';
@@ -40,9 +44,7 @@ if (get_field('events_post_type', 'options')) {
 	require_once 'core/functions/acf-fields-events-cpt.php';
 }
 
-// Add theme support & Cleanup Things
-require_once 'core/functions/fn-theme-support.php';
-require_once 'core/functions/fn-cleanup.php';
+// require_once 'core/functions/acf-fields-theme-menu-items-icon.php';
 
 // Register Styles & Scripts
 require_once 'core/functions/fn-register-style-script.php';
@@ -76,6 +78,12 @@ require_once 'core/functions/class-php-export-data-xlsx-xsv-tsv.php';
 
 // Utilities
 require_once 'core/functions/fn-utilities.php';
+
+// Dati statici in array come provincie e regioni
+require_once 'core/functions/fn-static-data.php';
+
+// Woocommerce
+require_once 'core/functions/fn-woocommerce.php';
 
 // Project
 require_once 'project/fn-project.php';

@@ -15,6 +15,7 @@ Regole di base:
 */
 
 
+
 /*------------------------------------*\
 		Screens
 \*------------------------------------*/
@@ -34,13 +35,7 @@ Regole di base:
 \*------------------------------------
 
 
-I _row e _col sono ancora in flex e li usiamo solo per lo sviluppo, in futuro diventeranno in grid pure loro.
-
-I wp-columns e wp_column sono invece in grid, su base 12 fissa per tutti, data da default in css.
-In ogni momento si possono comunque aggiungere classi sia a wp-columns che wp_column per cambiare la base del grid (es. da 12 a 4) e le singole larghezze delle colonne.
-
-
-Abbiamo il main non ha nessun padding
+Il main non ha nessun padding
 Dentro il main ci sono tanti div _main__section, questi hanno di default
 - un px che non fa arrivare i contenuti a bordo viewport, espresso in % o in rem, responsive.
 - un margin-bottom che spinge la sezione successiva un minimo sotto, se non diversamente specificato
@@ -52,14 +47,19 @@ Tutti i _row / wp-columns che siano direttamente figli di _main__section hanno d
 - mx-auto
 - max-width espresso da variabile default, a meno che non abbiano controregola con max-w di altro tipo, volendo, anche se non è di serie, si può dare max-width responsive (come con i container di diverse dimensioni e scatti), ma si fa in style-progetto
 
+I _row e _col sono ancora in flex e li usiamo solo per lo sviluppo, in futuro diventeranno in grid pure loro.
+
+I wp-columns e wp_column sono invece in grid, su base 12 fissa per tutti, data da default in css.
+In ogni momento si possono comunque aggiungere classi sia a wp-columns che wp_column per cambiare la base del grid (es. da 12 a 4) e le singole larghezze delle colonne.
+
 */
 
 
-/* Questi sono tutti i div figli diretti del main */
+/* _main__section viene applicata a tutti i div figli diretti del main per avere un padding adeguato rispetto ai bordi viewport*/
 ._main__section {
-	@apply px-4 md:px-6 lg:px-12;
+	@apply px-4 md:px-6 xl:px-12;
 	padding-top: var(--gap-default);
-	/* padding-bottom: var(--gap-default); Non si mette padding-bottom perché c'è già il margin-bottom del wp-block-columns */
+	padding-bottom: var(--gap-default);
 }
 
 

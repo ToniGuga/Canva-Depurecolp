@@ -1,83 +1,81 @@
 <?php
+defined('ABSPATH') || exit;
 
-if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly
-}
+add_action('acf/init', 'acf_project_blocks_fields');
 
-if (function_exists('acf_add_local_field_group')) {
-
-	// Put here acf fileds php export
-
+function acf_project_blocks_fields()
+{
 	acf_add_local_field_group([
-		'key' 		=> 'group_xp3mblbapx0hewyj',
-		'title' 	=> '[PrimoGroup BE] - Faq Block Template',
-		'fields' 	=> [
+		'key' => 'group_9kzss91tzn4lf67u',
+		'title' => '[Canva] Common Block Slider',
+		'fields' => [
 			[
-				'key' 				=> 'field_8xqzqpeybdbzlj4d',
-				'label' 			=> __('Background Image', 'canva-backend'),
-				'name' 				=> 'bg_image',
-				'type'				=> 'image',
-				'instructions' 		=> '',
-				'required' 			=> 0,
+				'key' => 'field_2gq967lvrv99b0tt',
+				'label' => 'Common Block Slider',
+				'name' => 'post_object',
+				'type' => 'relationship',
+				'instructions' => '',
+				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' 			=> [
-					'width' => '50',
+				'wrapper' => [
+					'width' => '',
 					'class' => '',
-					'id' 	=> '',
+					'id' => '',
 				],
-				'return_format' 	=> 'id',
-				'preview_size' 		=> '160-11',
-				'library' 			=> 'all',
-				'min_width' 		=> '',
-				'min_height' 		=> '',
-				'min_size' 			=> '',
-				'max_width' 		=> '',
-				'max_height' 		=> '',
-				'max_size' 			=> '',
-				'mime_types' 		=> '',
-			],
-			[
-				'key' 				=> 'field_4p1rtvk46vlimsgh',
-				'label' 			=> __('Background Image (Mobile)', 'canva-backend'),
-				'name' 				=> 'bg_image_small',
-				'type' 				=> 'image',
-				'instructions' 		=> '',
-				'required' 			=> 0,
-				'conditional_logic' => 0,
-				'wrapper' 			=> [
-					'width' => '50',
-					'class' => '',
-					'id' 	=> '',
+				// 'post_type' => 'common-blocks',
+				'post_type' => array(
+					0 => 'element',
+					1 => 'common-blocks',
+				),
+				'taxonomy' => '',
+				'filters' => [
+					0 => 'search',
+					1 => 'post_type',
+					// 2 => 'taxonomy',
 				],
-				'return_format' 	=> 'id',
-				'preview_size' 		=> '160-11',
-				'library' 			=> 'all',
-				'min_width' 		=> '',
-				'min_height' 		=> '',
-				'min_size' 			=> '',
-				'max_width' 		=> '',
-				'max_height' 		=> '',
-				'max_size' 			=> '',
-				'mime_types' 		=> '',
+				'elements' => [
+					0 => 'featured_image',
+				],
+				'min' => '',
+				'max' => '',
+				'return_format' => 'id',
 			],
+			// [
+			// 	'key' => 'field_i3g2dr4agj0x10n8',
+			// 	'label' => 'Template Name',
+			// 	'name' => 'template_name',
+			// 	'type' => 'text',
+			// 	'instructions' => '',
+			// 	'required' => 0,
+			// 	'conditional_logic' => 0,
+			// 	'wrapper' => [
+			// 		'width' => '',
+			// 		'class' => '',
+			// 		'id' => '',
+			// 	],
+			// 	'default_value' => '',
+			// 	'placeholder' => 'Default: render-blocks',
+			// 	'prepend' => '',
+			// 	'append' => '',
+			// 	'maxlength' => '',
+			// ],
 		],
 		'location' => [
 			[
 				[
-					'param' 		=> 'block',
-					'operator' 		=> '==',
-					'value' 		=> 'acf/faq-block-template',
+					'param' => 'block',
+					'operator' => '==',
+					'value' => 'acf/element-block-slider',
 				],
 			],
 		],
-		'menu_order' 				=> 0,
-		'position' 					=> 'normal',
-		'style' 					=> 'default',
-		'label_placement' 			=> 'top',
-		'instruction_placement' 	=> 'label',
-		'hide_on_screen'			=> '',
-		'active' 					=> true,
-		'description' 				=> '',
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
 	]);
-
 }

@@ -5,3 +5,15 @@ Sitemap: https://airencaldaie.it/sitemap_index.xml
 
 User-agent: *
 Disallow: /wp-admin/
+
+UPDATE `gidaprofumi_woocommerce_order_itemmeta` SET `meta_value` = '-40' WHERE `gidaprofumi_woocommerce_order_itemmeta`.`meta_key` = '_line_total'; 
+
+UPDATE `gidaprofumi_woocommerce_order_itemmeta` SET `meta_value` = '-40' WHERE `gidaprofumi_woocommerce_order_itemmeta`.`meta_key` = _fee_amount; 
+
+SELECT * FROM `gidaprofumi_woocommerce_order_itemmeta` WHERE `meta_key` LIKE '_line_total' AND `meta_value` LIKE '40' `meta_key` LIKE '_fee_amount' AND `meta_value` LIKE '40' 
+
+
+
+UPDATE `gidaprofumi_woocommerce_order_itemmeta` SET `meta_value` = '-40' WHERE `gidaprofumi_woocommerce_order_itemmeta`.`meta_key` = '_line_total' AND `meta_value` = '40'; 
+
+UPDATE `gidaprofumi_woocommerce_order_itemmeta` SET `meta_value` = '-40' WHERE `gidaprofumi_woocommerce_order_itemmeta`.`meta_key` = '_fee_amount' AND `meta_value` = '40'; 

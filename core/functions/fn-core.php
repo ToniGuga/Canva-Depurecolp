@@ -119,7 +119,7 @@ function canva_get_template($template_name, $args = [])
  *
  */
 
-function is_there_any_post($post_type = 'post', $taxonomy = 'category', $term = '')
+function is_there_any_post($post_type = 'post', $taxonomy = 'category', $term_id = '')
 {
 	$args = [
 		'posts_per_page' => -1,
@@ -127,7 +127,8 @@ function is_there_any_post($post_type = 'post', $taxonomy = 'category', $term = 
 		'tax_query' => [
 			[
 				'taxonomy' => $taxonomy,
-				'terms' => $term,
+				'field' => 'term_id',
+				'terms' => $term_id,
 			],
 		],
 	];

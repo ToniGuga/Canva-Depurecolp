@@ -150,7 +150,7 @@ canva_the_layer([
 				<div class="rounded-b-lg relative bg-secondary h-10 mt-16 mb-4" style="background-color: <?php echo canva_get_term_color($first_term); ?>">
 					<div class="absolute w-16 h-16 left-1/2 bottom-2 transform-gpu -translate-x-1/2 bg-white rounded-full">
 						<?php
-							echo canva_get_img([
+						echo canva_get_img([
 							'img_id' => '20428',
 							'img_type' => 'img', // img, bg, url
 							'thumb_size' => '320-free',
@@ -325,7 +325,7 @@ canva_the_layer([
 				</div>
 
 
-			<!-- Chiude container mx-w-lg per tutte le info Centro -->
+				<!-- Chiude container mx-w-lg per tutte le info Centro -->
 			</div>
 
 		</div>
@@ -411,13 +411,12 @@ canva_the_layer([
 
 
 
-
 <!-- Pulsante telefona fixed -->
 <?php if (get_field('tel')) : ?>
 	<div class="_phone-fixed">
 		<div class="js-toggle-class js-target-_phone-fixed js-class-open">
 			<div class="_phone-fixed-icon">
-			<?php echo canva_get_svg_icon(TEL_ICON, 'w-12 h-12'); ?>
+				<?php echo canva_get_svg_icon(TEL_ICON, 'w-12 h-12'); ?>
 			</div>
 		</div>
 		<a class="_phone-fixed-link" href="tel:<?php echo str_replace(' ', '', get_field('tel')); ?>">

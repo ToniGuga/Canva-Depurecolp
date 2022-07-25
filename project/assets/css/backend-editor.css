@@ -1,0 +1,10 @@
+body.dealer ._hide-for-dealer {
+	display: none !important;
+}
+
+body.dealer label[for="product-type"],
+body.dealer label[for="_virtual"],
+body.dealer label[for="_downloadable"]
+{
+	display: none !important;
+}

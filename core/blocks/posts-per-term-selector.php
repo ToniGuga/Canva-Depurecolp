@@ -11,7 +11,7 @@ if (is_admin()) {
 	<div class="sg-wp-block sg-flex">
 
 		<div class="_info sg-p-4" style="min-width: 100%">
-			<span class="title sg-block sg-mb-2 sg-fs-xxsmall sg-font-system sg-lh-12" style=""><?php _e('Get Posts (Posts per terms)', 'canva-be'); ?> </span>
+			<span class="title sg-block sg-mb-2 sg-fs-xxsmall sg-font-system sg-lh-12" style=""><?php _e('Post per term selector', 'canva-be'); ?> </span>
 			<!-- <span>Contiene: Sopratitolo, Titolo, Sottotitolo</span> -->
 			<figure class="sg-width-8 sg-m-0">
 
@@ -50,7 +50,7 @@ if (is_admin()) {
 			$className = $block['className'];
 		} else {
 			if (!get_field('swiper_mode')) {
-				$className = apply_filters('posts_per_term_class_name', 'grid grid-cols-1 ms:grid-cols-2 lg:grid-cols-3 gap-4');
+				$className = apply_filters('posts_per_term_class_name', 'row small-up-1 medium-up-2 large-up-3');
 			} else {
 				$className = apply_filters('posts_per_term_class_name', 'row sezione');
 			}
@@ -375,7 +375,7 @@ if (is_admin()) {
 				</div>
 
 				<div class="row">
-					<div class="column"><?php echo facetwp_display('facet', 'load_more'); ?></div>
+					<div class="column small-12"><?php echo facetwp_display('facet', 'load_more'); ?></div>
 				</div>
 			<?php } ?>
 

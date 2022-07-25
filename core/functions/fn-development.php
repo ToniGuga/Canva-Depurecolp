@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
 function canva_show_wp_load_stats()
 {
 	if (current_user_can('activate_plugins')) {
-		echo '<div class="container p-1 text-center">';
+		echo '<div class="container p-1 pb-16 text-center">';
 		echo get_num_queries();
 		echo ' queries in ';
 		timer_stop(3);
@@ -98,21 +98,21 @@ function canva_update_all_posts($vars = [], $by = 'field')
 
 	extract($vars);
 
-	if($by === 'field'){
+	if ($by === 'field') {
 		$args = array(
 			'post_type' => esc_attr($post_type),
 			'posts_per_page' => 	-1,
 			'meta_key'          =>   esc_attr($meta_key),
 			'meta_value'        =>  $meta_value,
 		);
-	}else{
+	} else {
 		$args = array(
 			'post_type' => esc_attr($post_type),
 			'posts_per_page' => 	-1,
 			'tax_query'          =>   array(
 				'taxonomy' => esc_attr($taxonomy),
 				'field'    => esc_attr($field),
-            	'terms'    => array($terms),
+				'terms'    => array($terms),
 			),
 		);
 	}
@@ -159,20 +159,21 @@ add_action('wp_ajax_nopriv_canva_delete_debug', 'canva_delete_debug');
  */
 function canva_admin_bar_debug($admin_bar)
 {
-
-	$link_url = get_home_url() . '/wp-content/debug.log';
-	$args = array(
-		// 'parent'	=>	'tools',
-		'id'		=>	'debug-log',
-		'title'		=>	__('Debug log', 'canva'),
-		'href' 		=>	$link_url,
-		'meta'		=>	array(
-			'target' => '_blank',
-		)
-	);
-	$admin_bar->add_node($args);
+	if (is_user_role('administrator')) {
+		$link_url = get_home_url() . '/wp-content/debug.log';
+		$args = array(
+			// 'parent'	=>	'tools',
+			'id'		=>	'debug-log',
+			'title'		=>	__('Debug log', 'canva'),
+			'href' 		=>	$link_url,
+			'meta'		=>	array(
+				'target' => '_blank',
+			)
+		);
+		$admin_bar->add_node($args);
+	}
 }
 
 if (WP_DEBUG) {
-  add_action('admin_bar_menu', 'canva_admin_bar_debug', 999);
+	add_action('admin_bar_menu', 'canva_admin_bar_debug', 999);
 }

@@ -24,6 +24,21 @@ add_action('admin_head', 'canva_dashicon');
 
 
 /**
+ * @author Toni Guga <toni@schiavoneguga.com>
+ * Aggiunge ruolo utente come classe css nel body
+ */
+
+add_filter('admin_body_class', function ($classes) {
+	global $current_user;
+    $roles = array_shift($current_user->roles);
+
+    $classes .= ' ' . $roles;
+
+	return $classes;
+});
+
+
+/**
  * Remove Admin Menu Link to Theme Customizer
  *
  * @return void
@@ -282,11 +297,11 @@ function canva_remove_menu_items()
 		remove_submenu_page('jetpack', 'jetpack');
 
 		$restricted = [
-			__('Posts'),
+			// __('Posts'),
 			__('Media'),
 			__('Links'),
-			__('Pages'),
-			__('Comments'),
+			// __('Pages'),
+			// __('Comments'),
 			__('Appearance'),
 			__('Plugins'),
 			__('Users'),

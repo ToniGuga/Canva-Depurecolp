@@ -18,17 +18,7 @@
             },
         ]
     });
-
-	// init blazy on window resize
-	$(window).on('resize', function () {
-		var bLazy = new Blazy();
-		bLazy.revalidate();
-	});
 })();
-
-
-
-
 
 
 /**

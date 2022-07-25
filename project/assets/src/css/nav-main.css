@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 
-main 	{ margin-top: var(--main-mt-xs); }
+	main 	{ margin-top: var(--main-mt-xs); }
 
 @media (min-width: 375px) {
 	main 	{ margin-top: var(--main-mt-sm); }

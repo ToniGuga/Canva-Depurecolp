@@ -180,12 +180,6 @@ function canva_get_company_phone()
 }
 add_shortcode('company_phone', 'canva_get_company_phone');
 
-function canva_get_company_fax()
-{
-	return get_field('fax', 'options');
-}
-add_shortcode('company_fax', 'canva_get_company_fax');
-
 function canva_get_company_mobile_phone()
 {
 	return get_field('mobile_phone', 'options');

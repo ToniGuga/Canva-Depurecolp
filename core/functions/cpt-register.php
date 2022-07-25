@@ -10,10 +10,10 @@ if (is_acf_activated()) {
 	if (function_exists('acf_add_options_page')) {
 
 		acf_add_options_page([
-			'page_title'  => __('Canva Theme', 'canva-backend'),
-			'menu_title'  => __('Canva Theme', 'canva-backend'),
+			'page_title'  => __('Theme Settings', 'canva-backend'),
+			'menu_title'  => __('Theme Settings', 'canva-backend'),
 			'menu_slug'   => 'options',
-			'capability'  => 'edit_posts',
+			'capability'  => 'activate_plugins',
 			'redirect'    => false
 		]);
 

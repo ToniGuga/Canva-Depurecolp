@@ -241,23 +241,12 @@ function canva_be_acf_init()
 
 		acf_register_block([
 			'name' 				=> 'posts-per-term-selector', //modificare slug del blocco
-			'title' 			=> __('Get Posts (Posts per terms)', 'canva-be-it'), //modificare titolo del blocco
+			'title' 			=> __('Posts per categoria', 'canva-be-it'), //modificare titolo del blocco
 			'description' 		=> __('Aggiungi un Posts per categoria'), //modificare azione del blocco
 			'render_callback' 	=> 'canva_be_block_callback', //non modificare
 			'category' 			=> 'canva_block_category', //non modificare
 			'icon' 				=> apply_filters('post_per_term_selector_icon', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M497.83 97.98L413.94 14.1c-9-9-21.2-14.1-33.89-14.1H175.99C149.5.1 128 21.6 128 48.09v215.98H12c-6.63 0-12 5.37-12 12v24c0 6.63 5.37 12 12 12h276v48.88c0 10.71 12.97 16.05 20.52 8.45l71.77-72.31c4.95-4.99 4.95-13.04 0-18.03l-71.77-72.31c-7.55-7.6-20.52-2.26-20.52 8.45v48.88H175.99V48.09h159.97v103.98c0 13.3 10.7 23.99 24 23.99H464v287.95H175.99V360.07H128v103.94c0 26.49 21.5 47.99 47.99 47.99h287.94c26.5 0 48.07-21.5 48.07-47.99V131.97c0-12.69-5.17-24.99-14.17-33.99zm-113.88 30.09V51.99l76.09 76.08h-76.09z"/></svg>'),
-			'keywords' 			=> ['posts', 'post list', 'posts per term', 'posts per categoria', 'taxonomy', 'tassonomia', 'query', 'get posts'],
-			'supports' 			=> ['align' => false, 'multiple' => true, 'anchor' => true],
-		]);
-
-		acf_register_block([
-			'name' 				=> 'posts-per-terms-of-post-selector', //modificare slug del blocco
-			'title' 			=> __('Get Posts (Terms of post)', 'canva-be-it'), //modificare titolo del blocco
-			'description' 		=> __('Aggiungi un Posts per categoria'), //modificare azione del blocco
-			'render_callback' 	=> 'canva_be_block_callback', //non modificare
-			'category' 			=> 'canva_block_category', //non modificare
-			'icon' 				=> apply_filters('post_per_term_selector_icon', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M497.83 97.98L413.94 14.1c-9-9-21.2-14.1-33.89-14.1H175.99C149.5.1 128 21.6 128 48.09v215.98H12c-6.63 0-12 5.37-12 12v24c0 6.63 5.37 12 12 12h276v48.88c0 10.71 12.97 16.05 20.52 8.45l71.77-72.31c4.95-4.99 4.95-13.04 0-18.03l-71.77-72.31c-7.55-7.6-20.52-2.26-20.52 8.45v48.88H175.99V48.09h159.97v103.98c0 13.3 10.7 23.99 24 23.99H464v287.95H175.99V360.07H128v103.94c0 26.49 21.5 47.99 47.99 47.99h287.94c26.5 0 48.07-21.5 48.07-47.99V131.97c0-12.69-5.17-24.99-14.17-33.99zm-113.88 30.09V51.99l76.09 76.08h-76.09z"/></svg>'),
-			'keywords' 			=> ['posts', 'post list', 'posts per term', 'posts per categoria', 'taxonomy', 'tassonomia', 'query', 'get posts'],
+			'keywords' 			=> ['posts', 'post list', 'posts per term', 'posts per categoria', 'taxonomy', 'tassonomia'],
 			'supports' 			=> ['align' => false, 'multiple' => true, 'anchor' => true],
 		]);
 
@@ -295,17 +284,30 @@ function canva_be_acf_init()
 			'supports' 			=> array('align' => false, 'multiple' => true, 'anchor' => true),
 		));
 
-		//
 		acf_register_block(array(
-			'name'				=> 'video-embed', //modificare slug del blocco
-			'title'				=> __('Video Embed'), //modificare titolo del blocco
-			'description'		=> __('Add a Video Embed from Youtube or Vimeo'), //modificare azione del blocco
+			'name'				=> 'menu-selector', //modificare slug del blocco
+			'title'				=> __('Menu Selector'), //modificare titolo del blocco
+			'description'		=> __('Print a menu by ID'), //modificare azione del blocco
 			'render_callback'	=> 'canva_be_block_callback', //non modificare
 			'category'			=> 'canva_block_category', //non modificare
-			'icon'				=> apply_filters('video_embed_blocks_icon', canva_get_svg_icon('fontawesome/brands/youtube', null)),
-			'keywords'			=> array('video', 'embed', 'youtube', 'vimeo'),
+			'icon'				=> apply_filters('menu_selector_blocks_icon', canva_get_svg_icon('fontawesome/regular/hamburger', null)),
+			'keywords'			=> array('menu', 'selector',),
 			'supports' 			=> array('align' => false, 'multiple' => true, 'anchor' => true),
 		));
+
+		//
+		// acf_register_block(array(
+		// 	'name'				=> 'video-embed', //modificare slug del blocco
+		// 	'title'				=> __('Video Embed'), //modificare titolo del blocco
+		// 	'description'		=> __('Add a Video Embed from Youtube or Vimeo'), //modificare azione del blocco
+		// 	'render_callback'	=> 'canva_be_block_callback', //non modificare
+		// 	'category'			=> 'canva_block_category', //non modificare
+		// 	'icon'				=> apply_filters('video_embed_blocks_icon', canva_get_svg_icon('fontawesome/brands/youtube', null)),
+		// 	'keywords'			=> array('video', 'embed', 'youtube', 'vimeo'),
+		// 	'supports' 			=> array('align' => false, 'multiple' => true, 'anchor' => true),
+		// ));
+
+
 
 		// Spacing Blocks
 		$spacers_icon = apply_filters('spacers_icon', '<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><path d="M13 4v2h3.59L6 16.59V13H4v7h7v-2H7.41L18 7.41V11h2V4h-7"></path></svg>');
@@ -478,10 +480,10 @@ function canva_allowed_blocks($allowed_blocks)
 		'acf/faq-selector',
 		'acf/faq-selector-new',
 		'acf/posts-per-term-selector',
-		'acf/posts-per-terms-of-post-selector',
 		'acf/action-link',
 		'acf/modal',
 		'acf/photobutton',
+		'acf/menu-selector',
 		// 'acf/video-embed',
 
 		// Spacers

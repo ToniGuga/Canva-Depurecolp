@@ -60,6 +60,7 @@ function canva_theme_support()
 	// Remove feed icon link from legacy RSS widget.
 	add_filter('rss_widget_feed_link', '__return_false');
 
+
 	// add_theme_support('disable-custom-font-sizes');
 	// add_theme_support('editor-font-sizes', array());
 	// add_theme_support('disable-custom-colors');
@@ -67,6 +68,9 @@ function canva_theme_support()
 	// add_theme_support('disable-custom-gradients');
 	// add_theme_support('editor-gradient-presets', array());
 	// add_theme_support('custom-units', array());
+
+
+	remove_theme_support('core-block-patterns');
 
 }
 add_action('after_setup_theme', 'canva_theme_support');

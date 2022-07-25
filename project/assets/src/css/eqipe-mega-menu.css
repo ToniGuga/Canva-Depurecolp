@@ -1,0 +1,130 @@
+/* Copied from legacy */
+
+.menu .menu-item,
+.menu .menu-item a {
+    @apply block relative;
+	font-size: var(--menu-desktop-font-size);
+    width: max-content;
+}
+
+.menu .menu-item-icon {
+    @apply mr-2;
+}
+
+.menu .menu-item-icon a svg {
+    @apply block w-5 h-5;
+}
+
+.menu-item-separator {
+    @apply w-full h-5;
+}
+
+@media (max-width: 959px) {
+    .menu .menu-item-icon,
+    .menu .menu-item-icon a,
+    .menu .menu-item-icon a svg {
+        @apply mr-2 inline-block;
+    }
+}
+
+
+
+.dropdown {
+    @apply hide;
+}
+
+@media (max-width: 959px) {
+    .dropdown {
+        display: block;
+    }
+}
+
+
+
+
+
+/* Responsive main wrapper (menu fixed) */
+
+@media (max-width: 959px) {
+    .main {
+        @apply pt-12;
+        /* Fixed menu height */
+    }
+}
+
+
+/*------------------------------------*\
+		Menu 1 livello
+\*------------------------------------*/
+
+.desktop-navigation {
+    @apply fixed w-full z-50 bg-white shadow-sm;
+}
+
+.desktop-navigation .menu-desktop .menu-item a {
+    @apply transition-all;
+}
+
+
+.desktop-navigation .menu-desktop .menu-item a {
+	@apply text-gray-900 no-underline;
+	font-size: var(--menu-desktop-font-size);
+}
+
+	/* Hover 1 livello */
+	.desktop-navigation .menu-desktop .menu-item a:hover {
+		@apply  bg-gray-100;
+	}
+
+@media (min-width: 960px) {
+    .menu-desktop .menu-item {
+        @apply p-0;
+    }
+
+		.menu-desktop .menu-item a {
+			@apply py-6 px-4;
+		}
+
+		.menu-desktop .menu-item a,
+		.menu-desktop .menu-item-icon a {
+			color: var(--headings-color);
+		}
+		.menu-desktop .menu-item a:hover {
+			color:  var(--headings-color);
+        	@apply bg-primary no-underline;
+    	}
+}
+
+
+
+.nav-desktop-curtain-nav li.sub-exploded a,
+.desktop-navigation .menu-desktop .menu-item.exploded a {
+    @apply relative;
+}
+
+
+/* Freccia marker per sottovoci default */
+.nav-desktop-curtain-nav li.sub-exploded a:after,
+.desktop-navigation .menu-desktop .menu-item.exploded a:after {
+    content: '';
+    @apply w-0 h-0 block absolute left-1/2 bottom-0;
+    border-style: solid;
+    border-width: 0 8px 12px 8px;
+    margin-left: -8px;
+}
+
+	/* Freccia marker per sottovoci 1 livello */
+	.desktop-navigation .menu-desktop .menu-item.exploded a:after {
+		border-color: transparent transparent var(--color-secondary-250) transparent;
+	}
+
+	/* Freccia marker per sottovoci 2 livello */
+	.nav-desktop-curtain-nav li.sub-exploded a:after {
+		border-color: transparent transparent var(--color-secondary-200) transparent;
+	}
+
+
+
+.desktop-navigation li.menu-item-has-children {
+    @apply static;
+}

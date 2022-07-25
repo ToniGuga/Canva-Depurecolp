@@ -93,3 +93,5 @@ echo $output;
 </body>
 
 </html>
+
+CREATE USER 'abac_shop'@'localhost' IDENTIFIED BY 'password'; GRANT ALL PRIVILEGES ON *.* TO 'abac_shop'@'localhost'; FLUSH PRIVILEGES;

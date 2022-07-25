@@ -17,6 +17,12 @@ function project_be_block_callback($block)
 	$slug = str_replace('acf/', '', $block['name']);
 	$slug = str_replace('_', '-', $slug);
 
+	// Set preview flag to true when rendering for the block editor.
+	$is_preview = false;
+	if ( is_admin() && acf_is_block_editor() ) {
+		$is_preview = true;
+	}
+
 	// include a template part from within the folder
 	if (file_exists(CANVA_PROJECT_BLOCKS . $slug . '.php')) {
 		include(CANVA_PROJECT_BLOCKS . $slug . '.php');
@@ -44,7 +50,7 @@ function  project_block_categories($categories)
 		array(
 			array(
 				'slug'  => 'project_block_category', //non modificare
-				'title' => __('Primo Dentisti'), //modificare con mone progetto
+				'title' => __('Eqipe'), //modificare con mone progetto
 				'icon'  => null,
 			),
 		)
@@ -71,148 +77,47 @@ function project_be_acf_init()
 {
 	// check function exists
 	if (function_exists('acf_register_block_type')) {
-
-
-		acf_register_block([
-			'name' 				=> 'hero-trattamento', //modificare slug del blocco
-			'title' 			=> __('Hero Trattamento', 'canva-backend'), //modificare titolo del blocco
-			'description' 		=> __('Hero Trattamento - Block Template con InnerBlocks', 'canva-backend'), //modificare azione del blocco
-			'render_callback' 	=> 'project_be_block_callback', //non modificare
-			'category' 			=> 'project_block_category', //non modificare
-			'mode' 				=> 'preview',
-			'icon' 				=> apply_filters('row_w_100_preview_blocks_icon', canva_get_svg_icon('canva-icons/canva-icon-row-w-100-preview', null)),
-			'keywords' 			=> ['hero', 'trattamento', ''],
-			'supports' 			=> ['align' => false, 'multiple' => true, 'mode' => false, 'jsx' => true, 'anchor' => true],
-			'example'  => [
-				'attributes' => [
-					'mode' => 'preview',
-					'data' => [
-						'is_preview'    => true
-					],
-				],
-			],
-		]);
-
-
-
+	    // acf_register_block([
+	    //     'name' => 'bt-newsletter', //modificare slug del blocco
+	    //     'title' => __('BT Newsletter', 'canva-backend'), //modificare titolo del blocco
+	    //     'description' => __('BT Newsletter - Block Template con InnerBlocks', 'canva-backend'), //modificare azione del blocco
+	    //     'render_callback' => 'project_be_block_callback', //non modificare
+	    //     'category' => 'project_block_category', //non modificare
+	    //     'mode' => 'preview',
+	    //     'icon' => apply_filters('row_w_100_preview_blocks_icon', canva_get_svg_icon('canva-icons/canva-icon-row-w-100-preview', null)),
+	    //     'keywords' => ['bt', 'newsletter', ''],
+	    //     'supports' => ['align' => false, 'multiple' => true, 'mode' => false, 'jsx' => true, 'anchor' => true],
+	    //     'example' => [
+	    //         'attributes' => [
+	    //             'mode' => 'preview',
+	    //             'data' => [
+	    //                 'is_preview' => true,
+	    //             ],
+	    //         ],
+	    //     ],
+	    // ]);
 
 		acf_register_block([
-			'name' 				=> 'hero-settore', //modificare slug del blocco
-			'title' 			=> __('Hero Settore', 'canva-backend'), //modificare titolo del blocco
-			'description' 		=> __('Hero Settore - Block Template con InnerBlocks', 'canva-backend'), //modificare azione del blocco
-			'render_callback' 	=> 'project_be_block_callback', //non modificare
-			'category' 			=> 'project_block_category', //non modificare
-			'mode' 				=> 'preview',
-			'icon' 				=> apply_filters('row_w_100_preview_blocks_icon', canva_get_svg_icon('canva-icons/canva-icon-row-w-100-preview', null)),
-			'keywords' 			=> ['hero', 'settore', ''],
-			'supports' 			=> ['align' => false, 'multiple' => true, 'mode' => false, 'jsx' => true, 'anchor' => true],
-			'example'  => [
-				'attributes' => [
-					'mode' => 'preview',
-					'data' => [
-						'is_preview'    => true
-					],
-				],
-			],
-		]);
-
-
-
-
-		acf_register_block([
-			'name' 				=> 'hero-impianto', //modificare slug del blocco
-			'title' 			=> __('Hero Impianto', 'canva-backend'), //modificare titolo del blocco
-			'description' 		=> __('Hero Impianto - Block Template con InnerBlocks', 'canva-backend'), //modificare azione del blocco
-			'render_callback' 	=> 'project_be_block_callback', //non modificare
-			'category' 			=> 'project_block_category', //non modificare
-			'mode' 				=> 'preview',
-			'icon' 				=> apply_filters('row_w_100_preview_blocks_icon', canva_get_svg_icon('canva-icons/canva-icon-row-w-100-preview', null)),
-			'keywords' 			=> ['hero', 'settore', ''],
-			'supports' 			=> ['align' => false, 'multiple' => true, 'mode' => false, 'jsx' => true, 'anchor' => true],
-			'example'  => [
-				'attributes' => [
-					'mode' => 'preview',
-					'data' => [
-						'is_preview'    => true
-					],
-				],
-			],
-		]);
-		
-		
-		
-		acf_register_block([
-			'name' 				=> 'hero-case-history', //modificare slug del blocco
-			'title' 			=> __('Hero Case History', 'canva-backend'), //modificare titolo del blocco
-			'description' 		=> __('Hero Case History - Block Template con InnerBlocks', 'canva-backend'), //modificare azione del blocco
-			'render_callback' 	=> 'project_be_block_callback', //non modificare
-			'category' 			=> 'project_block_category', //non modificare
-			'mode' 				=> 'preview',
-			'icon' 				=> apply_filters('row_w_100_preview_blocks_icon', canva_get_svg_icon('canva-icons/canva-icon-row-w-100-preview', null)),
-			'keywords' 			=> ['hero', 'case', 'history'],
-			'supports' 			=> ['align' => false, 'multiple' => true, 'mode' => false, 'jsx' => true, 'anchor' => true],
-			'example'  => [
-				'attributes' => [
-					'mode' => 'preview',
-					'data' => [
-						'is_preview'    => true
-					],
-				],
-			],
-		]);
-		
-		
-		
-		
-		acf_register_block([
-			'name' 				=> 'dettagli-settore', //modificare slug del blocco
-			'title' 			=> __('Dettagli Settore', 'canva-backend'), //modificare titolo del blocco
-			'description' 		=> __('Dettagli Settore - Block Template con InnerBlocks', 'canva-backend'), //modificare azione del blocco
-			'render_callback' 	=> 'project_be_block_callback', //non modificare
-			'category' 			=> 'project_block_category', //non modificare
-			'mode' 				=> 'preview',
-			'icon' 				=> apply_filters('row_w_100_preview_blocks_icon', canva_get_svg_icon('canva-icons/canva-icon-row-w-100-preview', null)),
-			'keywords' 			=> ['dettagli', 'settore', ''],
-			'supports' 			=> ['align' => false, 'multiple' => true, 'mode' => false, 'jsx' => true, 'anchor' => true],
-			'example'  => [
-				'attributes' => [
-					'mode' => 'preview',
-					'data' => [
-						'is_preview'    => true
-					],
-				],
-			],
-		]);
-
-
-
-
-		
-
-		acf_register_block([
-			'name' 				=> 'table-of-contents', //modificare slug del blocco
-			'title' 			=> __('Table of Contents', 'canva-backend'), //modificare titolo del blocco
-			'description' 		=> __('Table of Contents', 'canva-backend'), //modificare azione del blocco
-			'render_callback'	=> 'project_be_block_callback', //non modificare
-			'category'			=> 'project_block_category', //non modificare
-			'mode' 				=> 'preview',
-			'icon' 				=> apply_filters('hero_one_preview_blocks_icon', canva_get_svg_icon('canva-icons/canva-icon-hero-2-preview', null)),
-			'keywords'			=> array('Table', 'Table of Contents', 'Indice', 'Index'),
+			'name' 				=> 'element-block-slider', //modificare slug del blocco
+			'title' 			=> __('Element Block Slider', 'canva-backend'), //modificare titolo del blocco
+			'description' 		=> __('Element Block slider to be presented with a custom template', 'canva-backend'), //modificare azione del blocco
+			'render_callback' 	=> 'canva_be_block_callback', //non modificare
+			'category' 			=> 'canva_block_category', //non modificare
+			'icon' 				=> apply_filters('element_block_slider_preview_blocks_icon', canva_get_svg_icon('canva-icons/canva-icon-posts-selector-preview', null)),
+			'keywords' 			=> ['Posts', 'slider', 'Element', 'Block'],
 			'supports'			=> array('align' => false, 'multiple' => true, 'anchor' => true),
-			'example'  => [
-				'attributes' => [
-					'mode' => 'preview',
-					'data' => [
-						'is_preview'    => true
-					],
-				],
-			],
 		]);
 
-		
-
-		
-
+		acf_register_block([
+			'name' 				=> 'promo-banner', //modificare slug del blocco
+			'title' 			=> __('Promo Banner', 'canva-backend'), //modificare titolo del blocco
+			'description' 		=> __('Promo Banner', 'canva-backend'), //modificare azione del blocco
+			'render_callback' 	=> 'canva_be_block_callback', //non modificare
+			'category' 			=> 'canva_block_category', //non modificare
+			'icon' 				=> apply_filters('promo_block_slider_preview_blocks_icon', canva_get_svg_icon('canva-icons/canva-icon-posts-selector-preview', null)),
+			'keywords' 			=> ['Promo', 'banner', '', ''],
+			'supports'			=> array('align' => false, 'multiple' => true, 'anchor' => true),
+		]);
 	}
 }
 add_action('acf/init', 'project_be_acf_init');
@@ -230,16 +135,9 @@ function project_allowed_blocks($allowed_blocks)
 
 	$new_blocks =  [
 
-		// Sezioni Coind
+		'acf/element-block-slider',
+		'acf/promo-banner',
 
-		'acf/hero-trattamento',
-		'acf/hero-settore',
-		'acf/hero-impianto',
-		'acf/hero-case-history',
-		'acf/dettagli-settore',
-
-
-		
 		// Testing
 		// 'bod/modal-block',
 	];

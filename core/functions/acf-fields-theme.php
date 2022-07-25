@@ -87,25 +87,6 @@ function canva_load_fields_theme()
 					'maxlength' => '',
 				),
 				array(
-					'key' => 'field_89805dafe4c9c',
-					'label' => 'Fax',
-					'name' => 'fax',
-					'type' => 'text',
-					'instructions' => 'Shortcode: [company_fax]',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array(
-						'width' => '',
-						'class' => '',
-						'id' => '',
-					),
-					'default_value' => '',
-					'placeholder' => '',
-					'prepend' => '',
-					'append' => '',
-					'maxlength' => '',
-				),
-				array(
 					'key' => 'field_60805464e4c4b',
 					'label' => 'Mobile Phone',
 					'name' => 'mobile_phone',
@@ -125,7 +106,7 @@ function canva_load_fields_theme()
 					'maxlength' => '',
 				),
 				array(
-					'key' => 'field_7080706cefc4d',
+					'key' => 'field_6080546ce4c4c',
 					'label' => 'Email',
 					'name' => 'email',
 					'type' => 'text',
@@ -4182,6 +4163,133 @@ function canva_load_fields_theme()
 			'active' => true,
 			'description' => '',
 		]);
+
+
+		acf_add_local_field_group(array(
+			'key' => 'group_627a768c9a2bc',
+			'title' => '[Canva] Maintenance mode for pages',
+			'fields' => array(
+				array(
+					'key' => 'field_627a76a513a5a',
+					'label' => 'Activate maintenance mode for page',
+					'name' => 'page_maintenance_mode_toggle',
+					'type' => 'true_false',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'message' => '',
+					'default_value' => 0,
+					'ui' => 1,
+					'ui_on_text' => 'Active',
+					'ui_off_text' => 'Inactive',
+				),
+				array(
+					'key' => 'field_627a77ee13a5e',
+					'label' => 'Maintenance mode for page',
+					'name' => '',
+					'type' => 'accordion',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => 'field_627a76a513a5a',
+								'operator' => '==',
+								'value' => '1',
+							),
+						),
+					),
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'open' => 0,
+					'multi_expand' => 0,
+					'endpoint' => 0,
+				),
+				array(
+					'key' => 'field_627a772913a5b',
+					'label' => 'Maintenance mode message',
+					'name' => 'page_maintenance_mode_message',
+					'type' => 'wysiwyg',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'tabs' => 'all',
+					'toolbar' => 'full',
+					'media_upload' => 1,
+					'delay' => 0,
+				),
+				array(
+					'key' => 'field_627a77ac13a5d',
+					'label' => 'Element classes',
+					'name' => 'page_maintenance_mode_element_classes',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+				),
+				array(
+					'key' => 'field_627a777c13a5c',
+					'label' => 'Wrapper classes',
+					'name' => 'page_maintenance_mode_wrapper_classes',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+				),
+			),
+			'location' => array(
+				array(
+					array(
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'page',
+					),
+				),
+			),
+			'menu_order' => 0,
+			'position' => 'normal',
+			'style' => 'default',
+			'label_placement' => 'left',
+			'instruction_placement' => 'label',
+			'hide_on_screen' => '',
+			'active' => true,
+			'description' => '',
+		));
+
 	}
 }
 add_action('acf/init', 'canva_load_fields_theme');

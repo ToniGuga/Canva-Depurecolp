@@ -10,15 +10,25 @@ Regole standard di hero
 -----------------------
 
 - nello stesso div dichiari sia _hero sia _layer-wrap
-- la classe _hero assegna diverse proprietà, inclusa l'altezza "normal" che ha diversi valori a seconda del breakpoint
-- altezza hero è di default in min-height in questo modo hero può eventualmente espandersi se il contenuto è maggiore (solo se _layer-content = relative se no non può spingere)
+- la classe _hero assegna diverse proprietà, inclusa l'altezza normale che è responsive
 - ci sono tre altezze (in min-height) di hero definite nelle variabili
-	--hero-short
-	--hero-normal
-	--hero-tall
-- par cambiare altezza alla classe _hero si agiungono le classi (senza _ perché sono classi atomiche)
+	- hero-short
+	- hero-normal
+	- hero-tall
+- par cambiare altezza alla classe _hero si agiungono le classi
 	- min-h-hero-short
 	- min-h-hero-tall
+- si possono anche aggiungere classi ratio-X-Y ma occorre poi cambiare alcune classi dentro _layer-content
+
+
+Altezze hero
+e posizionamento contenuto
+---------------------------
+
+- altezza hero è di default in min-height in questo modo hero può eventualmente espandersi se il contenuto è maggiore (solo se _layer-content = relative )
+- il min-height è responsive sui vari breakpoint
+	- con altezza in min-height il _layer-content dentro il _layer-wrap va impostato come relative
+
 - si può eventualmente anche aggiungere una classe ratio-X-Y ma in quel caso
 	- la priorità è la proporzione e il contenuto eccedente viene tagliato
 	- il _layer-content dentro il _layer-wrap deve essere absolute non relative

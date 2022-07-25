@@ -19,6 +19,7 @@ register_nav_menus([
 	'menu-aux-center' => 'Menu Aux Center (Desktop OPT)',
 	'menu-aux-right' => 'Menu Aux Right (Desktop OPT)',
 	'off-canvas-mobile' => 'Off Canvas (Mobile OPT)',
+
 	//Footer
 	'menu-footer-items-1' => 'Menu Footer Items 1',
 	'menu-footer-items-2' => 'Menu Footer Items 2',
@@ -65,12 +66,17 @@ add_filter('walker_nav_menu_start_el', 'canva_prefix_nav_description', 10, 4);
  * @author Toni Guga <toni@schiavoneguga.com>
  * @param [type] $atts
  * @return void
+ * @example echo canva_menu(['location' => 'menu-aux-left', 'depth' => 12, 'css_classes' => 'flex-1', 'items_wrap' => '%3$s', 'walker' => new Canva_Horizontal_Walker()]);
+ * @example [canva_menu location="menu-in-page-items-1" depth="4" css_classes="flex-1" items_wrap="%3$s" walker = ""]
+ * @example [canva_menu menu_id="menu-in-page-items-1" depth="4" css_classes="flex-1" items_wrap="%3$s" walker = ""]
+ *
  */
 
 function canva_menu($atts)
 {
 	extract(shortcode_atts([
 		'container' => false,
+		'menu_id' => '',
 		'location' => '',
 		'depth' => 12,
 		'css_classes' => 'flex flex-col',
@@ -81,6 +87,7 @@ function canva_menu($atts)
 
 	$html = wp_nav_menu([
 		'container' => $container,
+		'menu' => $menu_id,
 		'menu_class' => $css_classes,
 		'items_wrap' => $items_wrap,
 		'theme_location' => $location,
@@ -212,7 +219,7 @@ function canva_get_extra_menu_items($menu_item = '')
 	}
 
 	if ('search-icon-modal' == $menu_item) {
-		$html .= '<li class="menu-item-icon menu-item-icon-search cursor-pointer"><a class="search-icon-modal modal-open cursor-pointer" data-modal-content="modal-search" aria-label="' . __('Search', 'canva-frontend') . '">' . canva_get_svg_icon('fontawesome/' . MENU_FONTAWESOME_ICON_TYPE . '/search', 'fill-current') . '</a></li>';
+		$html .= '<li class="menu-item-icon menu-item-icon-search cursor-pointer"><a class="search-icon-modal modal-open cursor-pointer" data-modal-content="_modal-search" aria-label="' . __('Search', 'canva-frontend') . '">' . canva_get_svg_icon('fontawesome/' . MENU_FONTAWESOME_ICON_TYPE . '/search', 'fill-current') . '</a></li>';
 	}
 
 	if ('search-icon-inline' == $menu_item) {
@@ -260,7 +267,7 @@ function canva_get_extra_menu_items($menu_item = '')
 	if ('bag-icon' == $menu_item) {
 		$html .= '<li class="menu-item-icon menu-item-icon-cart cursor-pointer">';
 		if (is_woocommerce_activated()) {
-			$html .= '<a class="cart-icon" href="' . esc_url(wc_get_cart_url()) . '" aria-label="' . __('Cart', 'canva-frontend') . '">' . apply_filters('shopping_cart_icon', canva_get_svg_icon('fontawesome/' . MENU_FONTAWESOME_ICON_TYPE . '/shopping-bag', 'fill-current')) . '<span class="_cart-items" > '. WC()->cart->get_cart_contents_count() . '</span></a>';
+			$html .= '<a class="cart-icon" href="' . esc_url(wc_get_cart_url()) . '" aria-label="' . __('Cart', 'canva-frontend') . '"  data-items="' . WC()->cart->get_cart_contents_count() . '">' . apply_filters('shopping_cart_icon', canva_get_svg_icon('fontawesome/' . MENU_FONTAWESOME_ICON_TYPE . '/shopping-bag', 'fill-current')) . '<span class="_cart-items" > ' . WC()->cart->get_cart_contents_count() . '</span></a>';
 			// if (WC()->cart->get_cart_contents_count() > 0) {
 			// 	$html .= '<a class="bag-icon" href="' . esc_url(wc_get_cart_url()) . '" aria-label="' . __('Cart', 'canva-frontend') . '" data-items="' . WC()->cart->get_cart_contents_count() . '">' . apply_filters('shopping_bag_icon', canva_get_svg_icon('fontawesome/' . MENU_FONTAWESOME_ICON_TYPE . '/shopping-bag', 'fill-current')) . '</a>';
 			// } else {
@@ -281,9 +288,9 @@ function canva_get_extra_menu_items($menu_item = '')
 	if ('cart-icon' == $menu_item) {
 		$html .= '<li class="menu-item-icon menu-item-icon-cart cursor-pointer">';
 		if (is_woocommerce_activated()) {
-			$html .= '<a class="cart-icon" href="' . esc_url(wc_get_cart_url()) . '" aria-label="' . __('Cart', 'canva-frontend') . '">' . apply_filters('shopping_cart_icon', canva_get_svg_icon('fontawesome/' . MENU_FONTAWESOME_ICON_TYPE . '/shopping-cart', 'fill-current')) . '<span class="_cart-items" > '. WC()->cart->get_cart_contents_count() . '</span></a>';
+			$html .= '<a class="cart-icon" href="' . esc_url(wc_get_cart_url()) . '" aria-label="' . __('Cart', 'canva-frontend') . '" data-items="' . WC()->cart->get_cart_contents_count() . '">' . apply_filters('shopping_cart_icon', canva_get_svg_icon('fontawesome/' . MENU_FONTAWESOME_ICON_TYPE . '/shopping-cart', 'fill-current')) . '<span class="_cart-items" >' . WC()->cart->get_cart_contents_count() . '</span></a>';
 			// if (WC()->cart->get_cart_contents_count() > 0) {
-				// $html .= '<a class="cart-icon" href="' . esc_url(wc_get_cart_url()) . '" aria-label="' . __('Cart', 'canva-frontend') . '" data-items="' . WC()->cart->get_cart_contents_count() . '">' . apply_filters('shopping_cart_icon', canva_get_svg_icon('fontawesome/' . MENU_FONTAWESOME_ICON_TYPE . '/shopping-cart', 'fill-current')) . '<span class="_cart-items" > '. WC()->cart->get_cart_contents_count() . '</span></a>';
+			// $html .= '<a class="cart-icon" href="' . esc_url(wc_get_cart_url()) . '" aria-label="' . __('Cart', 'canva-frontend') . '" data-items="' . WC()->cart->get_cart_contents_count() . '">' . apply_filters('shopping_cart_icon', canva_get_svg_icon('fontawesome/' . MENU_FONTAWESOME_ICON_TYPE . '/shopping-cart', 'fill-current')) . '<span class="_cart-items" > '. WC()->cart->get_cart_contents_count() . '</span></a>';
 			// } else {
 			// 	$html .= '<a class="cart-icon cursor-not-allowed" aria-label="' . __('Cart is empty', 'canva-frontend') . '" data-items="' . WC()->cart->get_cart_contents_count() . '">' . apply_filters('shopping_cart_icon', canva_get_svg_icon('fontawesome/' . MENU_FONTAWESOME_ICON_TYPE . '/shopping-cart', 'fill-current')) . '<span class="_cart-items" > '. WC()->cart->get_cart_contents_count() . '</span></a>';
 			// }
@@ -404,12 +411,12 @@ function canva_menu_builder()
 
 	$menu_desktop_full_width = '';
 	if (!$menu_desktop['full_width']) {
-		$menu_desktop_full_width = '';
+		$menu_desktop_full_width = 'container';
 	}
 
 	$menu_aux_full_width = '';
 	if (!$menu_aux['full_width']) {
-		$menu_aux_full_width = '';
+		$menu_aux_full_width = 'container';
 	}
 
 	// Fixed Control
@@ -426,7 +433,7 @@ function canva_menu_builder()
 			if ($menu_aux['active']) {
 
 				if (!$menu_aux['css_classes']) {
-					$classes = 'flex justify-between';
+					$classes = 'flex content-center justify-between';
 				} else {
 					$classes = $menu_aux['css_classes'];
 				}
@@ -492,7 +499,7 @@ function canva_menu_builder()
 			if ($menu_desktop['active']) {
 
 				if (!$menu_desktop['css_classes']) {
-					$classes = ' flex content-center justify-between ';
+					$classes = ' flex';
 				} else {
 					$classes = $menu_desktop['css_classes'];
 				}
@@ -503,13 +510,13 @@ function canva_menu_builder()
 					if ($menu_desktop['left_menu_items']) {
 
 						if (!$menu_desktop['left_css_classes']) {
-							$classes = ' flex justify-center items-center ';
+							$classes = ' flex';
 						} else {
 							$classes = $menu_desktop['left_css_classes'];
 						}
 					?>
 						<div class="menu-left <?php echo esc_attr($classes); ?>">
-							<ul class="menu flex justify-start content-center">
+							<ul class="menu flex">
 								<?php
 								foreach ($menu_desktop['left_menu_items'] as $menu_items) {
 									foreach ($menu_items as $menu_item) {
@@ -528,13 +535,13 @@ function canva_menu_builder()
 					if ($menu_desktop['center_menu_items']) {
 
 						if (!$menu_desktop['center_css_classes']) {
-							$classes = ' flex justify-center items-center ';
+							$classes = ' flex ';
 						} else {
 							$classes = $menu_desktop['center_css_classes'];
 						}
 					?>
 						<div class="menu-center <?php echo esc_attr($classes); ?>">
-							<ul class="menu flex justify-center items-center content-center">
+							<ul class="menu flex">
 								<?php
 								foreach ($menu_desktop['center_menu_items'] as $menu_items) {
 									foreach ($menu_items as $menu_item) {
@@ -553,13 +560,13 @@ function canva_menu_builder()
 					if ($menu_desktop['right_menu_items']) {
 
 						if (!$menu_desktop['right_css_classes']) {
-							$classes = ' flex justify-center items-center ';
+							$classes = ' flex ';
 						} else {
 							$classes = $menu_desktop['right_css_classes'];
 						}
 					?>
 						<div class="menu-right <?php echo esc_attr($classes); ?>">
-							<ul class="menu flex justify-end content-center">
+							<ul class="menu flex">
 								<?php
 								foreach ($menu_desktop['right_menu_items'] as $menu_items) {
 									foreach ($menu_items as $menu_item) {
@@ -683,7 +690,10 @@ function canva_menu_builder()
 		}
 	?>
 		<nav class="off-canvas-desktop hide fixed inset-0 z-50 fade-in overflow-y-auto <?php echo do_action('off_canvas_desktop_css_classes'); ?>" role="navigation">
+
+			<?php do_action('menu_off_canvas_desktop_before'); ?>
 			<div class="menu-off-canvas-desktop">
+
 				<a class="off-canvas-close cursor-pointer absolute top-0 right-0 h-16 w-16">
 					<?php echo canva_get_svg_icon('fontawesome/regular/times', $class = 'w-16 h-16 fill-current'); ?>
 				</a>
@@ -701,26 +711,32 @@ function canva_menu_builder()
 						?>
 					</ul>
 				</div>
+
+				<div class="off-canvas-overlay">
+
+				</div>
 			</div>
+			<?php do_action('menu_off_canvas_desktop_after'); ?>
+
 		</nav>
 	<?php } ?>
 
 	<?php
 	if ($off_canvas_mobile['active']) {
 		if (!$off_canvas_mobile['right_css_classes']) {
-			$classes = ' flex justify-center items-center ';
+			$classes = '';
 		} else {
 			$classes = $off_canvas_mobile['right_css_classes'];
 		}
 	?>
-		<nav class="off-canvas-mobile hide fixed inset-0 z-50 fade-in overflow-y-auto hide <?php echo do_action('off_canvas_mobile_css_classes'); ?>" role="navigation">
+		<nav class="off-canvas-mobile fixed inset-0 z-50 fade-in overflow-y-auto hidden <?php echo do_action('off_canvas_mobile_css_classes'); ?>" role="navigation">
+
 			<?php do_action('menu_off_canvas_mobile_before'); ?>
-			<div class="menu-off-canvas-mobile">
-				<a class="off-canvas-close cursor-pointer absolute top-0 right-0 h-16 w-16">
-					<?php echo canva_get_svg_icon('fontawesome/regular/times', $class = 'w-16 h-16 fill-current'); ?>
-				</a>
+
+			<div class="menu-off-canvas-mobile w-full">
+
 				<div class="menu-center <?php echo esc_attr($classes); ?>">
-					<ul class="menu flex flex-col content-center">
+					<ul class="menu flex flex-col w-full">
 						<?php
 						foreach ($off_canvas_mobile['menu_items'] as $menu_items) {
 							foreach ($menu_items as $menu_item) {
@@ -733,11 +749,51 @@ function canva_menu_builder()
 						?>
 					</ul>
 				</div>
+
 			</div>
+
+			<div class="off-canvas-overlay"> </div>
+
 			<?php do_action('menu_off_canvas_mobile_after'); ?>
+
 		</nav>
 	<?php } ?>
+
 <?php }
+
+
+/**
+ * used to print icons for menu items
+ *
+ * @param [type] $items
+ * @param [type] $args
+ * @return void
+ */
+function canva_wp_nav_menu_items_icons($items, $args)
+{
+	foreach ($items as &$item) {
+		$icon = get_field('menu_icon', $item);
+
+		if ($icon) {
+
+			$html = '';
+			$html .= '<div class="icon text-center">';
+
+			if (get_file_ext($icon) === 'svg') {
+				$html .= canva_get_svg_icon_from_url($icon, $css_classes = 'w-6 mr-3 fill-current');
+			} else {
+				$html .= '<img class="w-24" src="' . $icon . '" />';
+			}
+
+			$html .= '</div>'; // chiude mega-menu
+
+			$item->title .= $html;
+		}
+	}
+
+	return $items;
+}
+add_filter('wp_nav_menu_objects', 'canva_wp_nav_menu_items_icons', 10, 2);
 
 
 /**
@@ -853,5 +909,5 @@ function canva_menu_items_json_export()
 
 	wp_die();
 }
-add_action('wp_ajax_menu_items_json', 'canva_menu_items_json_export', 10, 10);
-add_action('wp_ajax_nopriv_menu_items_json', 'canva_menu_items_json_export', 10, 1);
+add_action('wp_ajax_canva_menu_items_json', 'canva_menu_items_json_export', 10, 10);
+add_action('wp_ajax_nopriv_canva_menu_items_json', 'canva_menu_items_json_export', 10, 1);
