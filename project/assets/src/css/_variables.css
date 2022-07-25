@@ -1,0 +1,756 @@
+/*------------------------------------*\
+			Variabili CSS
+\*------------------------------------
+
+Qui si inseriscono tutte le varibili legate al progetto, incluse quelle che non vengono pescate da Tailwind ma che servono per altri componenti.
+Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal fatto che venga usata o no da Tailwind.
+
+*/
+
+@import '_palette-transitions-shadows-icons';
+
+@layer base {
+	:root {
+
+		/*------------------------------------*\
+			+Grid Breakpoints
+		\*------------------------------------*/
+
+
+        /*  Per definire i breakpoint bisogna andare direttamente nella sezione iniziale di Tailwind.config.js
+			non si possono inserire solo qui e pescarle da tailwind perché verrebbero incluse come variabili css e non come valore e non si possono inserire variabili css in una media query
+			https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries
+
+			Le inseriamo comunque anche qui per utilizzarle in alcune classi ad es.
+			.max-w-screen-lg-half che servono in alcuni casi di larghezze mezze
+		*/
+
+        /* I breakpoint vanno riportati in
+			- file tailwind.config.js
+			- typography.css tutte le media query
+			- hero.css
+
+		screens: {
+			'xs': '230px', // => @media (max-width: 360px) { ... } Parte da 230 e arriva a 374 => per smartphone supervecchi 320 o nuovi economici 360
+			'sm': '375px', // => @media (max-width: 640px) { ... } Parte da 375 e arriva a 639 => Parte da 375 e arriva a 639 => per smartphone nuovi o fighi phablet etc...
+			'md': '640px', // => @media (max-width: 768px) { ... }
+			'lg': '960px', // => @media (max-width: 1024px) { ... }
+			'xl': '1280px', // => @media (max-width: 1600px) { ... }
+			'xxl': '1600px', // Primo - Progetto grafico Serena era 1760px
+		},
+
+		*/
+
+
+		/* Variabili screen per classi screen-X-half in grid-spacing */
+		--screen-xs: 230px;
+		--screen-sm: 375px;
+		--screen-md: 640px;
+		--screen-lg: 960px;
+		--screen-xl: 1280px;
+		--screen-xxl: 1600px;
+
+
+
+        /*------------------------------------*\
+			+Grid Spacing
+		\*------------------------------------*/
+
+		/* Istruzioni sui font-size
+		------------------------------------
+
+		- Il font-size in px del body non viene dichiarato da nessuna parte, viene definito dal browser
+		- impostazioni predefinite del browser = 16px = 1rem
+		- per avere i rem responsive usiamo le % nel html
+		- di base font-size html = 100% = 16px
+		- 16px è quindi font-size di default di qualsiasi testo che non sia parte della tipografia, es. span
+		- in small down font-size = 100%, in questo modo i testi standard su smartphone rispettano buone pratiche
+		- salendo di breakpoint, ingrandiamo il rem con le percentuali html
+		- le percentuali di font-size agiscono sia sui font, sia sulle dimensioni w-X h-X padding margin etc..
+		*/
+
+		--html-font-size-xs: 100%;
+		--html-font-size-sm: 101%;
+		--html-font-size-md: 102%;
+		--html-font-size-lg: 103%;
+		--html-font-size-xl: 104%;
+		--html-font-size-xxl: 110%; /* 105%; */
+
+		--gap-default: 1rem; /* = gap 4 */
+		--row-max-width: var(--screen-xxl);
+
+
+
+		/*------------------------------------*\
+			+Base
+		\*------------------------------------*/
+
+		--body-bg: var(--color-white);
+
+
+		/*------------------------------------*\
+			+Typography
+		\*------------------------------------*/
+
+		--primary-font-family: "Space Grotesk", sans-serif;
+		--secondary-font-family: "Titillium Web", sans-serif;
+		--extra-font-family: var(--primary-font-family);
+
+		/* Basefont */
+		--body-font-family: var(--primary-font-family);
+		--body-font-size: 1rem; /* usato solo per fs-body */
+		--body-color: var(--color-islight-default);
+		--body-font-weight: 300;
+		--body-line-height: 1.5;
+		--body-letter-spacing: 0.02em;
+
+		/* Bold */
+		--bold-font-weight: 700; /* Se i font del tema sono diversi tra loro potrebbe funzionare correttamente solo su un font */
+		--bold-color: inherit;
+
+		/* Anchor */
+		--anchor-font-weight: 700;
+		--anchor-transition: var(--transition-anchor-default);
+		--anchor-color: var(--color-primary);
+		--anchor-text-decoration: underline solid var(--color-primary);
+		--anchor-hover-color: var(--color-primary-300);
+		--anchor-hover-text-decoration: underline solid var(--anchor-hover-color);
+
+		/* Text Selection */
+		--text-selection-color: var(--color-white);
+		--text-selection-bg: var(--color-primary);
+
+		/* Dimensioni tutte le tipografie */
+		--huge-font-size-large: 10rem; /* 160px; su base 16px  */
+		--h1-font-size-large: 2.75rem; /* 3.333rem = 56px; su base 16px / 105% */
+		--h2-font-size-large: 1.675rem; /* 2.024rem = 34px; su base 16px / 105% */
+		--h3-font-size-large: 1.488rem; /* 25px; su base 16px / 105% */
+		--h4-font-size-large: 1.125rem; /* 18px; su base 16px  */
+		--h5-font-size-large: 1rem; /* 16px; su base 16px  */
+		--h6-font-size-large: 1.125rem; /* 18px; su base 16px  */
+		--h7-font-size-large: 1rem; /* 16px; */
+
+		--sopratitolo-font-size-large: 0.875rem; /* 14px */
+		--paragraph-font-size-large: 0.935rem; /* 21px; /*  */
+		--text-small-font-size-large: 0.875rem; /*  */
+		--text-xsmall-font-size-large: 0.825rem; /*  */
+		--text-xxsmall-font-size-large: 0.75rem; /*  */
+
+		--lead-font-size-large: 1.25rem; /* 28px; /*  */
+		--blockquote-font-size-large: 2.625rem; /* 42px su base 16px */
+
+		/* Headings */
+		--headings-font-family: var(--primary-font-family);
+		--headings-color: var(--color-primary);
+		--headings-font-weight: 400;
+		--headings-line-height: 1.3;
+		--headings-letter-spacing: 0em;
+		--headings-margin-bottom: 1rem;
+
+		/* Toptitle */
+		--toptitle-font-family: var(--primary-font-family);
+		--toptitle-color: var(--none);
+		--toptitle-font-weight: 400;
+		--toptitle-line-height: 1.2;
+		--toptitle-letter-spacing: 0;
+		--toptitle-text-transform: uppercase;
+
+		/* Subtitle */
+		--subtitle-font-family: var(--primary-font-family);
+		--subtitle-color: var(--none);
+		--subtitle-font-weight: 300;
+		--subtitle-line-height: 1.3;
+		--subtitle-font-style: none;
+
+		/* Paragraph */
+		--paragraph-font-family: var(--body-font-family);
+		--paragraph-color: var(--body-color);
+		--paragraph-line-height: var(--body-line-height);
+		--paragraph-letter-spacing: var(--body-letter-spacing);
+		--paragraph-margin-bottom: 1rem;
+
+		/* Lead */
+		--lead-font-family: var(--primary-font-family);
+		--lead-color: var(--body-color);
+		--lead-font-weight: 400;
+		--lead-line-height: var(--paragraph-line-height);
+		--lead-letter-spacing: var(--body-letter-spacing);
+		--lead-margin-bottom: 1rem;
+
+		/* Blockquote */
+		--blockquote-padding: none;
+		--blockquote-font-family: var(--primary-font-family);
+		--blockquote-color: var(--headings-color);
+		--blockquote-font-weight: 400;
+		--blockquote-line-height: var(--headings-line-height);
+		--blockquote-letter-spacing: var(--body-letter-spacing);
+		--blockquote-margin-bottom: 2rem;
+
+		/* Lists */
+		--ul-line-height: var(--lead-line-height);
+		--ul-margin-bottom: var(--paragraph-margin-bottom);
+
+		--ul-li-font-size: 1em;
+		--ul-li-padding-left: 1em;
+		--ul-li-margin-bottom: calc(var(--paragraph-margin-bottom) / 2);
+
+		--ul-li-dot-top: 0.6em;
+		--ul-li-dot-left: 0.25em;
+		--ul-li-dot-width: 0.25em;
+		--ul-li-dot-height: 0.25em;
+		--ul-li-dot-bg: var(--body-color);
+		--ul-li-dot-isdark-bg: var(--isdark-default-color);
+		--ul-li-dot-radius: 5rem; /* 0 = quadrato */
+
+		--ul-li-check-padding-left: 2em;
+		--ul-li-check-margin-bottom: calc(var(--paragraph-margin-bottom) * 1.25);
+
+		--ul-li-check-top: 0em;
+		--ul-li-check-left: 0em;
+		--ul-li-check-width: 1.25em;
+		--ul-li-check-height: 1.25em;
+		/* Inserire immagini codificate in base64 da https://websemantics.uk/tools/svg-to-background-image-conversion/ */
+		--ul-li-check-bg-img: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 512'%3E%3Cpath d='M166.9 264.5l-117.8 116c-4.7 4.7-12.3 4.7-17 0l-7.1-7.1c-4.7-4.7-4.7-12.3 0-17L127.3 256 25.1 155.6c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0l117.8 116c4.6 4.7 4.6 12.3-.1 17z'/%3E%3C/svg%3E");
+		--ul-li-check-isdark-bg-img: var(--ul-li-check-bg-img);
+
+
+
+		/*------------------------------------*\
+			+Buttons
+		\*------------------------------------*/
+
+		/* Button regular ----- */
+
+		/* Dimensioni */
+		--button-py: .75em; /* tenerlo in em per avere la proporzionalità rispetto a font-size */
+		--button-px: 2.5em;
+		--button-icon-ratio: 1.5em;
+		--button-mb: 1.5em;
+		--button-rounded: 50em;
+			/* border-width di default è 2px e non ha variabile, per cambiarlo usare style */
+
+		/* Colori */
+		--button-background: var(--color-accent);
+		--button-color: var(--color-white);
+		/* --button-icon-color: var(--color-white); */ /* Sostituito da fill-current */
+		--button-border-color: var(--button-background); /* di solito uguale a background color per avere effetto pieno */
+
+		/* Tipografia */
+		--button-font-family: var(--primary-font-family);
+		--button-font-size: .935em; /* Per i button come per le icone usiamo font-size proporzionale */
+		--button-font-weight: 400;
+		--button-line-height: 1;
+		--button-letter-spacing: 0;
+		--button-text-transform: none;
+		--button-text-decoration: none;
+
+		/* Wrapper testo */
+		--button-toptitle-font-family: var(--secondary-font-family);
+		--button-toptitle-font-ratio: .75em; /* va indicato in em e indica quanto è più piccolo/grande del valore medio */
+		--button-toptitle-font-weight: 300;
+		--button-toptitle-margin-bottom: .25em;
+			/* non c'è il font-family del titolo perché si usa quello del button */
+		--button-title-font-ratio: 1em; /* va indicato in em e indica quanto è più piccolo/grande del valore medio */
+			/* non c'è il font weight del titolo perché si usa quello del button */
+		--button-subtitle-font-family: var(--secondary-font-family);
+		--button-subtitle-font-ratio: .875em; /* va indicato in em e indica quanto è più piccolo/grande del valore medio */
+		--button-subtitle-font-weight: 300;
+		--button-subtitle-margin-top: .25em; /* si usa mt perché se non c'è subtitle il title del button resta senza mb */
+
+		/* Misc */
+		--button-shadow: none; /* CAPIRE COME GESTIRLA: apply? */
+		--button-transition: var(--transition-button-default);
+
+		/* Button hover */
+		--button-hover-background: var(--color-black);
+		--button-hover-color: var(--button-color);
+		/* --button-hover-icon-color: var(--button-icon-color); */ /* Sostituito da fill-current */
+		--button-hover-border-color: var(--button-hover-background);
+		--button-hover-shadow: $shadow-20; /* CAPIRE COME GESTIRLA: apply? */
+		--button-hover-transformation: scale(1.025);
+		--button-hover-text-decoration: none;
+
+			/* Isdark Button */
+			--isdark-button-background: var(--button-background);
+			--isdark-button-color: var(--button-color); /* Tutte le scritte compresi toptitle e subtitle */
+			/* --isdark-button-hollow-icon-color: var(--color-white); */ /* Sostituito da fill-current */
+			--isdark-button-border-color: var(--button-border-color);
+
+			/* Isdark Button hover*/
+			--isdark-button-hover-background: var(--button-background);
+			--isdark-button-hover-color: var(--button-hover-color); /* Tutte le scritte compresi toptitle e subtitle */
+			/* --isdark-button-hollow-icon-color: var(--color-white); */ /* Sostituito da fill-current */
+			--isdark-button-hover-border-color: var(--button-border-color);
+
+		/* Button Hollow */
+		--button-hollow-background: transparent;
+		--button-hollow-color: var(--color-black); /* Tutte le scritte compresi toptitle e subtitle */
+		/* --button-hollow-icon-color: var(--color-black); */ /* Sostituito da fill-current */
+		--button-hollow-border-color: var(--color-black);
+
+		/* Button Hollow hover*/
+		--button-hollow-hover-background: var(--color-black);
+		--button-hollow-hover-color: var(--color-white);
+		/* --button-hollow-hover-icon-color: var(--color-white); */ /* Sostituito da fill-current */
+		--button-hollow-hover-border-color: var(--color-black);
+
+			/* Isdark Button Hollow  */
+			--isdark-button-hollow-background: transparent;
+			--isdark-button-hollow-color: var(--color-white); /* Tutte le scritte compresi toptitle e subtitle */
+			/* --isdark-button-hollow-icon-color: var(--color-white); */ /* Sostituito da fill-current */
+			--isdark-button-hollow-border-color: var(--color-white);
+
+			/* Isdark Button Hollow hover */
+			--isdark-button-hollow-hover-background: var(--color-white);
+			--isdark-button-hollow-hover-color: var(--color-primary);
+			/* --isdark-button-hollow-hover-icon-color: var(--color-primary); */ /* Sostituito da fill-current */
+			--isdark-button-hollow-hover-border-color: var(--color-white);
+
+
+
+		/* Tag regular ----- */
+		/* Di solito identico al pulsante ma con colore e spessore delle scritte dentro differenti */
+
+		--tag-px: calc(var(--button-px) / 2);
+		--tag-py: calc(var(--button-py) / 2);
+		--tag-rounded: ;
+
+		--tag-background: ;
+		--tag-color: ;
+		--tag-border-color: ;
+
+		--tag-font-family: ;
+		--tag-font-weight: ;
+
+		--tag-hover-background: ;
+
+
+
+
+		/*------------------------------------*\
+			+Menu
+		\*------------------------------------*/
+
+		/* margin-top Main ----- */
+		--main-mt-xs: 60px;
+		--main-mt-sm: 60px;
+		--main-mt-md: 60px;
+		--main-mt-lg: 88px;
+		--main-mt-xl: 88px;
+
+		/* Regole comuni ----- */
+
+		--menu-item-font-size: .875rem;
+		--menu-item-padding: 2.75rem 1rem 1.25rem; /* definisce l'altezza dell'area di interazione delle voci e l'altezza del separatore verticale se presente */
+		--menu-item-font-family: var(--primary-font-family);
+		--menu-item-font-weight: 400;
+		--menu-item-line-height: 1.1 !important;
+		--menu-item-color: var(--color-primary);
+		--menu-item-text-transform: none;
+		--menu-item-text-decoration: none; /* es. underline solid red - se non si vuole mettere nessun underline in nessun menu va bene impostarlo come none, se ci sarà qualche underline in giro meglio usare underline solid transparent, se no durante le transizioni possono arrivare dei momenti "fantasma" in cui appare underline e poi scompare di nuovo */
+		/* --menu-item-bg: transparent; /* diamo per scontato che il bg non hover sia trasparente */
+		--menu-item-transition: var(--transition-anchor-default);
+		--menu-item-hover-color: var(--color-white);
+		--menu-item-hover-text-decoration: none; /* es. underline solid red */
+		--menu-item-hover-bg: var(--color-primary); /* bg completo permette di usare anche gradienti */
+		--menu-item-current-font-weight: 400;
+		--menu-item-current-color: var(--color-white);
+		--menu-item-current-text-decoration: var(--menu-item-hover-text-decoration); /* es. underline solid red */
+		--menu-item-current-bg: var(--color-primary);
+
+		--menu-item-icon-svg-size-xs: 1.5rem; /* width e height delle icone svg nel menu, per xs e sm */
+		--menu-item-icon-padding-xs: 0.5rem; /* per xs e sm */
+		--menu-item-icon-svg-size-lg: 1.5rem; /* width e height delle icone svg nel menu, per md up */
+		--menu-item-icon-padding-lg: 0.75rem; /* per md up */
+		/* GAP
+		--menu-item-icon-gap: .25rem;
+		non si può usare perché andrebbe attribuito al contenitore padre delle icone nel menu, che però non ha classi specifiche perché le icone potrebbero essere ovunque, la cosa migliore per dare un gap è segnarlo direttamente come classe (es. gap-1) dentro il segmento di menu che contiene le icone */
+		--menu-item-icon-border-radius: 5rem;
+		--menu-item-icon-color: var(--menu-item-color);
+		--menu-item-icon-transition: var(--transition-anchor-default);
+		--menu-item-icon-hover-color: var(--menu-item-hover-color);
+		--menu-item-icon-hover-bg: #fafafa; /* var(--menu-item-hover-bg); */
+
+		/* Desktop navigation ----- */
+		/* Contiene
+			- menu-desktop
+			- menu-aux
+		*/
+
+		--desktop-navigation-position: fixed; /* relative absolute fixed */
+		--desktop-navigation-bg: var(--color-white);
+		--desktop-navigation-border-bottom: none;
+		--desktop-navigation-shadow: none;
+		--desktop-navigation-backdrop-filter: none; /* blur(12px); /* Usarlo solo per blur. Se attivo richiede un bg del menu che che abbia una trasparenza almeno minima es rgba(255,255,255,.75) */
+		--desktop-navigation-bg-backdrop-filter: var(--color-white); /* rgba(255,255,255,0.85); /* var(--desktop-navigation-bg); /* sostituisce --desktop-navigation-bg in caso sia attivo backdrop filter */
+
+		/* Desktop Navigation > Menu Desktop ----- */
+
+		--menu-desktop-bg: transparent;
+
+		--menu-desktop-item-font-family: var(--menu-item-font-family);
+		--menu-desktop-item-font-size: var(--menu-item-font-size);
+		--menu-desktop-item-padding: var(--menu-item-padding);
+		--menu-desktop-item-font-weight: var(--menu-item-font-weight);
+		--menu-desktop-item-line-height: var(--menu-item-line-height);
+		--menu-desktop-item-color: var(--menu-item-color);
+		--menu-desktop-item-text-transform: uppercase;
+		--menu-desktop-item-text-decoration: var(--menu-item-text-decoration); /* es. underline solid red */
+		/* --menu-desktop-item-transition: var(--menu-item-transition); */
+		--menu-desktop-item-hover-color: var(--menu-item-hover-color);
+		--menu-desktop-item-hover-text-decoration: var(--menu-item-hover-text-decoration); /* es. underline solid red */
+		--menu-desktop-item-hover-bg: var(--color-primary);
+		--menu-desktop-item-current-color: var(--menu-item-current-color);
+		--menu-desktop-item-current-font-weight: var(--menu-item-current-font-weight);
+		--menu-desktop-item-current-text-decoration: var(--menu-item-current-text-decoration); /* es. underline solid red */
+		--menu-desktop-item-current-bg: var(--menu-item-current-bg);
+
+		/* Desktop navigation > Menu Aux ----- */
+
+		--menu-aux-bg: var(--menu-dektop-background);
+
+		--menu-aux-item-font-family: var(--menu-desktop-item-font-family);
+		--menu-aux-item-font-size: var(--menu-item-font-size);
+		--menu-aux-item-padding: var(--menu-item-padding);
+		--menu-aux-item-font-weight: var(--menu-desktop-item-font-weight);
+		--menu-aux-item-line-height: var(--menu-desktop-item-line-height);
+		--menu-aux-item-color: var(--menu-desktop-item-color);
+		--menu-aux-item-text-transform: var(--menu-desktop-item-transform);
+		--menu-aux-item-text-decoration: var(--menu-desktop-item-text-decoration); /* es. underline solid red */
+		--menu-aux-item-bg-color: var(--menu-desktop-item-bg-color);
+		/* --menu-aux-item-transition: var(--menu-desktop-item-transition); */
+		--menu-aux-item-hover-color: var(--menu-desktop-item-hover-color);
+		--menu-aux-item-hover-bg: var(--menu-desktop-item-hover-bg);
+		--menu-aux-item-hover-text-decoration: var(--menu-desktop-item-hover-text-decoration); /* es. underline solid red */
+		--menu-aux-item-current-color: var(--menu-desktop-item-current-color);
+		--menu-aux-item-current-font-weight: var(--menu-desktop-item-current-font-weight);
+		--menu-aux-item-current-bg: var(--menu-desktop-item-current-bg);
+		--menu-aux-item-current-text-decoration: var(--menu-desktop-item-current-text-decoration); /* es. underline solid red */
+
+		/* Mobile navigation ----- */
+		/* Qui mettiamo solo le variabili della barra, senza voci menu che vengono definite dentro il menu Off Canvas Mobile */
+
+		--mobile-navigation-position: fixed; /* relative absolute fixed */
+		--mobile-navigation-bg: rgba(255, 255, 255, 0.97);
+		--mobile-navigation-border-bottom: none;
+		--mobile-navigation-shadow: none;
+		--mobile-navigation-backdrop-filter: blur(12px); /* Usarlo solo per blur. Se attivo richiede un bg del menu che che abbia una trasparenza almeno minima es rgba(255,255,255,.75) */
+		--mobile-navigation-bg-backdrop-filter: rgba(255,255,255,0.85); /* var(--desktop-navigation-bg); /* sostituisce --mobile-navigation-bg in caso sia attivo backdrop filter */
+
+		/* Hamburger */
+		/* Vale per hamburger sia in desktop che mobile */
+
+		--menu-item-hamburger-padding: 0; /* sovrascrive il padding default dei menu-item-icon per dare libertà di comportamento hamburger rispetto ad altre icone, applicata a .menu-item-icon-hamburger */
+		--hamburger-area-width: 2.5rem; /* Area di interazione hamburger, sta dentro menu-item-icon-hamburger si applica su ham-bars-container, può essere molto più grande di quella effettiva dell'hamburger */
+		--hamburger-area-border-radius: 5rem;
+		--hamburger-area-bg: transparent;
+		--hamburger-area-transition: var(--transition-button-default);
+		--hamburger-area-hover-bg: #fafafa;
+		--hamburger-area-hover-transformation: none;
+
+		--ham-bars-width-xs: 1.25rem;
+		--ham-bars-height-xs: 2px; /* .125rem; */
+		--ham-bars-distance-xs: 0.5rem;
+		--ham-bars-width-lg: 1.5rem;
+		--ham-bars-height-lg: 2px; /* .125rem; */
+		--ham-bars-distance-lg: 0.55rem;
+		--ham-bars-border-radius: 3rem;
+		--ham-bars-bg: var(--color-black);
+		--ham-bars-transition: var(--transition-button-default);
+
+		/* Off Canvas Mobile ----- */
+		--off-canvas-mobile-bg: var(--color-accent);
+		--off-canvas-mobile-shadow: none;
+		--off-canvas-mobile-width: 90%;
+		--off-canvas-mobile-padding: 0 0 2rem;
+		--off-canvas-mobile-shadow: none;
+		--off-canvas-mobile-opacity: 0; /* si usa solo quando serve un effetto di fade in per l'entrata */
+		--off-canvas-mobile-transition: var(--transition-anchor-default);
+		--off-canvas-mobile-show-left: 10%; /* Di default appare in slide-in da destra, qualsiasi altro comportamento si definisce interamente in style-project */
+		--off-canvas-mobile-show-opacity: 1; /* Deve essere sempre 1 */
+
+		--off-canvas-mobile-show-filter-bg: var(--color-secondary);
+		--off-canvas-mobile-show-filter-opacity: 1;
+		--off-canvas-mobile-show-filter-backdrop-filter: blur(8px); /* usarlo solo per blur. Se attivo richede opacity 1 e un bg con parziale trasparenza es. rgba(255,255,255,.75) */
+		--off-canvas-mobile-show-filter-bg-backdrop-filter: rgba(255,255,255,0.85); /* var(--desktop-navigation-bg); /* sostituisce --off-canvas-mobile-show-filter-bg in caso sia attivo backdrop filter */
+
+		--off-canvas-mobile-item-font-family: var(--menu-item-font-family);
+		--off-canvas-mobile-item-font-size: 1.25rem; /* var(--menu-item-font-size); */
+		--off-canvas-mobile-item-padding: 0.75rem 2rem; /* var(--menu-item-padding); */
+		--off-canvas-mobile-item-font-weight: 400; /* var(--menu-item-font-weight); */
+		--off-canvas-mobile-item-line-height: var(--menu-item-line-height);
+		--off-canvas-mobile-item-color: var(--menu-item-color);
+		--off-canvas-mobile-item-text-transform: var(--menu-item-transform);
+		--off-canvas-mobile-item-text-decoration: var(--menu-item-text-decoration); /* es. underline solid red */
+		/* --off-canvas-mobile-item-transition: var(--menu-item-transition); */
+		--off-canvas-mobile-item-hover-color: var(--menu-item-hover-color);
+		--off-canvas-mobile-item-hover-text-decoration: underline solid transparent; /* var(--menu-item-hover-text-decoration);*/ /* es. underline solid red */
+		--off-canvas-mobile-item-hover-bg: var(--menu-item-hover-bg);
+		--off-canvas-mobile-item-current-color: var(--menu-item-current-color);
+		--off-canvas-mobile-item-current-font-weight: var(--menu-item-current-font-weight);
+		--off-canvas-mobile-item-current-text-decoration: underline solid transparent; /* var(--menu-item-current-text-decoration); */ /* es. underline solid red */
+		--off-canvas-mobile-item-current-bg: var(--menu-item-current-bg-color);
+
+		/* Off Canvas Desktop ----- */
+		--off-canvas-desktop-bg: transparent;
+		--off-canvas-desktop-shadow: none;
+		--off-canvas-desktop-width: 60%;
+		--off-canvas-desktop-padding: 0 0 2rem;
+		--off-canvas-desktop-shadow: none;
+		--off-canvas-desktop-opacity: 0; /* si usa solo quando serve un effetto di fade in per l'entrata */
+		--off-canvas-desktop-transition: var(--transition-anchor-default);
+		--off-canvas-desktop-show-left: 40%; /* Di default appare in slide-in da destra, qualsiasi altro comportamento si definisce interamente in style-project */
+		--off-canvas-desktop-show-opacity: 1; /* Deve essere sempre 1 */
+
+		--off-canvas-desktop-show-filter-bg: var(--color-primary);
+		--off-canvas-desktop-show-filter-opacity: 1;
+		--off-canvas-desktop-show-filter-backdrop-filter: blur(12px); /* usarlo solo per blur. Se attivo richede opacity 1 e un bg con parziale trasparenza es. rgba(255,255,255,.75) */
+		--off-canvas-desktop-show-filter-bg-backdrop-filter: rgba(255,255,255,0.85); /* var(--desktop-navigation-bg); /* sostituisce --off-canvas-mobile-show-filter-bg in caso sia attivo backdrop filter */
+
+		--off-canvas-desktop-item-font-family: var(--off-canvas-mobile-font-family);
+		--off-canvas-desktop-item-font-size: var(--off-canvas-mobile-font-size);
+		--off-canvas-desktop-item-padding: var(--off-canvas-mobile-padding);
+		--off-canvas-desktop-item-font-weight: var(--off-canvas-mobile-font-weight);
+		--off-canvas-desktop-item-line-height: var(--off-canvas-mobile-line-height);
+		--off-canvas-desktop-item-color: var(--off-canvas-mobile-color);
+		--off-canvas-desktop-item-text-transform: var(--off-canvas-mobile-transform);
+		--off-canvas-desktop-item-text-decoration: var(--off-canvas-mobile-text-decoration); /* es. underline solid red */
+		/* --off-canvas-desktop-item-transition: var(--off-canvas-mobile-transition); */
+		--off-canvas-desktop-item-hover-color: var(--off-canvas-mobile-hover-color);
+		--off-canvas-desktop-item-hover-text-decoration: var(--off-canvas-mobile-hover-text-decoration); /* es. underline solid red */
+		--off-canvas-desktop-item-hover-bg: var(--off-canvas-mobile-hover-bg);
+		--off-canvas-desktop-item-current-color: var(--off-canvas-mobile-current-color);
+		--off-canvas-desktop-item-current-font-weight: var(--off-canvas-mobile-current-font-weight);
+		--off-canvas-desktop-item-current-text-decoration: var(--off-canvas-mobile-current-text-decoration); /* es. underline solid red */
+		--off-canvas-desktop-item-current-bg: var(--off-canvas-mobile-current-bg);
+
+		/* Menu H V ----- */
+		/* Questo menu si crea aggiungendo a ul una classe menu-v oppure menu-h */
+
+		--menu-hv-font-family: var(--primary-font-family);
+		/* font-size non si mette lo si associa a ul con classi fs-XY */
+		--menu-hv-font-weight: 700;
+		--menu-hv-line-height: 1.1;
+		/* Text-transform: non serve metterlo lo si aggiunge come classe all'ul se serve */
+		--menu-hv-color: var(--color-secondary);
+		--menu-hv-text-decoration: underline solid transparent; /* es. underline solid red */
+		/* --menu-hv-margin-top: Non si indica perché deve essere sempre 0; */
+		--menu-hv-margin-bottom: 0.5em;
+		--menu-hv-transition: var(--transition-anchor-default);
+		--menu-hv-hover-color: var(--color-secondary-300);
+		--menu-hv-hover-text-decoration: underline solid var(--color-secondary); /* es. underline solid red */
+		--menu-h-spacing-h: 2em; /* Distanza orizzontale totale tra le voci (solo menu orizzontale)
+
+
+		/* Menu standard Footer ----- */
+		/* Identico allo standard ma è quello che appare dentro il footer */
+
+		--menu-hv-footer-font-family: var(--menu-hv-font-family);
+		--menu-hv-footer-font-weight: var(--menu-hv-font-weight);
+		--menu-hv-footer-line-height: var(--menu-hv-line-height);
+		/* Text-transform: non serve metterlo lo si aggiunge come classe all'ul se serve */
+		--menu-hv-footer-color: var(--color-black);
+		--menu-hv-footer-text-decoration: none; /* es. underline solid red */
+		/* --menu-hv-footer-margin-top: Non si indica perché deve essere sempre 0; */
+		--menu-hv-footer-margin-bottom: 2em;
+		--menu-hv-footer-transition: var(--transition-anchor-default);
+		--menu-hv-footer-hover-color: var(--menu-hv-hover-color);
+		--menu-hv-footer-hover-text-decoration: underline solid var(--color-black); /* es. underline solid red */
+		--menu-h-footer-spacing-h: var(--menu-h-spacing-h); /* Distanza orizzontale totale tra le voci (solo menu orizzontale)
+
+
+
+		/*------------------------------------*\
+			+Layers
+		\*------------------------------------*/
+
+
+		--layer-visual-bg: rgba(192,192,192,1); /* Background di deafult che ha il layer visual quando non è ancora caricato nessun asset */
+
+		--layer-filter-bg: var(--color-black);
+		--layer-filter-opacity: .5;
+		--layer-filter-mix-blend-mode: multiply;
+
+
+
+		--map-height: 50vh;
+
+		/*------------------------------------*\
+			+Hero
+		\*------------------------------------*/
+
+		/*
+		C'è un sola categoria di _hero che viene data al _layer wrap.
+		Dopo dicheé ci sono tre possibili altezze (sempre espresse come min-height).
+		- hero-short
+		- hero-normal
+		- hero-tall
+		Se uso solo la classe _hero di deafult prende altezza normale, se ho bisogno di un'altra altezza affinahcerò le classi
+		min-h-hero-short
+		min-h-hero-tall
+		*/
+
+
+		/* Hero short min heights */
+		--hero-short-xs-min-height: 20vw;
+		--hero-short-sm-min-height: 20vw;
+		--hero-short-md-min-height: 20vw;
+		--hero-short-lg-min-height: 20vw;
+		--hero-short-xl-min-height: 20vw;
+		--hero-short-xxl-min-height: 20vw;
+
+		/* Hero normal min heights */
+		--hero-normal-xs-min-height: 125vw;
+		--hero-normal-sm-min-height: 100vw;
+		--hero-normal-md-min-height: 55vw;
+		--hero-normal-lg-min-height: 40vw;
+		--hero-normal-xl-min-height: 37.5vw;
+		--hero-normal-xxl-min-height: 35vw;
+
+		/* Hero Tall min heights */
+		--hero-tall-xs-min-height: 150vw;
+		--hero-tall-sm-min-height: 130vw;
+		--hero-tall-md-min-height: 80vw;
+		--hero-tall-lg-min-height: calc(100vh - 88px);
+		--hero-tall-xl-min-height: calc(100vh - 88px); /* 40vw; 42.5vw; */
+		--hero-tall-xxl-min-height: calc(100vh - 88px); /* 40vw; 40vw; */
+
+
+
+
+		/*------------------------------------*\
+			+Modals
+		\*------------------------------------*/
+
+		--modal-transition: var(--transition-property-all) var(--transition-bezier) var(--duration-fast);
+		--modal-loader-bg-color: var(--color-primary);
+		/* --modal-loader-bg: url(../../studio42/img/loader-325-11.svg) $modal-loader-bg-color no-repeat center center; */
+		--modal-loader-bg-blend-mode: normal;
+		--modal-loader-bg-opacity: 0.35;
+
+		--modal-filter-background: var(--color-white);
+		--modal-filter-mix-blend-mode: normal;
+		--modal-filter-opacity: 0.85;
+		--modal-filter-transition: var(--transition-property-colors) var(--transition-bezier) var(--duration-fast);
+
+
+
+		/*------------------------------------*\
+			+Forms
+		\*------------------------------------*/
+
+		--input-height: 2.25em; /* equivalente di 36px su base 16 */
+		/*  2.5em è dimensione ideale = font-size + padding sopra e sotto +*/
+		--input-padding: 0.5em 1.25em 0.5em;
+		/*  serve per centratura in verticale rispetto al campo. spesso un padding top maggiore
+			di quello bottom aiuta a centrare un po' meglio la scritta, che viene centrata
+			rispetto alla baseline e non al sotto delle lettere tipo g,p, q etc.- */
+		--input-border: 1px solid #aaa;
+		--input-border-radius: 5em;
+		--input-background: #f1f2f3;
+		--input-shadow: none;
+		--input-font-family: var(--primary-font-family);
+		--input-font-size: 18px; /* usando 16px si elimina zoom iOS perdendo però la possibilità di fare form grandi usando ad es. classi come fs-h2 */
+		--input-color: var(--paragraph-color);
+		--input-font-weight: 400;
+		--input-line-height: 1;
+		--input-letter-spacing: 0; /* inherit; */
+		--input-transition: var(--transition-property-all) var(--transition-bezier) var(--duration-fast);
+
+		--input-hover-color: var(--color-black);
+		--input-hover-border: 1px solid var(--color-primary);
+		--input-hover-background: #fafafa;
+		--input-hover-shadow: 0 0 0 1px var(--color-primary);
+
+		--input-focus-color: var(--color-black);
+		--input-focus-border: 1px solid var(--color-primary);
+		--input-focus-background: #fafafa;
+		--input-focus-shadow: 0 0 0 1px var(--color-secondary);
+
+		--textarea-min-height: 80px;
+
+		--input-default-gap: 1em;
+		/* Viene applicato un po' a tutti gli elementi di CF7 e Hubspot per dare un margin-bottom agli elementi e averli tutti separati nello stesso modo senza la necessità di classi aggiuntive */
+
+
+		/* Messaggi di Errore */
+			/* Devono essere applicati come regole a CF7 e anche a hubspot o qualsiasi sistema core che usiamo */
+
+			--input-error-tip-font-size: .75em; /* questo valore se diverso da 1 influisce sui valori del padding sotto */
+			--input-error-tip-padding: .5em 1.33em 0; /* Mantenere lo stesso padding left dell'input. Per farlo si fa il valore del pl desiderato diviso il font-size del tip. es. se voglio 1em di padding left con font-size .75em devo scrivere 1.33em */
+			--input-error-tip-color: var(--color-alert); /* colore del bordo dell'input e del messaggio errore */
+
+
+
+		/* Messaggi di Spiegazione */
+			/* Sono tutti i messaggi che stanno sotto un input come nota testuale ma che non sono messaggi di errore. es. le note ai campi che appaiono nei form di WooCommerce */
+
+			--input-bottom-text-font-size: .75em; /* questo valore se diverso da 1 influisce sui valori del padding sotto */
+			--input-bottom-text-padding: .5em 1.33em 0; /* Mantenere lo stesso padding left dell'input. Per farlo si fa il valore del pl desiderato diviso il font-size del tip. es. se voglio 1em di padding left con font-size .75em devo scrivere 1.33em */
+			--input-bottom-text-color: var(--color-body); /* colore del bordo dell'input e del messaggio errore */
+
+
+
+		/* Checkboxes */
+		/* I checkboxes possono essere fatti sia proporzionali al font (tutte dimensioni in em)
+			sia a dimensioni fisse indipendentemente da tipografia (tutte dimensioni in rem)
+			Le prime misure: padding-y, padding-x, checkbox-size, margin-right, devono avere stessa unità di misura
+			In linea di massima
+				- con categorie tutte allo stesso livello, meglio em
+				- con categorie madri e figlie, e font-size diversi tra madri e figlie, meglio rem
+	 	*/
+		/*
+		--checkbox-margin-bottom: 0;
+		// usato margin-bottom e non ad esempio padding perché è già definito così in facet e perché il padding crea problemi di posizionamento in absolute con i checkbox
+		--checkbox-padding-y: 0; // Probabilmente da eliminare
+		--checkbox-padding-x: 0; 0; // Probabilmente da eliminare */
+		--checkbox-checkbox-size: 1.125em; /* Se usato in em dipende da font-size, se in rem sempre uguale */
+		--checkbox-checkbox-margin-right: 0.75em; /* Deve avere stessa unità di misura di size */
+		--checkbox-checkbox-border-radius: 0.25em;
+		--checkbox-checkbox-box-shadow: none;
+		--checkbox-font-size: 0.75em; /* Dimensione default del testo che sta vicino al checkbox, da tenere in em salvo rari casi */
+
+
+
+
+		/*------------------------------------*\
+			+Third Party
+		\*------------------------------------*/
+
+		/* Maps */
+		--sm-map-height: 100vw;
+		--lg-map-height: 75vh;
+
+
+
+
+
+
+
+		/*------------------------------------*\
+			+Is Dark
+		\*------------------------------------*/
+
+		--isdark-body-color: var(--color-isdark-default);
+
+		--isdark-text-selection-color: var(--text-selection-color);
+		--isdark-text-selection-bg: var(--color-primary); /*var(--text-selection-bg); */
+
+		--isdark-anchor-color: var(--color-isdark-interactive);
+		--isdark-anchor-text-decoration: underline solid var(--color-isdark-weak);
+		--isdark-anchor-hover-color:  var(--color-isdark-interactive-hover);
+		--isdark-anchor-hover-text-decoration: underline solid var(--color-isdark-full);
+		--isdark-headings-color: var(--color-isdark-full);
+		--isdark-toptitle-color: var(--color-isdark-default);
+		--isdark-subtitle-color: var(--color-isdark-default);
+		--isdark-paragraph-color: var(--color-isdark-weak);
+		--isdark-lead-color: var(--color-isdark-default);
+		--isdark-li-color: var(--isdark-body-color); /* Ancora da capire come gestirlo nel css */
+
+		--isdark-menu-hv-color: var(--color-isdark-default);
+		--isdark-menu-hv-text-decoration: underline solid var(--color-isdark-default);
+		--isdark-menu-hv-hover-text-decoration: underline solid var(--color-isdark-weak);
+
+		--isdark-input-color: var(--color-isdark-full);
+	}
+}

@@ -1,0 +1,23 @@
+/* Containers */
+
+.container-medium {
+    @apply mx-auto;
+}
+
+@media (min-width:960px) {
+    .container-medium {
+        @apply max-w-screen-sm;
+    }
+}
+
+@media (min-width:1280px) {
+    .container-medium {
+        @apply max-w-screen-md;
+    }
+}
+
+@media (min-width:1600px) {
+    .container-medium {
+        @apply max-w-screen-lg;
+    }
+}

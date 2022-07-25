@@ -1,0 +1,84 @@
+/*------------------------------------*\
+	+B-Lazy Default transition
+\*------------------------------------*/
+
+/* Per i progetti semplici si può usare transizione default, ma essendo composta di un tempo di transizione può creare conflitti con altre proprietà di immagini, soprattutto con i sistemi che fanno il parallasse. In quel caso associarla ad una classe che chiama la transizione */
+
+
+.b-lazy {
+	opacity: 0;
+	transition: var(--transition-button-default);
+	transition-duration: var(--duration-slow);
+}
+
+.b-lazy.b-loaded {
+	opacity: 1;
+}
+
+
+/*------------------------------------*\
+	+Animations
+\*------------------------------------*/
+
+
+
+.fade-in {
+    opacity: 0;
+    will-change: opacity;
+    animation-name: fade-in;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    will-change: opacity;
+    animation-name: fade-out;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.slide-in-left {
+    opacity: 0;
+    will-change: transform, opacity;
+    animation-name: slide-in-left;
+    animation-duration: var(--duration-slow);
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-in-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}

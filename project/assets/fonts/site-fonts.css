@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Name sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(Name_Sans_Display-Light.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Name sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(Name_Sans_Display-SemiBold.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Parabole';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(Parabole.woff2) format('woff2');
+}

@@ -1,0 +1,114 @@
+/*
+
+Componente Photobutton
+===============
+
+Questo componente è identico come logica agli hero con qualche accorgimento
+- nello stesso div dichiari sia _photobutton sia _layer-wrap
+- l'altezza di default del photobutton è definita nelle variabili
+- per altezze particolari nello style si aggiunge la classe _photobutton-XYZ e gli si dà un'altra altezza
+
+NEXT: In futuro si potrà valutare se fare altezze dei photobutton di 2-3 tagli esattamente come succede adesso per hero-short hero-tall
+
+
+
+Ci sono due tipi di photobutton
+
+---------------------------------------
+1 - Photobutton Elastic
+Priorità al contenuto (che li può allargare) e all'adattabilità al lyout che li contiene.
+Possono cioé esserci cioé nella stessa riga due photobutton elastic alti uguali ma con larghezze differenti
+
+Template ==> Photobutton-elastic
+---------------------------------------
+
+In questo caso
+	- contenitore main con classe "_photobutton _layer-wrap _pb-elastic"
+		- _photbutton come classe associa all'oggetto le transizioni e i comportamenti dei layer interni
+		_ _layer-wrap imposta i comportamenti classici dei layer interni
+		- _pb-elastic dà a photobutton altezza minima
+
+		- _layer-visual absolute
+		- _layer-content relative perché deve potersi espandere
+			- Se i contenuti sono agganciati in alto, allora _layer-content non richiede nessun accorgimento.
+			- Se i contenuti invece vanno agganciati al fondo allora _layer-content contiene un altro div "_content-wrap" che deve essere "flex flex-col justify-end" e avere soprattutto classe "h-full" che gli dà la stessa altezza minima del photobutton completo (importante che il _photobutton sia flex, se no non gliela passa)
+
+
+
+---------------------------------------
+2 - Photobutton Fixed Ratio
+Priorità alla forma ratio che rimane sempre al variare della larghezza.
+Se due photobutton fixed ratio hanno larghezze diverse avranno anche altezze diverse
+Se hanno contenuto troppo lungo lo tagliano
+
+Template ==> Photobutton-fixed-ratio
+---------------------------------------
+
+in questo caso
+	- contenitore main con classe "_photobutton _layer-wrap _pb-fixed-ratio"
+		- _photbutton come classe associa all'oggetto le transizioni e i comportamenti dei layer interni
+		_ _layer-wrap imposta i comportamenti classici dei layer interni
+		- _pb-elastic dà a photobutton altezza minima
+
+
+	- _layer-wrap con ratio-x-y
+	- _layer-visual absolute
+	- _layer-content absolute
+Il contenuto viene tagliato se eccede
+
+
+*/
+
+
+
+
+._photobutton {
+	transition: var(--pb-global-transition);
+	display: flex; /* Importante, deve essere flex e non block perché così è in grado di passare ai div interni l'altezza totale e permette quindi di usare h-full dentro il _layer-content*/
+}
+
+._pb-elastic {
+	min-height: var(--pb-min-height);
+}
+
+._pb-fixed-ratio {
+	min-height: 0;
+	height: 0 !important;
+	padding-bottom: var(--pb-ratio);
+}
+
+	._pb-bg, ._pb-picture {
+		transition: var(--pb-global-transition);
+	}
+
+	._pb-filter {
+		background: var(--pb-filter-bg);
+		opacity: var(--pb-filter-opacity);
+		mix-blend-mode: var(--pb-filter-mix-blend-mode);
+		transition: var(--pb-global-transition);
+	}
+
+._photobutton:hover {
+	transform: var(--pb-hover-transform);
+}
+
+	._photobutton:hover ._pb-bg,
+	._photobutton:hover ._pb-picture {
+		transform: var(--pb-hover-bg-transform);
+	}
+
+	._photobutton:hover ._pb-filter {
+		background: var(--pb-hover-filter-bg);
+		opacity: var(--pb-hover-filter-opacity);
+	}
+
+
+
+._photobutton-collection ._layer-filter {
+	background-color: rgba(0,0,0,.15);
+	@apply transition-opacity opacity-100 duration-slow;
+}
+
+._photobutton-collection:hover ._layer-filter {
+	@apply opacity-0;
+}

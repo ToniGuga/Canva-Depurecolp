@@ -1,0 +1,689 @@
+/*------------------------------------*\
+	+Menu Main Rules
+\*------------------------------------*/
+
+
+main 	{ margin-top: var(--main-mt-xs); }
+
+@media (min-width: 375px) {
+	main 	{ margin-top: var(--main-mt-sm); }
+}
+
+@media (min-width: 640px) {
+	main 	{ margin-top: var(--main-mt-md); }
+}
+
+@media (min-width: 960px) {
+	main 	{ margin-top: var(--main-mt-lg); }
+}
+
+@media (min-width: 1280px) {
+	main 	{ margin-top: var(--main-mt-xl); }
+}
+
+
+
+
+
+/* Regole comuni ----- */
+
+.menu-item,
+.menu-item a {
+    @apply inline-flex relative;
+}
+
+.menu-item a {
+	font-family: var(--menu-item-font-family);
+	font-size: var(--menu-item-font-size);
+	padding: var(--menu-item-padding);
+	font-weight: var(--menu-item-font-weight);
+	line-height: var(--menu-item-line-height);
+	color: var(--menu-item-color);
+	text-transform: var(--menu-item-text-transform);
+	text-decoration: var(--menu-item-text-decoration);
+	transition: var(--menu-item-transition);
+}
+
+	.menu-item a:hover {
+		color: var(--menu-item-color);
+		text-decoration: var(--menu-item-text-decoration);
+		background: var(--menu-item-hover-bg);
+	}
+
+	.menu-item.current-menu-item a {
+		font-weight: var(--menu-item-current-font-weight);
+		color: var(--menu-item-current-color);
+		text-decoration: var(--menu-item-current-text-decoration);
+		background: var(--menu-item-current-bg);
+	}
+
+	/* Blocca alcuni comportamenti di hover default sui current */
+	.menu-item.current-menu-item a:hover {
+		font-weight: var(--menu-item-current-font-weight);
+		text-decoration: var(--menu-item-hover-text-decoration);
+		background: var(--menu-item-current-bg);
+	}
+
+
+.menu-item-icon {
+	display: inline-flex;
+	align-items: center;
+}
+
+	.menu-item-icon a {
+		@apply inline-flex;
+		border-radius: var(--menu-item-icon-border-radius);
+		padding: var(--menu-item-icon-padding-xs);
+		color: var(--menu-item-icon-color);
+		transition: var(--menu-item-icon-transition);
+	}
+
+		.menu-item-icon a:hover {
+			color: var(--menu-item-icon-hover-color);
+			background: var(--menu-item-icon-hover-bg);
+		}
+
+		.menu-item-icon a svg {
+			display: block;
+			width: var(--menu-item-icon-svg-size-xs);
+			height: var(--menu-item-icon-svg-size-xs);
+		}
+
+
+	@media (min-width:960px) {
+		.menu-item-icon a {
+			padding: var(--menu-item-icon-padding-lg);
+		}
+		.menu-item-icon a svg {
+			width: var(--menu-item-icon-svg-size-lg);
+			height: var(--menu-item-icon-svg-size-lg);
+		}
+	}
+
+
+
+/*------------------------------------*\
+		Desktop Navigation
+\*------------------------------------*/
+
+/* Contiene
+	- menu-desktop
+	- menu-aux
+*/
+
+.desktop-navigation {
+    @apply w-full z-50 top-0;
+	position: var(--desktop-navigation-position);
+	background: var(--desktop-navigation-bg);
+	border-bottom: var(--desktop-navigation-border-bottom);
+	box-shadow: var(--desktop-navigation-shadow);
+}
+
+	@supports (backdrop-filter: blur(12px)) {
+		.desktop-navigation {
+			backdrop-filter: var(--desktop-navigation-backdrop-filter);
+			background: var(--desktop-navigation-bg-backdrop-filter);
+		}
+	}
+
+
+	/* Desktop Navigation > Menu Desktop ----- */
+
+	.menu-desktop {
+		background: var(--menu-desktop-bg); /* copre il bg .desktop-navigation */
+	}
+
+	.menu-desktop .menu-item a {
+		font-family: var(--menu-desktop-item-font-family);
+		font-size: var(--menu-desktop-item-font-size);
+		padding: var(--menu-desktop-item-padding);
+		font-weight: var(--menu-desktop-item-font-weight);
+		line-height: var(--menu-desktop-item-line-height);
+		color: var(--menu-desktop-item-color);
+		text-transform: var(--menu-desktop-item-text-transform);
+		text-decoration: var(--menu-desktop-item-text-decoration);
+	}
+
+		.menu-desktop .menu-item a:hover {
+			color: var(--menu-desktop-item-hover-color);
+			text-decoration: var(--menu-desktop-item-hover-text-decoration);
+			background: var(--menu-desktop-item-hover-bg);
+		}
+
+		.menu-desktop .menu-item.current-menu-item a {
+			color: var(--menu-desktop-item-current-color);
+			font-weight:  var(--menu-desktop-item-current-font-weight);
+			text-decoration: var(--menu-desktop-item-current-text-decoration);
+			background: var(--menu-desktop-item-current-bg);
+		}
+
+		.menu-desktop .menu-item.current-menu-item a:hover {
+			text-decoration: var(--menu-item-hover-text-decoration);
+			background: var(--menu-desktop-item-current-bg);
+		}
+
+
+	/* Desktop Navigation > Menu Aux ----- */
+
+	.menu-aux {
+		background: var(--menu-aux-bg); /* copre il bg .desktop-navigation */
+	}
+
+	.menu-aux .menu-item a {
+		font-family: var(--menu-aux-item-font-family);
+		font-size: var(--menu-aux-item-font-size);
+		padding: var(--menu-aux-item-padding);
+		font-weight: var(--menu-aux-item-font-weight);
+		line-height: var(--menu-aux-item-line-height);
+		color: var(--menu-aux-item-color);
+		text-transform: var(--menu-aux-item-text-decoration);
+		text-decoration: var(--menu-aux-item-text-decoration);
+	}
+
+		.menu-aux .menu-item a:hover {
+			color: var(--menu-aux-item-hover-color);
+			text-decoration: var(--menu-aux-item-hover-text-decoration);
+			background: var(--menu-aux-item-hover-bg);
+		}
+
+		.menu-aux .menu-item.current-menu-item a {
+			color: var(--menu-aux-item-current-color);
+			font-weight:  var(--menu-aux-item-current-font-weight);
+			text-decoration: var(--menu-aux-item-current-text-decoration);
+			background: var(--menu-aux-item-current-bg);
+		}
+
+		.menu-aux .menu-item.current-menu-item a:hover {
+			text-decoration: var(--menu-item-hover-text-decoration);
+			background: var(--menu-aux-item-current-bg);
+		}
+
+
+/*------------------------------------*\
+	Mobile navigation
+\*------------------------------------*/
+
+.mobile-navigation {
+    @apply w-full z-50 top-0;
+	position: var(--mobile-navigation-position);
+	background: var(--mobile-navigation-bg);
+	border-bottom: var(--mobile-navigation-border-bottom);
+	box-shadow: var(--mobile-navigation-shadow);
+}
+
+
+	@supports (backdrop-filter: blur(12px)) {
+		.mobile-navigation {
+			backdrop-filter: var(--mobile-navigation-backdrop-filter);
+			background: var(--mobile-navigation-bg-backdrop-filter);
+		}
+	}
+
+
+/*------------------------------------*\
+	Hamburger
+\*------------------------------------*/
+
+/* Area menu item-icon */
+/* Sovrascrive lo spazio di default delle icone per il solo hamburger */
+.menu-item-icon-hamburger a {
+	padding: var(--menu-item-hamburger-padding);
+}
+
+	.menu-item-icon-hamburger a:hover {
+		background: transparent; /* Azzera bg hover del menu-item-icon perché hamburger lo ha dentro area di interazione non qui */
+	}
+
+
+	/* Area di interazione menu hamburger */
+
+	.ham-bars-container {
+		@apply flex items-center justify-center transform-gpu;
+		width: var(--hamburger-area-width);
+		height: var(--hamburger-area-width);
+		border-radius: var(--hamburger-area-border-radius);
+		background: var(--hamburger-area-bg);
+		transition: var(--hamburger-area-transition);
+	}
+
+		.ham-bars-container:hover {
+			background: var(--hamburger-area-hover-bg);
+			transform: var(--hamburger-area-hover-transformation);
+		}
+
+			/* Hamburger xs */
+
+			.ham-bars {
+				position: relative;
+				width: var(--ham-bars-width-xs);
+				height: var(--ham-bars-height-xs);
+				border-radius: var(--ham-bars-border-radius);
+				background: var(--ham-bars-bg);
+				transition: var(--ham-bars-transition);
+			}
+
+				.ham-bars::before,
+				.ham-bars::after {
+					position: absolute;
+					content: " ";
+					width: var(--ham-bars-width-xs);
+					height: var(--ham-bars-height-xs);
+					border-radius: var(--ham-bars-border-radius);
+					background: var(--ham-bars-bg);
+					transition: var(--ham-bars-transition);
+				}
+
+				.ham-bars::before {
+					top: calc(-1 * var(--ham-bars-distance-xs));
+				}
+
+				.ham-bars::after {
+					top: var(--ham-bars-distance-xs);
+				}
+
+			/* Hamburger lg */
+
+			@media (min-width:960px) {
+
+			.ham-bars {
+				width: var(--ham-bars-width-lg);
+				height: var(--ham-bars-height-lg);
+			}
+
+				.ham-bars::before,
+				.ham-bars::after {
+					top: calc(-1 * var(--ham-bars-distance-lg));
+					width: var(--ham-bars-width-lg);
+					height: var(--ham-bars-height-lg);
+				}
+
+				.ham-bars::after {
+					top: var(--ham-bars-distance-lg);
+				}
+
+			}
+
+			/* Hamburger Open */
+
+			.hamburger-modal.open .ham-bars {
+				@apply bg-transparent;
+			}
+
+			.hamburger-modal.open .ham-bars::before {
+				transform: rotate(-225deg);
+				top: 0;
+			}
+
+			.hamburger-modal.open .ham-bars::after {
+				transform: rotate(-135deg);
+				top: 0;
+			}
+
+
+
+
+
+/*------------------------------------*\
+	Off Canvas mobile Navigation
+\*------------------------------------*/
+/* Di default appare in slide-in da destra, con top-0 altezza full e overflow-scroll. Qualsiasi altro comportamento si definisce interamente in style-project
+
+Contiene
+	- menu-off-cavas-mobile
+
+*/
+
+
+
+.off-canvas-mobile {
+	@apply fixed top-0 h-full z-50 overflow-y-auto;
+	left: 100%;
+	width: var(--off-canvas-mobile-width);
+	padding: var(--off-canvas-mobile-padding);
+	background: var(--off-canvas-mobile-bg);
+	opacity: var(--off-canvas-mobile-opacity);
+	transition: var(--off-canvas-mobile-transition);
+	box-shadow: var(--off-canvas-mobile-shadow);
+}
+
+.off-canvas-mobile.show {
+	left: var(--off-canvas-mobile-show-left);
+	opacity: var(--off-canvas-mobile-show-opacity);
+}
+
+
+	/* Menu Off-canvas-mobile */
+
+	.menu-off-canvas-mobile {
+		@apply relative z-50 w-full;
+	}
+
+
+			/* Voci menu dentro Off Canvas Mobile */
+			.off-canvas-mobile .menu-item,
+			.off-canvas-mobile .menu-item a {
+				@apply block relative;
+			}
+
+				.off-canvas-mobile .menu-item a {
+					font-family: var(--off-canvas-mobile-item-font-family);
+					font-size: var(--off-canvas-mobile-item-font-size);
+					padding: var(--off-canvas-mobile-item-padding);
+					font-weight: var(--off-canvas-mobile-item-font-weight);
+					line-height: var(--off-canvas-mobile-item-line-height);
+					color: var(--off-canvas-mobile-item-color);
+					text-transform: var(--off-canvas-mobile-item-text-transform);
+					text-decoration: var(--off-canvas-mobile-item-text-decoration);
+				}
+
+					.off-canvas-mobile .menu-item a:hover {
+						color: var(--off-canvas-mobile-item-hover-color);
+						text-decoration: var(--off-canvas-mobile-item-hover-text-decoration);
+						background: var(--off-canvas-mobile-item-hover-bg);
+					}
+
+					.off-canvas-mobile .menu-item.current-menu-item a {
+						color: var(--off-canvas-mobile-item-current-color);
+						font-weight:  var(--off-canvas-mobile-item-current-font-weight);
+						text-decoration: var(--off-canvas-mobile-item-current-text-decoration);
+						background: var(--off-canvas-mobile-item-current-bg);
+					}
+
+					.off-canvas-mobile .menu-item.current-menu-item a:hover {
+						text-decoration: var(--menu-item-hover-text-decoration);
+						background: var(--off-canvas-mobile-item-current-bg);
+					}
+
+
+
+	/* Div Filter che sta sotto Off Canvas mobile quando apri il menu */
+	.nav-layers-mobile {
+		@apply fixed inset-0 w-full h-full;
+		z-index: 49;
+		background: var(--off-canvas-mobile-show-filter-bg);
+		opacity: var(--off-canvas-mobile-show-filter-opacity);
+	}
+
+		@supports (backdrop-filter: blur(12px)) {
+			.nav-layers-mobile {
+				opacity: 1;
+				backdrop-filter: var(--off-canvas-mobile-show-filter-backdrop-filter);
+			}
+		}
+
+
+
+
+/*------------------------------------*\
+	Off Canvas Desktop TUTTO DA FARE
+\*------------------------------------*/
+/* Di default appare in slide-in da destra, con top-0 altezza full e overflow-scroll. Qualsiasi altro comportamento si definisce interamente in style-project */
+
+			.off-canvas-desktop {
+				@apply fixed top-0 h-full z-50 overflow-y-auto;
+				left: 100%;
+				width: var(--off-canvas-desktop-width);
+				padding: var(--off-canvas-desktop-padding);
+				background: var(--off-canvas-desktop-bg);
+				opacity: var(--off-canvas-desktop-opacity);
+				transition: var(--off-canvas-desktop-transition);
+				box-shadow: var(--off-canvas-desktop-shadow);
+			}
+
+			.off-canvas-desktop.show {
+				left: var(--off-canvas-desktop-show-left);
+				opacity: var(--off-canvas-desktop-show-opacity);
+			}
+
+
+				/* Voci menu dentro Off Canvas Mobile */
+				.off-canvas-desktop .menu-item,
+				.off-canvas-desktop .menu-item a {
+					@apply block relative;
+				}
+
+					.off-canvas-desktop .menu-item a {
+						font-family: var(--off-canvas-desktop-item-font-family);
+						font-size: var(--off-canvas-desktop-item-font-size);
+						padding: var(--off-canvas-desktop-item-padding);
+						font-weight: var(--off-canvas-desktop-item-font-weight);
+						line-height: var(--off-canvas-desktop-item-line-height);
+						color: var(--off-canvas-desktop-item-color);
+						text-transform: var(--off-canvas-desktop-item-text-transform);
+						text-decoration: var(--off-canvas-desktop-item-text-decoration);
+					}
+
+						.off-canvas-desktop .menu-item a:hover {
+							color: var(--off-canvas-desktop-item-hover-color);
+							text-decoration: var(--off-canvas-desktop-item-hover-text-decoration);
+							background: var(--off-canvas-desktop-item-hover-bg);
+						}
+
+						.off-canvas-desktop .menu-item.current-menu-item a {
+							color: var(--off-canvas-desktop-item-current-color);
+							font-weight:  var(--off-canvas-desktop-item-current-font-weight);
+							text-decoration: var(--off-canvas-desktop-item-current-text-decoration);
+							background: var(--off-canvas-desktop-item-current-bg);
+						}
+
+						.off-canvas-desktop .menu-item.current-menu-item a:hover {
+							text-decoration: var(--menu-item-hover-text-decoration);
+							background: var(--off-canvas-desktop-item-current-bg);
+						}
+
+
+
+				/* Div Filter che sta sotto Off Canvas mobile quando apri il menu */
+				.off-canvas-overlay {
+					@apply fixed inset-0 w-full;
+					height: 100vh;
+					z-index: 49;
+					background: var(--off-canvas-desktop-show-filter-bg);
+					opacity: var(--off-canvas-desktop-show-filter-opacity);
+				}
+
+					@supports (backdrop-filter: blur(12px)) {
+						.off-canvas-overlay {
+							opacity: 1;
+							backdrop-filter: var(--off-canvas-mobile-show-filter-backdrop-filter);
+							background: var(--off-canvas-mobile-show-filter-bg-backdrop-filter);
+						}
+					}
+
+
+
+
+/*------------------------------------*\
+	+Menu H V
+\*------------------------------------*/
+
+/*
+Sono i menu generici usati come <ul class="menu-* fs-h*">
+Gli li che si trovano prendono
+	- la tipografia dalle variabili per le classi menu-*
+	- il font size dalla classe scelta nell'ul
+	- IN FUTURO: il text align dal contenitore (funziona solo con text-center non legato a nessun breakpoint, quindi no small/medium/large-text-center)
+NOTA: Qui non vengono usate proprietà come flex-direction / flex-wrap etc... perché aumenta la quantità di casi e regole da dare
+*/
+
+.menu-v,
+.menu-h {
+    list-style-type: none;
+    padding-left: 0; /* reset di sicurezza del padding default degli ul */
+}
+
+	.menu-v li,
+	.menu-h li {
+		display: flex;
+		margin-bottom: var(--menu-hv-margin-bottom);
+	}
+
+	.menu-v li:last-child {
+		margin-bottom: 0;
+	}
+
+		.menu-v li a,
+		.menu-h li a {
+            font-family: var(--menu-hv-font-family);
+            font-weight: var(--menu-hv-font-weight);
+            line-height: var(--menu-hv-line-height);
+            color: var(--menu-hv-color);
+			text-decoration: var(--menu-hv-text-decoration);
+            transition: var(--menu-hv-transition);
+            }
+
+		.menu-v li a:hover,
+		.menu-h li a:hover {
+			color: var(--menu-hv-hover-color);
+			text-decoration: var(--menu-hv-hover-text-decoration);
+		}
+
+
+.menu-h li {
+    display: inline-flex;
+    margin-left: 0;
+    margin-right: var(--menu-h-spacing-h);
+}
+
+
+
+/*------------------------------------*\
+	+Menu H V
+\*------------------------------------*/
+
+/*
+Sono i menu generici usati come <ul class="menu-* fs-h*">
+Gli li che si trovano prendono
+	- la tipografia dalle variabili per le classi menu-*
+	- il font size dalla classe scelta nell'ul
+	- IN FUTURO: il text align dal contenitore (funziona solo con text-center non legato a nessun breakpoint, quindi no small/medium/large-text-center)
+NOTA: Qui non vengono usate proprietà come flex-direction / flex-wrap etc... perché aumenta la quantità di casi e regole da dare
+*/
+
+footer .menu-v,
+footer .menu-h {
+    list-style-type: none;
+    padding-left: 0; /* reset di sicurezza del padding default degli ul */
+}
+
+	footer .menu-v li,
+	footer .menu-h li {
+		display: flex;
+		margin-bottom: var(--menu-hv-footer-margin-bottom);
+	}
+
+	footer .menu-v li:last-child {
+		margin-bottom: 0;
+	}
+
+		footer .menu-v li a,
+		footer .menu-h li a {
+            font-family: var(--menu-hv-footer-font-family);
+            font-weight: var(--menu-hv-footer-font-weight);
+            line-height: var(--menu-hv-footer-line-height);
+            color: var(--menu-hv-footer-color);
+			text-decoration: var(--menu-hv-footer-text-decoration);
+            transition: var(--menu-hv-footer-transition);
+            }
+
+		footer .menu-v li a:hover,
+		footer .menu-h li a:hover {
+			color: var(--menu-hv-footer-hover-color);
+			text-decoration: var(--menu-hv-footer-hover-text-decoration);
+		}
+
+
+footer .menu-h li {
+    display: inline-flex;
+    margin-left: 0;
+    margin-right: var(--menu-h-footer-spacing-h);
+}
+
+
+
+
+/*------------------------------------*\
+	+Off Canvas Menus
+\*------------------------------------*/
+
+
+
+/* Off Canvas Desktop */
+
+.off-canvas-desktop {
+    background-color: var(--bg-color-off-canvas-desktop);
+    opacity: var(--opacity-off-canvas-desktop);
+}
+
+.off-canvas-desktop .menu .menu-item,
+.off-canvas-desktop .menu .menu-item a {
+    @apply p-2 text-xl font-bold text-white;
+}
+
+
+/* Mobile */
+
+
+
+/* Hamburger */
+
+@media (min-width:960px) {
+    .menu .menu-item-icon.menu-item-icon-hamburger {
+        @apply hide;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Mobile */
+
+.dropdown {
+    @apply hide;
+}
+
+.menu-off-canvas-mobile .menu-item-has-children>a::before,
+.menu-off-canvas-mobile .menu-item-has-children>a::after {
+    content: "";
+    background-color: var(--color-hamburger);
+    height: 3px;
+    @apply w-4 block absolute transition-all duration-200 ease-in-out;
+    right: 0;
+}
+
+.menu-off-canvas-mobile .menu-item-has-children>a::before {
+    top: 16px;
+    transform: rotate(90deg);
+}
+
+.menu-off-canvas-mobile .menu-item-has-children>a::after {
+    top: 16px;
+}
+
+.menu-off-canvas-mobile .menu-item-has-children.open>a::before {
+    top: 16px;
+    transform: rotate(-225deg);
+}
+
+.menu-off-canvas-mobile .menu-item-has-children.open>a::after {
+    top: 16px;
+    transform: rotate(-135deg);
+}
+
+
+
+
+@media (max-width: 960px) {
+    .dropdown {
+        display: block;
+    }
+}

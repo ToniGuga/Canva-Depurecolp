@@ -1,0 +1,454 @@
+/*------------------------------------*\
+
+Elementi custom Progetto
+
+\*------------------------------------*/
+
+
+
+/*------------------------------------*\
+    Grid
+\*------------------------------------*/
+
+html {
+	background-color: var(--body-bg);
+}
+
+._main__section {
+	@apply px-4 md:px-8 lg:px-12 xl:px-16 xxl:px-24;
+}
+
+
+
+/*------------------------------------*\
+    Animations Transitions
+\*------------------------------------*/
+
+.bg-shrink{
+    will-change: background-size;
+    animation-name: bg-shrink;
+    animation-duration: calc(var(--tempo-unit) * 8);
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes bg-shrink {
+    0% {
+        background-size: 200%;
+    }
+    100% {
+        background-size: 100%;
+    }
+}
+
+
+/*------------------------------------*\
+    Colors Backgrounds
+\*------------------------------------*/
+
+.wave-bottom, .wave-top { }
+/* Non mettere qui position relative se no non è compatibile con i layer degli hero che sono in absolute */
+
+.wave-bottom::after {
+	content:" ";
+	position: absolute;
+	width: 100%;
+	height: 30%;
+	left: 0;
+	bottom: -2px;
+	background: url(../img/cnd-icons/onda-blu-v2-top.svg);
+	background-size: 100%;
+	background-position: center 100%;
+	background-repeat: no-repeat;
+	@apply bg-shrink;
+}
+
+.wave-top::after {
+	content:" ";
+	position: absolute;
+	width: 100%;
+	height: 20%;
+	left: 0;
+	top: -2px;
+	background: url(../img/cnd-icons/onda-blu-v2-bottom.svg);
+	background-size: 100%;
+	background-position: center 0%;
+	background-repeat: no-repeat;
+}
+
+._coind-numbers {
+	@apply fs-huge fw-700 font-secondary bg-clip-text text-transparent bg-gray-200 transition-all;
+	transition-duration: var(--duration-slow);
+	background-image: url(../img/cnd-icons/onda-blu-v2-top.svg);
+	background-size: 200%;
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+}
+
+._coind-numbers:hover {
+	background-size: 2400%;
+}
+
+
+
+/*------------------------------------*\
+    Tipografia
+\*------------------------------------*/
+
+h2,
+.h2 {
+	@apply font-secondary;
+}
+
+/* Liste Check Primo */
+
+.wp-block-list.ul-check li::before,
+.canva-ul.ul-check li::before {
+	background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 25.4.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 108 108' style='enable-background:new 0 0 108 108;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0{display:none;} .st1{display:inline;fill:%23AA89BE;} .st2{display:inline;enable-background:new ;} .st3{fill:%23FFFFFF;} .st4{fill:%239375B2;} .st5{fill:url(%23Tracciato_108_00000135669716674530494100000016017740289973741199_);} %3C/style%3E%3Cg id='Livello_1' class='st0'%3E%3Ccircle id='Ellisse_59' class='st1' cx='54' cy='54' r='53.5'/%3E%3C/g%3E%3Cg id='_x31_' class='st0'%3E%3Cg class='st2'%3E%3Cpath class='st3' d='M63.1,88.7H50.5V40.2l-15,4.7V34.6l26.3-9.4h1.3V88.7z'/%3E%3C/g%3E%3C/g%3E%3Cg id='_x32_' class='st0'%3E%3Cg class='st2'%3E%3Cpath class='st3' d='M76.2,83.4H32.8v-8.6l20.5-21.9c2.8-3.1,4.9-5.8,6.2-8.1c1.3-2.3,2-4.5,2-6.5c0-2.8-0.7-5-2.1-6.6 c-1.4-1.6-3.5-2.4-6.1-2.4c-2.8,0-5.1,1-6.7,2.9c-1.6,2-2.5,4.5-2.5,7.7H31.5c0-3.9,0.9-7.4,2.8-10.6c1.8-3.2,4.4-5.7,7.8-7.5 c3.4-1.8,7.2-2.7,11.5-2.7c6.5,0,11.6,1.6,15.2,4.7s5.4,7.6,5.4,13.3c0,3.1-0.8,6.3-2.4,9.6c-1.6,3.3-4.4,7-8.4,11.4L49,73.3h27.3 V83.4z'/%3E%3C/g%3E%3C/g%3E%3Cg id='_x33_' class='st0'%3E%3Cg class='st2'%3E%3Cpath class='st3' d='M45.6,48.1h6.7c3.2,0,5.6-0.8,7.1-2.4c1.5-1.6,2.3-3.7,2.3-6.4c0-2.6-0.8-4.5-2.3-6c-1.5-1.4-3.6-2.1-6.3-2.1 c-2.4,0-4.4,0.7-6.1,2c-1.6,1.3-2.4,3-2.4,5.2H32c0-3.3,0.9-6.3,2.7-8.9c1.8-2.6,4.3-4.7,7.5-6.2c3.2-1.5,6.7-2.2,10.6-2.2 c6.7,0,12,1.6,15.8,4.8c3.8,3.2,5.7,7.6,5.7,13.3c0,2.9-0.9,5.6-2.7,8s-4.1,4.3-7,5.6c3.6,1.3,6.2,3.2,8,5.7 c1.8,2.6,2.6,5.6,2.6,9.1c0,5.6-2.1,10.1-6.2,13.5c-4.1,3.4-9.5,5.1-16.3,5.1c-6.3,0-11.5-1.7-15.5-5c-4-3.3-6-7.7-6-13.2h12.6 c0,2.4,0.9,4.3,2.7,5.8c1.8,1.5,4,2.3,6.6,2.3c3,0,5.3-0.8,7-2.4c1.7-1.6,2.5-3.7,2.5-6.3c0-6.3-3.5-9.5-10.4-9.5h-6.7V48.1z'/%3E%3C/g%3E%3C/g%3E%3Cg id='_x34_' class='st0'%3E%3Cg class='st2'%3E%3Cpath class='st3' d='M70,61h7.2v10.1H70v13.7H57.4V71.2h-26l-0.6-7.9l26.4-41.8H70V61z M43.4,61h14V38.7l-0.8,1.4L43.4,61z'/%3E%3C/g%3E%3C/g%3E%3Cg id='Livello_6'%3E%3Cg id='Raggruppa_52' transform='translate(0)'%3E%3Cellipse id='Ellisse_5' class='st4' cx='54' cy='54' rx='37.9' ry='37.9'/%3E%3Cg id='Raggruppa_50'%3E%3Cpath id='Tracciato_107' class='st4' d='M54,107.5c-29.6,0-53.5-24-53.5-53.5c0-29.5,24-53.5,53.5-53.5c9.1,0,18.1,2.3,26,6.8 c1.9,1,2.5,3.4,1.5,5.2c-1,1.9-3.4,2.5-5.2,1.5c0,0,0,0,0,0C54.2,1.7,26.3,9.6,14,31.7C1.6,53.8,9.6,81.7,31.7,94 c22.1,12.3,50,4.4,62.3-17.7c3.8-6.8,5.8-14.5,5.8-22.3c0-2.1,1.7-3.8,3.8-3.8c2.1,0,3.8,1.7,3.8,3.8 C107.5,83.5,83.5,107.5,54,107.5z'/%3E%3C/g%3E%3ClinearGradient id='Tracciato_108_00000060012606052002407500000009944131826100927654_' gradientUnits='userSpaceOnUse' x1='-175.3035' y1='297.3795' x2='-177.7655' y2='296.2739' gradientTransform='matrix(17.3654 0 0 -22.356 3141.8428 6700.6621)'%3E%3Cstop offset='0' style='stop-color:%23FFFFFF;stop-opacity:0'/%3E%3Cstop offset='0.122' style='stop-color:%23E2DEE5;stop-opacity:0.18'/%3E%3Cstop offset='0.39' style='stop-color:%23AAA0B3;stop-opacity:0.533'/%3E%3Cstop offset='0.635' style='stop-color:%2381738F;stop-opacity:0.788'/%3E%3Cstop offset='0.846' style='stop-color:%23685779;stop-opacity:0.945'/%3E%3Cstop offset='1' style='stop-color:%23604E72'/%3E%3C/linearGradient%3E%3Cpath id='Tracciato_108' style='fill:url(%23Tracciato_108_00000060012606052002407500000009944131826100927654_);' d='M51.3,71 l16.2,18.4c0,0,33.7-11.5,21.5-51.9L51.3,71z'/%3E%3Cg id='Raggruppa_51' transform='translate(14.379 12.192)'%3E%3Cpath id='Tracciato_109' class='st3' d='M37.6,59.9L20.5,39.3c-1.5-1.9-1.2-4.6,0.7-6.1c1.8-1.4,4.4-1.2,5.9,0.5l11.3,13.6 l33.2-29.7c1.8-1.6,4.5-1.4,6.1,0.3s1.4,4.5-0.3,6.1L37.6,59.9z'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+
+/*------------------------------------*\
+    UI
+\*------------------------------------*/
+
+.arrow-after {
+	@apply relative inline-block;
+}
+
+	.arrow-after::after {
+		content: " ";
+		background-image: var(--icon-arrow-right-primary);
+		background-size: 100%;
+		background-repeat: no-repeat;
+		background-position: center;
+		display: block;
+		position: absolute;
+		width: 1.375em;
+		height: 1.375em;
+		top: 0;
+		right: 0;
+		margin-right: -2.25em;
+		transition: var(--transition-anchor-default);
+	}
+
+	.arrow-after:hover::after {
+		margin-right: -2.75em;
+	}
+
+
+
+
+/*------------------------------------*\
+    Menu
+\*------------------------------------*/
+
+.nav-desktop-curtain-nav {
+	@apply flex-col;
+}
+
+	.nav-desktop-curtain-nav a {
+		padding: .5rem;
+	}
+
+
+/*------------------------------------*\
+	Pre-footer CTA
+\*------------------------------------*/
+
+body.page-id-326 ._pre-footer-cta {
+	display: none;
+}
+
+
+
+/*------------------------------------*\
+	Home Page
+\*------------------------------------*/
+
+
+._home-box-trattamento-aria {
+	@apply p-8 md:p-12 xl:p-16 xxl:p-20 shadow-xl rounded-xl bg-gray-100;
+	@apply mb-16 !important;
+}
+
+@supports (backdrop-filter: blur(24px)) {
+	._home-box-trattamento-aria {
+		backdrop-filter: blur(24px);
+		background: rgba(240, 245, 249, .55);
+	}
+}
+
+
+._menu-trattamento-acqua {}
+
+	._menu-trattamento-acqua li {
+		transition: var(--transition-anchor-default); /* serve per il background che cambia */
+		@apply hover:bg-gray-100 border-b-2 border-primary;
+	}
+
+		._menu-trattamento-acqua li a {
+			text-decoration: underline solid transparent;
+			transition: var(--transition-anchor-default);
+			@apply relative py-2 fw-300 lh-11 transform-gpu hover:translate-x-2 flex items-center gap-4;
+		}
+
+		._menu-trattamento-acqua li a::before {
+			content: " ";
+			background-image: var(--icon-arrow-right);
+			background-size: 100%;
+			@apply w-6 h-6 block;
+		}
+
+			._menu-trattamento-acqua li a:hover {
+				text-decoration: underline solid transparent;
+			}
+
+
+
+
+._control-technology-integration {
+	font-size: 14vw;
+	margin-bottom: -16vw !important;
+	line-height: .91;
+	@apply text-primary fw-400 relative z-10;
+}
+
+@media (min-width:960px) {
+	._control-technology-integration {
+		font-size: 8.5vw;
+		margin-bottom: -9vw !important;
+	}
+}
+
+
+._home-settori-wrap { }
+
+	._home-settori-layer-bg {
+		@apply absolute;
+	}
+
+	._home-settori-layer-content {
+		@apply relative w-full top-32 mb-32 xxl:top-48 xxl:mb-48;
+	}
+
+		._home-settori-layer-content .wp-block-column {
+			@apply col-span-10 col-start-2 lg:col-span-6 lg:col-start-6;
+		}
+
+			._home-settori-content-wrap {
+				@apply p-8 md:p-12 lg:p-16 xxl:p-20 shadow-xl rounded-xl bg-gray-100;
+			}
+
+			@supports (backdrop-filter: blur(24px)) {
+				._home-settori-content-wrap {
+					backdrop-filter: blur(24px);
+					/* background: rgba(240, 245, 249, .65); bg-gray-100 */
+					background: rgba(255, 255, 255, .65); /* bg-white */
+				}
+			}
+
+
+
+
+
+/*------------------------------------*\
+    Trattamenti
+\*------------------------------------*/
+
+._trattamento-section-01 {
+	@apply py-12 relative wave-top;
+}
+
+	._trattamento-section-01 ._row-1 {
+		@apply items-center;
+	}
+
+
+
+._trattamento-section-case-history {
+	@apply py-12;
+}
+
+
+	._trattamento-section-case-history ._query-case-history {
+		@apply grid grid-cols-1 md:grid-cols-2 gap-4;
+	}
+
+
+._trattamento-section-impianti {
+	@apply py-12;
+}
+
+	._trattamento-section-impianti ._query-impianti {
+		@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+	}
+
+
+._trattamento-section-settori {
+	@apply py-12;
+}
+
+	._trattamento-section-settori ._query-settori {
+		@apply grid grid-cols-2 gap-8 lg:grid-cols-4;
+	}
+
+
+
+/*------------------------------------*\
+    Card Settori
+\*------------------------------------*/
+
+
+
+
+/*------------------------------------*\
+    Settori
+\*------------------------------------*/
+
+
+._settore-section-why {
+	@apply py-16;
+}
+
+
+	._settore-section-why ._row-1 {
+		@apply mb-8;
+	}
+
+._settore-lista-impianti {
+	@apply py-16;
+}
+
+	._settore-lista-impianti ._row-1 {
+		@apply mb-12;
+	}
+
+
+._settore-case-history {
+	@apply py-16;
+}
+
+
+
+
+
+
+/*------------------------------------*\
+    Impianti
+\*------------------------------------*/
+
+/* Riduce il titolo del 12% per i post con parole molto lunghe */
+body.postid-1115 ._hero-impianto .fs-h2, /* Demineralizzazione */
+body.postid-1164 ._hero-impianto .fs-h2 /* Elettrocompostaggio */
+{
+	font-size: 1.75rem !important;
+}
+
+
+._hero-impianto ._col-2 p:first-of-type {
+	@apply fs-h4 text-primary;
+}
+
+._impianto-image {
+	@apply pt-0 pb-12;
+}
+
+._impianto-descrizione-1,
+._impianto-descrizione-2,
+._impianto-fascia-2,
+._impianto-tipologie,
+._impianto-ch,
+._impianto-lista-settori {
+	@apply py-12;
+}
+
+
+	._impianto-descrizione-1 ._row-1 ._col-1 {
+		@apply col-span-12 px-8 md:px-12 lg:col-span-5 lg:px-0 xl:col-span-5 xl:pl-0 xl:pr-16;
+	}
+
+		._impianto-descrizione-1 ._row-1 figure,
+		._impianto-descrizione-2 ._row-1 figure,
+		._impianto-fascia-2 ._row-1 figure {
+			@apply rounded-md overflow-hidden;
+		}
+
+	._impianto-descrizione-1 ._row-1 ._col-2 {
+		@apply col-span-12 px-8 mt-16 md:px-12 lg:col-span-6 lg:col-start-7 lg:mt-0 lg:px-0 xl:col-span-7 xl:col-start-auto ;
+	}
+
+		._impianto-descrizione-1 ._row-1 ._col-2 h2,
+		._impianto-descrizione-1 ._row-1 ._col-2 h3,
+		._impianto-descrizione-1 ._row-1 ._col-2 h4 {
+			@apply mt-12;
+		}
+
+
+
+		._impianto-lista-settori {}
+
+			._impianto-title-settori {
+				max-width: 16ch;
+			}
+
+		._impianto-lista-settori ._row-1 ._col-1 {
+			@apply col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-5;
+		}
+
+		._impianto-lista-settori ._row-1 ._col-2 {
+			@apply col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-7;
+		}
+
+
+
+
+
+._impianto-tipologie { }
+
+	._impianto-tipologie-title {
+		@apply fs-h3 mb-8 text-secondary;
+	}
+
+		._impianto-tipologia-img {
+			@apply rounded-md overflow-hidden mb-8;
+		}
+
+		._impianto-tipologia-title {
+			@apply fs-h3 mb-8 h-12;
+		}
+
+
+._impianto-ch { }
+
+	._impianto-title-ch {
+		@apply fs-h3 text-secondary mb-1;
+	}
+
+	._impianto-query-ch-wrap {
+		@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+	}
+
+
+._impianto-lista-settori { }
+
+	._impianto-lista-settori ._row-1 { }
+
+		._impianto-title-settori {
+			@apply fs-h3 mb-1 text-secondary;
+		}
+
+		._impianto-query-settori-wrap {
+			@apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8;
+		}
+
+
+
+/*------------------------------------*\
+    Card Case History
+\*------------------------------------*/
+
+._ch-title {
+	color: var(--color-secondary);
+	text-decoration: underline solid var(--color-primary);
+}

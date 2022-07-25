@@ -1,0 +1,199 @@
+/*------------------------------------*\
+		Grid Spacing globali
+		del progetto
+\*------------------------------------
+
+Qui si inseriscono tutte le caratteristiche che tengono in piedi il grid e lo spacing.
+Serve principalmente per gestire _row e _column sia quando le scriviamo con le nostre classi,
+sia quando sono inserite tramite be di wordpress con le calssi di WP
+
+Regole di base:
+- tutti i gutter e le spaziature dovrebbero essere in rem
+- tramite il rem è possibile avere queste spaziature e tutte le classi di Tailwind allineate come valori es px-4 deve corrispondere al gutter delle colonne se sono espresse con px-4
+- i rem però a loro volta sono responsive, come dichiarato nelle variabili progetto per ogni singolo breakpoint
+
+*/
+
+
+/*------------------------------------*\
+		Screens
+\*------------------------------------*/
+
+.max-w-screen-xs-half 	{ max-width: calc(var(--screen-xs) / 2); }
+.max-w-screen-sm-half 	{ max-width: calc(var(--screen-sm) / 2); }
+.max-w-screen-md-half 	{ max-width: calc(var(--screen-md) / 2); }
+.max-w-screen-lg-half 	{ max-width: calc(var(--screen-lg) / 2); }
+.max-w-screen-xl-half 	{ max-width: calc(var(--screen-xl) / 2); }
+.max-w-screen-xxl-half 	{ max-width: calc(var(--screen-xxl) / 2); }
+
+
+
+
+/*------------------------------------*\
+		Main
+\*------------------------------------
+
+
+I _row e _col sono ancora in flex e li usiamo solo per lo sviluppo, in futuro diventeranno in grid pure loro.
+
+I wp-columns e wp_column sono invece in grid, su base 12 fissa per tutti, data da default in css.
+In ogni momento si possono comunque aggiungere classi sia a wp-columns che wp_column per cambiare la base del grid (es. da 12 a 4) e le singole larghezze delle colonne.
+
+
+Abbiamo il main non ha nessun padding
+Dentro il main ci sono tanti div _main__section, questi hanno di default
+- un px che non fa arrivare i contenuti a bordo viewport, espresso in % o in rem, responsive.
+- un margin-bottom che spinge la sezione successiva un minimo sotto, se non diversamente specificato
+
+Dentro ogni _main__section ci sono
+- _row. (in flex) se li programmiamo noi
+- wp-columns (in grid) se si inseriscono da be wp
+Tutti i _row / wp-columns che siano direttamente figli di _main__section hanno di default:
+- mx-auto
+- max-width espresso da variabile default, a meno che non abbiano controregola con max-w di altro tipo, volendo, anche se non è di serie, si può dare max-width responsive (come con i container di diverse dimensioni e scatti), ma si fa in style-progetto
+
+*/
+
+
+/* Questi sono tutti i div figli diretti del main */
+._main__section {
+	@apply px-4 md:px-6 lg:px-12;
+	padding-top: var(--gap-default);
+	/* padding-bottom: var(--gap-default); Non si mette padding-bottom perché c'è già il margin-bottom del wp-block-columns */
+}
+
+
+	.wp-block-columns,
+	._row {
+		max-width: var(--row-max-width);
+		@apply mx-auto;
+	}
+
+
+
+/*------------------------------------*\
+		Sistemi _row/_col
+		e wp-columns/wp-column
+\*------------------------------------
+
+/* Sistema _row _col ---------
+E' basato su flex, tutte le col hanno padding = gap di default, tutte le row dentro le col hanno margin negativo = gap come da default di sistemi tipo codyhouse, foundation, bootstrap.
+Lo usiamo ormai solo per programmazione.
+*/
+
+
+._row {
+	/* background-color: blanchedalmond; */
+	display: flex;
+	flex-wrap: wrap;
+}
+
+	._col {
+		padding: var(--gutter-default);
+		@apply w-full;
+		/* background-clip: content-box;
+		background-color: var(--color-secondary-100) !important; */
+		/* border: 1px dotted blue;
+		box-sizing: border-box; */
+	}
+
+		._col > *:last-child {
+			@apply mb-0;
+		}
+
+		._col ._row {
+			margin: 0 calc(var(--gutter-default) * -1);
+		}
+
+
+/* Sistema _wp-columns _wp-column  ---------
+E' basato su grid, in base 12 per tutto così è univoco in qualsiasi breakpoint e si adatta ai layout dei grafici.
+Le colonne non hanno nessun padding e i row-w-100 che contengono il tutto hanno un minimo padding-y dato dal var(--gap-default)
+*/
+
+
+.wp-block-columns {
+	/* background-color: blanchedalmond; */
+	@apply grid grid-cols-12;
+	gap: var(--gap-default);
+	margin-bottom: var(--gap-default);
+}
+
+		.wp-block-column  > *:last-child {
+			@apply mb-0;
+		}
+
+
+
+
+/*------------------------------------*\
+		Ratio
+\*------------------------------------*/
+
+
+@layer utilities {
+
+    @variants responsive {
+		.ratio-1-2 {
+            padding-bottom: 200%;
+			height: 0 !important;
+			overflow: hidden;
+        }
+
+		.ratio-9-16 {
+            padding-bottom: calc(16 / 9 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+
+		.ratio-4-5 {
+            padding-bottom: calc(5 / 4 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+
+        .ratio-1-1 {
+            padding-bottom: 100%;
+			height: 0 !important;
+			overflow: hidden;
+        }
+        .ratio-4-3 {
+            padding-bottom: calc(3 / 4 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+        .ratio-3-2 {
+            padding-bottom: calc(2 / 3 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+        .ratio-16-9 {
+            padding-bottom: calc(9 / 16 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+        .ratio-2-1 {
+            padding-bottom: calc(1 / 2 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+		.ratio-24-10 {
+            padding-bottom: calc(10 / 24 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+        /* .ratio-full-hd {
+            padding-top: calc(1080 / 1920 * 100%);
+        } */
+        .ratio-din-a-h {
+            padding-top: calc(210 / 297 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+        .ratio-din-a-v {
+            padding-top: calc(297 / 210 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+    }
+}

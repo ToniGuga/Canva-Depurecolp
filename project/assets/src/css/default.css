@@ -1,0 +1,44 @@
+@layer base {
+    html {
+        @apply bg-black;
+        scroll-behavior: smooth;
+    }
+    body {
+        @apply bg-white;
+    }
+    figure {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    img {
+        display: inline-block;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* Sostituisce hidden quando si usa facetwp */
+
+@responsive {
+    .hide {
+        @apply hidden;
+    }
+}
+
+
+/*------------------------------------*\
+    Impostazioni WP su fe
+\*------------------------------------*/
+
+#wpadminbar{
+	position: fixed !important;
+	top: auto !important;
+	bottom: 0;
+}

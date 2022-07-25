@@ -1,0 +1,10 @@
+.DS_Store
+desktop.ini
+*.sass-cache*
+*.log
+node_modules/
+.vscode/
+.vscode/ftp*
+*frontend.min*
+*frontend.min*
+# style.css

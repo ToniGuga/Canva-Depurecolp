@@ -1,0 +1,117 @@
+/*----------------------------------- *\
+			Istruzioni
+\*----------------------------------- */
+
+/*
+Il nuovo metodo di isdark cambia il valore delle variabili dei vari oggetti quando sono dentro un riquadro con la classe isdark.
+Se dentro la classe isdark c'è poi una classe islight, vince su isdark perché viene dichiarata dopo.
+*/
+
+
+/*----------------------------------- *\
+			Isdark
+\*----------------------------------- */
+
+.isdark {
+	--boby-color: var(--isdark-body-color);
+}
+
+.isdark::selection {
+	--text-selection-color: var(--isdark-text-selection-color);
+	--text-selection-bg: var(--isdark-text-selection-bg);
+}
+
+.isdark p > a,
+.isdark span > a,
+.isdark *:not(nav) li > a {
+	--anchor-color: var(--isdark-anchor-color);
+	--anchor-text-decoration: var(--isdark-anchor-text-decoration);
+}
+
+.isdark p > a:hover,
+.isdark span > a:hover,
+.isdark *:not(nav) li > a:hover {
+	--anchor-hover-color: var(--isdark-anchor-hover-color);
+	--anchor-hover-text-decoration: var(--isdark-anchor-hover-text-decoration);
+}
+
+.isdark h1, .isdark h2, .isdark h3, .isdark h4, .isdark h5, .isdark h6,
+.isdark	.huge, .isdark .h1, .isdark .h2, .isdark .h3, .isdark .h4, .isdark .h5, .isdark .h6, .isdark .h7 {
+	--headings-color: var(--isdark-headings-color);
+}
+
+.isdark ._toptitle {
+	--toptitle-color: var(--isdark-toptitle-color);
+}
+
+.isdark ._subtitle {
+	--subtitle-color: var(--isdark-subtitle-color);
+}
+
+.isdark p {
+	--paragraph-color: var(--isdark-paragraph-color);
+}
+
+.isdark .lead {
+	--lead-color: var(--isdark-lead-color);
+}
+
+.isdark .menu-v li a,
+.isdark .menu-h li a {
+	--menu-hv-color: var(--isdark-menu-hv-color);
+	--menu-hv-text-decoration: var(--isdark-menu-hv-text-decoration);
+}
+
+.isdark .menu-v li a:hover,
+.isdark .menu-h li a:hover {
+	--menu-hv-hover-color: var(--isdark-menu-hv-color);
+	--menu-hv-hover-text-decoration: var(--isdark-menu-hv-text-decoration);
+}
+
+
+
+/*  Isdark Buttons  ------------------------------------*/
+
+.isdark .button {
+	background: var(--isdark-button-background);
+	color: var(--isdark-button-color);
+	border-color: var(--isdark-button-border-color);
+}
+
+.isdark .button:hover {
+	background: var(--isdark-button-hover-background);
+	color: var(--isdark-button-hover-color);
+	border-color: var(--isdark-button-hover-border-color);
+}
+
+.isdark .button.hollow {
+	background: var(--isdark-button-hollow-background);
+	color: var(--isdark-button-hollow-color);
+	border-color: var(--isdark-button-hollow-border-color);
+}
+
+.isdark .button.hollow:hover {
+	background: var(--isdark-button-hollow-hover-background);
+	color: var(--isdark-button-hollow-hover-color);
+	border-color: var(--isdark-button-hollow-hover-border-color);
+}
+
+.isdark .button.hollow:hover .text-wrapper * {
+	color: var(--isdark-button-hollow-hover-color);
+}
+
+
+
+/*  Isdark Forms  ------------------------------------*\
+
+/* Sovrascrive i valori di default dei browser per le label quando noi mettiamo un form su fondo isdark */
+
+.isdark label {
+	color: var(--isdark-body-color);
+}
+
+
+
+/*----------------------------------- *\
+		Islight
+\*----------------------------------- */

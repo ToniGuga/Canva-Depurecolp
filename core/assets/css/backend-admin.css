@@ -1,0 +1,718 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Overpass:ital,wght@0,400;1,400;1,700&display=swap'); */
+
+
+/**
+------------------------------------
+Style Admin v 1.0.0
+------------------------------------
+*/
+
+
+/*------------------------------------*\
+    Core variables
+\*------------------------------------*/
+
+
+/* Variables ---------------- */
+
+:root {
+    --font-theme: "Overpass", "Helvetica", sans-serif;
+    --font-mono: "Cutive Mono", monospace;
+    --color-primary: #000;
+    --color-accent: #1e88e5;
+    --color-headings: #000;
+    --color-light: #fff;
+}
+
+html,
+body {
+    /* font-family: var(--font-theme); */
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+a {
+    color: var(--color-accent);
+}
+
+
+/*------------------------------------*\
+    Gutenberg
+\*------------------------------------*/
+
+.wp-block {
+    max-width: 90% !important;
+}
+
+.wp-block-columns .wp-block {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/*------------------------------------*\
+    Canva be blocks settings
+\*------------------------------------*/
+
+.canva-wp-block {
+    border: 1px solid #aaaaaa;
+    flex-wrap: wrap;
+}
+
+.canva-wp-block .info {
+    background: #f0f0f0;
+    /* Grey-lighter */
+}
+
+
+/* WP backend inspector header with block title */
+
+.block-editor-block-card {
+    background: #f0f0f0;
+    /* Grey-lighter */
+}
+
+
+/* Backend rows border */
+
+.wp-block-columns {
+    border: 1px solid #44dddd;
+}
+
+
+/* Backend columns border */
+
+.wp-block-column {
+    border: 1px solid #ffddff;
+}
+
+.wp-block-columns .wp-block-column {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+/* Backend standard image block */
+
+.wp-block-image .components-resizable-box__container {
+	background: #eeeeee;
+}
+
+
+
+
+/*------------------------------------*\
+    Utility Classes
+\*------------------------------------*/
+
+
+/* ------ Display Classes ------ */
+
+.canva-block 			{ display: block;}
+.canva-inline-block 	{ display: inline-block;}
+.canva-flex 			{ display: flex;}
+.canva-inline-flex 		{ display: inline-flex;}
+.canva-hide 			{ display: none !important;}
+.canva-flex-1 			{ flex: 1;}
+.canva-flex-wrap 		{ flex-wrap: wrap;}
+
+
+/* ------ Visibilità blocchi Row-w-100 ------ */
+
+.canva-wp-block.hide {
+	opacity: .25;
+	filter: brightness(.85);
+}
+
+.canva-wp-block.hide.staff-preview {
+	opacity: 1;
+	filter: none;
+	box-shadow: 0 0 0 2px #ffed4a;
+}
+
+
+/* ------ Typography ------ */
+
+.canva-font-system {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.canva-font-theme {
+    font-family: var(--font-theme);
+}
+
+.canva-fs-h1 {
+    font-size: 2.44rem !important;
+}
+
+.canva-fs-h2 { font-size: 1.95rem !important; }
+.canva-fs-h3 { font-size: 1.56rem !important; }
+.canva-fs-h4 { font-size: 1.25rem !important; }
+.canva-fs-h5 { font-size: 1.125rem !important; }
+
+/* Canva Wp backend values */
+
+.canva-fs-small 	{ font-size: .9375rem !important; }
+.canva-fs-xsmall 	{ font-size: .875rem !important; }
+.canva-fs-xxsmall 	{ font-size: .7rem !important;}
+
+.canva-fw-300 		{ font-weight: 300; }
+.canva-fw-400 		{ font-weight: 400; }
+.canva-fw-700 		{ font-weight: 700; }
+
+.canva-lh-10 		{ line-height: 1 !important; }
+.canva-lh-11 		{ line-height: 1.1 !important; }
+.canva-lh-12 		{ line-height: 1.2 !important; }
+.canva-lh-14 		{ line-height: 1.4 !important; }
+
+.canva-text-left {
+    text-align: left;
+}
+
+.canva-text-center {
+    text-align: center;
+}
+
+.canva-uppercase {
+    text-transform: uppercase;
+}
+
+
+/* ------ Margin ------ */
+
+.canva-m-0 {
+    margin: 0 !important;
+}
+
+/* To be used to reset spacing in backend */
+
+.canva-mt-0 	{ margin-top: 0 !important; }
+.canva-mt-1 	{ margin-top: .25rem !important; }
+.canva-mt-2 	{ margin-top: .5rem !important; }
+.canva-mt-3 	{ margin-top: .75rem !important; }
+.canva-mt-4 	{ margin-top: 1rem !important; }
+.canva-mt-6 	{ margin-top: 1.5rem !important; }
+.canva-mt-8 	{ margin-top: 2rem !important; }
+
+.canva-mb-0 	{ margin-bottom: 0 !important; }
+.canva-mb-1 	{ margin-bottom: .25rem !important; }
+.canva-mb-2 	{ margin-bottom: .5rem !important; }
+.canva-mb-3 	{ margin-bottom: .75rem !important; }
+.canva-mb-4 	{ margin-bottom: 1rem !important; }
+.canva-mb-6 	{ margin-bottom: 1.5rem !important; }
+.canva-mb-8 	{ margin-bottom: 2rem !important; }
+
+.canva-ml-0 	{ margin-left: 0 !important; }
+.canva-ml-1 	{ margin-left: .25rem !important; }
+.canva-ml-2 	{ margin-left: .5rem !important; }
+.canva-ml-3 	{ margin-left: .75rem !important; }
+.canva-ml-4 	{ margin-left: 1rem !important; }
+.canva-ml-6 	{ margin-left: 1.5rem !important; }
+
+
+/* ------ Padding ------ */
+
+.canva-p-0 		{ padding: 0 !important; }
+.canva-p-1 		{ padding: .25rem !important; }
+.canva-p-2 		{ padding: .5rem !important; }
+.canva-p-3 		{ padding: .75rem !important; }
+.canva-p-4 		{ padding: 1rem !important; }
+
+
+/* ------ Width ------ */
+
+.canva-width-2 			{ width: .5rem !important;}
+.canva-width-3 			{ width: .75rem !important;}
+.canva-width-4 			{ width: 1rem !important;}
+.canva-width-6 			{ width: 1.5rem !important;}
+.canva-width-8 			{ width: 2rem !important;}
+.canva-width-12 		{ width: 3rem !important;}
+.canva-width-16 		{ width: 4rem !important;}
+.canva-width-24 		{ width: 6rem !important;}
+.canva-width-32 		{ width: 8rem !important;}
+.canva-max-width-320 	{ max-width: 320px;}
+.canva-max-width-480 	{ max-width: 480px;}
+
+
+/* ------ Colors ------ */
+
+.canva-bg-primary 			{ background: var(--color-primary); }
+.canva-bg-secondary 		{ background: var(--color-secondary); }
+.canva-bg-white 			{ background: #ffffff !important; }
+.canva-bg-grey-lightest 	{ background: #f8f8f8 !important; }
+.canva-bg-grey-lighter 		{ background: #f0f0f0 !important; }
+.canva-bg-grey-light 		{ background: #d9d9d9 !important; }
+.canva-bg-grey 				{ background: #bbbbbb !important; }
+.canva-bg-grey-dark 		{ background: #777777 !important; }
+.canva-bg-grey-darker 		{ background: #595d61 !important; }
+.canva-bg-grey-darkest 		{ background: #22292f !important; }
+.canva-bg-black 			{ background: #000000 !important; }
+.canva-color-primary 		{ color: var(--color-primary); }
+.canva-color-secondary 		{ color: var(--color-secondary); }
+.canva-color-headings 		{ color: var(--color-headings); }
+.canva-color-white 			{ color: #ffffff; }
+.canva-color-grey-lightest 	{ color: #f8f8f8; }
+.canva-color-grey-lighter 	{ color: #f0f0f0; }
+.canva-color-grey-light 	{ color: #d9d9d9; }
+.canva-color-grey 			{ color: #bbbbbb; }
+.canva-color-grey-dark 		{ color: #777777; }
+.canva-color-grey-darker 	{ color: #595d61; }
+.canva-color-grey-darkest 	{ color: #22292f; }
+.canva-color-black 			{ color: #000000; }
+.canva-color-success 		{ color: #51d882; }
+.canva-color-warning 		{ color: #ffed4a; }
+.canva-color-alert 			{ color: #e3342f; }
+
+
+/* ------ Is Dark ------ */
+
+.canva-isdark *:not([class*="canva-color-"]) {
+    color: #ffffff;
+}
+
+
+/* ------ Reset WP backend settings ------ */
+
+.canva-mt-0>p {
+    margin-top: 0 !important;
+}
+
+
+/**[class*="canva-fs-"] > p {
+    font-size: 1em;
+}
+*/
+
+
+
+
+/*------------------------------------*\
+    Login
+\*------------------------------------*/
+
+body.login div#login h1 a {
+    padding-bottom: 0px;
+    height: 120px;
+    /*width: 320px;
+    background-size: 320px;*/
+}
+
+#login {
+    margin: auto;
+    padding: 4% 0 0;
+    /*width: 320px;*/
+}
+
+
+/*------------------------------------*\
+    Backend setting Canva theme
+\*------------------------------------*/
+
+#titlediv {
+    margin-bottom: 2rem;
+}
+
+
+/* Main title */
+
+#titlediv #title {
+    font-size: 2.5em !important;
+}
+
+
+/* Info block titles in backend */
+
+#poststuff h2 {
+    font-size: 16px !important;
+    /* background-color: #f5f5f5 !important; */
+}
+
+#poststuff h3 {
+    font-size: 24px !important;
+    line-height: 1.4 !important;
+    font-weight: 300 !important;
+    color: #666666 !important;
+}
+
+
+/* Second level titles in ACF info blocks */
+
+.acf-field [data-name="group_description"] .acf-input .mce-edit-area {
+    height: 140px !important;
+}
+
+.acf-field [data-name="publication_cover"] {
+    float: left !important;
+    width: 20% !important;
+}
+
+.acf-field [data-name="publication_title"],
+.acf-field [data-name="publication_subtitle"] {
+    float: right !important;
+    width: 60% !important;
+}
+
+.acf-field [data-name="publication_description"] {
+    float: right !important;
+    height: 300px !important;
+    margin-top: 21px !important;
+    width: 60% !important;
+}
+
+.acf-field [data-name="publication_description"] .mce-edit-area {
+    height: 140px !important;
+}
+
+.acf-field [data-name="publication_description"] .mce-edit-area iframe {
+    height: 140px !important;
+}
+
+.acf-field [data-name="publication_attachment"] {
+    float: left !important;
+    width: 30% !important;
+}
+
+
+
+/* Create ACF page */
+
+.acf-field-object.open>.handle {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    text-shadow: none !important;
+}
+
+
+/* Stuff */
+
+.acf-flexible-content .layout .acf-fc-layout-handle {
+    font-size: 24px;
+}
+
+.acf-flexible-content .layout .acf-fc-layout-order {
+    background: transparent;
+    font-size: 24px;
+    color: var(--color-primary);
+}
+
+.acf-fields.-border {
+    border: none !important;
+}
+
+.acf-admin-toolbar .acf-tab.is-active {
+    border-color: var(--color-accent);
+}
+
+
+/* Switch */
+
+.acf-switch .acf-switch-on {
+    text-shadow: none !important;
+}
+
+.acf-switch.-on {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+}
+
+.acf-switch.-on {
+    background-color: var(--color-primary) !important;
+}
+
+.acf-switch.-on .acf-switch-slider {
+    border-color: var(--color-primary) !important;
+}
+
+.acf-switch:hover,
+.acf-switch.-focus,
+.acf-switch:hover .acf-switch-slider,
+.acf-switch.-focus .acf-switch-slider {
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+}
+
+
+/* Button groups */
+
+.acf-button-group label.selected {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+}
+
+.acf-button-group label.selected:hover {
+    background: var(--color-primary);
+}
+
+.acf-row td {
+    border-top-color: #bbb !important;
+}
+
+.acf-fields>.acf-tab-wrap .acf-tab-group {
+    border-top: none;
+}
+
+.acf-fields>.acf-tab-wrap {
+    background-color: #fff;
+}
+
+.acf-table tbody tr:nth-of-type(2n) td,
+.acf-table tbody tr:nth-of-type(2n) td.acf-fields>.acf-tab-wrap,
+.acf-table tbody tr:nth-of-type(2n) td.acf-fields>.acf-tab-wrap .acf-tab-group li.active a {
+    background-color: #f4f4f4;
+}
+
+.acf-table tbody tr:nth-of-type(2n) td.acf-fields>.acf-tab-wrap .acf-tab-group li a {
+    background-color: #ebebeb;
+}
+
+.acf-accordion .acf-accordion-title {
+    transition: .2s linear;
+}
+
+.acf-accordion.-open {
+    border: 2px solid var(--color-primary) !important;
+    border-left-width: 1px !important;
+    border-right-width: 1px !important;
+}
+
+.acf-accordion .acf-accordion-title:hover,
+.acf-accordion.-open .acf-accordion-title {
+    background-color: var(--color-primary) !important;
+    color: var(--color-light);
+}
+
+
+/* Canva menu */
+
+.canva-menu-repeater .acf-label,
+.canva-menu-repeater .acf-fields.-left>.acf-field::before {
+    display: none;
+}
+
+.canva-menu-repeater .acf-fields.-left>.acf-field>.acf-input {
+    width: 100%;
+}
+
+
+/* Code fields */
+
+.canva-code textarea {
+    font-family: var(--font-mono) inherit;
+    background-color: #333;
+    color: #aaaaaa;
+    line-height: 2em !important;
+    letter-spacing: 1px;
+    font-size: 1.1rem !important;
+}
+
+
+/* ------ WP core ------ */
+
+
+/* Buttons */
+
+.wp-core-ui .button-primary {
+    color: var(--color-light) !important;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.wp-core-ui .button-primary.hover,
+.wp-core-ui .button-primary:hover,
+.wp-core-ui .button-primary.focus,
+.wp-core-ui .button-primary:focus {
+    color: var(--color-light) !important;
+    background: var(--color-accent) !important;
+    border-color: var(--color-accent) !important;
+}
+
+.wp-core-ui .button,
+.wp-core-ui .button-secondary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.wp-core-ui .button:hover,
+.wp-core-ui .button-secondary:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #f0f0f1;
+    ;
+}
+
+.wrap .add-new-h2,
+.wrap .add-new-h2:active,
+.wrap .page-title-action,
+.wrap .page-title-action:active {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+
+/* Links */
+
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+#adminmenu li.current a.menu-top,
+.folded #adminmenu li.wp-has-current-submenu,
+.folded #adminmenu li.current.menu-top,
+#adminmenu .wp-menu-arrow,
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+#adminmenu .wp-menu-arrow div {
+    background-color: var(--color-accent);
+}
+
+
+/* ------ Progress status ------ */
+
+.status-0 	{ background-color: #ffebee !important; }
+.status-25 	{ background-color: #f3e5f5 !important; }
+.status-50 	{ background-color: #e8eaf6 !important; }
+.status-75 	{ background-color: #e1f5fe !important; }
+.status-100 { background-color: #e8f5e9 !important; }
+
+.status-0 td,
+.status-0 th,
+.status-25 td,
+.status-25 th,
+.status-50 td,
+.status-50 th,
+.status-75 td,
+.status-75 th,
+.status-100 td,
+.status-100 th {
+    border-bottom: 1px solid #fff;
+}
+
+.status-bar {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.status-bar div {
+    width: calc(25% - 7px);
+    padding: 2px;
+    font-size: 8px;
+    text-align: center;
+    margin-right: 3px;
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.status-25 .status-bar div:first-child,
+.status-50 .status-bar div:first-child,
+.status-50 .status-bar div:nth-child(2),
+.status-75 .status-bar div:not(:nth-child(4), :last-child),
+.status-100 .status-bar div {
+    background-color: rgba(0, 0, 0, .2);
+}
+
+
+/*------------------------------------*\
+    Tailwind classes
+\*------------------------------------*/
+
+.w-px 	{ width: 1px; }
+.w-0.5 	{ width: 0.125rem; }
+.w-4 	{ width: 1rem; }
+.w-6 	{ width: 1.5rem; }
+.w-8 	{ width: 2rem; }
+.w-12 	{ width: 3rem; }
+.w-16 	{ width: 4rem; }
+.w-20 	{ width: 5rem; }
+.w-24 	{ width: 6rem; }
+.w-28 	{ width: 7rem; }
+.w-32 	{ width: 8rem; }
+.w-36 	{ width: 9rem; }
+.w-40 	{ width: 10rem; }
+.w-48 	{ width: 12rem; }
+.w-64 	{ width: 16rem; }
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mt-0 	{ margin-top: 0 !important; }
+.mt-1 	{ margin-top: .25rem !important; }
+.mt-2 	{ margin-top: .5rem !important; }
+.mt-3 	{ margin-top: .75rem !important; }
+.mt-4 	{ margin-top: 1rem !important; }
+.mt-6 	{ margin-top: 1.5rem !important; }
+.mt-8 	{ margin-top: 2rem !important; }
+.mt-12 	{ margin-top: 3rem !important; }
+.mt-16 	{ margin-top: 4rem !important; }
+.mt-24 	{ margin-top: 6rem !important; }
+.mt-32 	{ margin-top: 8rem !important; }
+
+.mb-0 	{ margin-bottom: 0 !important; }
+.mb-1 	{ margin-bottom: .25rem !important; }
+.mb-2 	{ margin-bottom: .5rem !important; }
+.mb-3 	{ margin-bottom: .75rem !important; }
+.mb-4 	{ margin-bottom: 1rem !important; }
+.mb-6 	{ margin-bottom: 1.5rem !important; }
+.mb-8 	{ margin-bottom: 2rem !important; }
+.mb-12 	{ margin-bottom: 3rem !important; }
+.mb-16 	{ margin-bottom: 4rem !important; }
+.mb-24 	{ margin-bottom: 6rem !important; }
+.mb-32 	{ margin-bottom: 8rem !important; }
+
+
+/* py-* ----------------
+Tolti, creano disallineamenti nell'interfaccia dei blocchi e nelle aree di click. Non vanno bene per il backend */
+
+
+.pt-1 	{padding-top: .25rem !important;}
+.pt-2 	{padding-top: .5rem !important;}
+.pt-3 	{padding-top: .75rem !important;}
+.pt-4 	{padding-top: 1rem !important;}
+.pt-6 	{padding-top: 1.5rem !important;}
+.pt-8 	{padding-top: 2rem !important;}
+.pt-12 	{padding-top: 3rem !important;}
+.pt-16 	{padding-top: 4rem !important;}
+.pt-24 	{padding-top: 6rem !important;}
+.pt-32 	{padding-top: 8rem !important;}
+
+.pb-1 	{ padding-bottom: .25rem !important; }
+.pb-2 	{ padding-bottom: .5rem !important; }
+.pb-3 	{ padding-bottom: .75rem !important; }
+.pb-4 	{ padding-bottom: 1rem !important; }
+.pb-6 	{ padding-bottom: 1.5rem !important; }
+.pb-8 	{ padding-bottom: 2rem !important; }
+.pb-12 	{ padding-bottom: 3rem !important; }
+.pb-16 	{ padding-bottom: 4rem !important; }
+.pb-24 	{ padding-bottom: 6rem !important; }
+.pb-32 	{ padding-bottom: 8rem !important; }
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* Azzera il padding-top-bottom degli elementi row-w-100 per non rovinare il layout del be.
+
+[class~="pt-"] non può funzionare perché va bene solo se pt-XY è dichiarata come prima classe tra tutte, cosa che non può succedere, quindi si usa [class*="pt-"] che vale per qualsiasi match in qualsiasi posizione */
+
+.wp-block-acf-row-w-100-inner-blocks[class*="pt-"] {
+	padding-top: 0 !important;
+}
+
+.wp-block-acf-row-w-100-inner-blocks[class*="pb-"] {
+	padding-bottom: 0 !important;
+}
+
+.wp-block-acf-row-w-100-inner-blocks[class*="py-"] {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+
+/* CSS utile per gestire le preview delle immagini di un blocco */
+img.block-preview,
+.block-editor-inserter__preview-container .canva-wp-block {
+    display: none !important;
+}
+
+.block-editor-inserter__preview-container img.block-preview {
+    display: block !important;
+}

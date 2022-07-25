@@ -1,0 +1,57 @@
+/* Voci menu desktop con sottovoci aperte */
+.desktop-navigation .menu-desktop .menu-item.exploded a:after {}
+
+.desktop-navigation .menu-desktop .menu-item.exploded a:after {}
+
+.menu-desktop-curtain-wrap li.sub-exploded a:after {}
+
+
+
+.desktop-navigation li.menu-item-has-children {
+@apply static;
+}
+
+
+/* Overlay del desktop curtain */
+.menu-desktop-curtain-overlay {
+	@apply fixed w-full h-full left-0 z-5;
+	background: rgba(255,255,255,.5);
+}
+
+
+/* Wrap del menu Desktop Curtain */
+.menu-desktop-curtain-wrap {
+	@apply absolute w-full left-0 z-9 flex flex-col justify-center bg-primary shadow-lg py-24 overflow-y-scroll;
+	max-height: calc(100vh - var(--main-mt-lg));
+}
+
+	.menu-desktop-curtain-wrap li.sub-exploded a,
+	.desktop-navigation .menu-desktop .menu-item.exploded a {
+		@apply relative;
+	}
+
+
+	/* Voci menu curtain */
+	.menu-desktop-curtain-wrap .menu-item a {
+		@apply font-secondary text-white fs-h4 fw-300 lh-13;
+		padding: .75rem 1rem;
+	}
+
+		.menu-desktop-curtain-wrap .menu-item a:hover {
+			@apply text-primary-100;
+		}
+
+
+
+.menu-desktop-curtain-wrap li.menu-item-has-children ul {
+    @apply absolute top-full left-0 w-full justify-end p-1 bg-secondary-300;
+}
+
+.menu-desktop-curtain-wrap li.menu-item-has-children li {
+    @apply p-0;
+}
+
+.menu-desktop-curtain-wrap li.menu-item-has-children li a {
+    @apply text-white h7 m-0 block text-center border-l border-white border-opacity-50;
+    padding: .5rem 1.5rem;
+}

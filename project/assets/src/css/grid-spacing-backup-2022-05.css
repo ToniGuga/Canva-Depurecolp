@@ -1,0 +1,137 @@
+/*------------------------------------*\
+		Grid Spacing globali
+		del progetto
+\*------------------------------------
+
+Qui si inseriscono tutte le caratteristiche che tengono in piedi il grid e lo spacing.
+Serve principalmente per gestire _row e _column sia quando le scriviamo con le nostre classi,
+sia quando sono inserite tramite be di wordpress con le calssi di WP
+
+Regole di base:
+- tutti i gutter e le spaziature dovrebbero essere in rem
+- tramite il rem è possibile avere queste spaziature e tutte le classi di Tailwind allineate come valori es px-4 deve corrispondere al gutter delle colonne se sono espresse con px-4
+- i rem però a loro volta sono responsive, come dichiarato nelle variabili progetto per ogni singolo breakpoint
+
+*/
+
+
+.wp-block-columns, ._row {
+	/* background-color: blanchedalmond; */
+	display: flex;
+	flex-wrap: wrap;
+}
+
+	.wp-block-column, ._col {
+		padding: var(--gutter-default);
+		@apply w-full;
+		/* background-clip: content-box;
+		background-color: var(--color-secondary-100) !important; */
+		/* border: 1px dotted blue;
+		box-sizing: border-box; */
+	}
+
+		.wp-block-column  > *:last-child,
+		._col > *:last-child {
+			@apply mb-0;
+		}
+
+		.wp-block-column .wp-block-columns,
+		._col ._row {
+			margin: 0 calc(var(--gutter-default) * -1);
+		}
+
+/*
+@media (min-width:230px) {
+	.wp-block-column { padding: var(--gutter-xs); }
+}
+
+@media (min-width:360px) {
+	.wp-block-column { padding: var(--gutter-sm); }
+}
+
+@media (min-width:640px) {
+	.wp-block-column { padding: var(--gutter-md); }
+}
+
+@media (min-width:960px) {
+	.wp-block-column { padding: var(--gutter-lg); }
+}
+
+@media (min-width:1280px) {
+	.wp-block-column { padding: var(--gutter-xl); }
+}
+
+@media (min-width:1600px) {
+	.wp-block-column { padding: var(--gutter-xxl); }
+} */
+
+
+
+
+
+@layer utilities {
+
+    @variants responsive {
+		.ratio-1-2 {
+            padding-bottom: 200%;
+			height: 0 !important;
+			overflow: hidden;
+        }
+
+		.ratio-9-16 {
+            padding-bottom: calc(16 / 9 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+
+		.ratio-4-5 {
+            padding-bottom: calc(5 / 4 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+
+        .ratio-1-1 {
+            padding-bottom: 100%;
+			height: 0 !important;
+			overflow: hidden;
+        }
+        .ratio-4-3 {
+            padding-bottom: calc(3 / 4 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+        .ratio-3-2 {
+            padding-bottom: calc(2 / 3 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+        .ratio-16-9 {
+            padding-bottom: calc(9 / 16 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+        .ratio-2-1 {
+            padding-bottom: calc(1 / 2 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+		.ratio-24-10 {
+            padding-bottom: calc(10 / 24 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+        /* .ratio-full-hd {
+            padding-top: calc(1080 / 1920 * 100%);
+        } */
+        .ratio-din-a-h {
+            padding-top: calc(210 / 297 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+        .ratio-din-a-v {
+            padding-top: calc(297 / 210 * 100%);
+			height: 0 !important;
+			overflow: hidden;
+        }
+    }
+}

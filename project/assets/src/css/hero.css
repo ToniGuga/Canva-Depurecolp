@@ -1,0 +1,93 @@
+/*
+
+Componente Hero
+===============
+
+Questo componente è un contenitore che poi bisogno di essere associato al componente _layer-wrap con tutti i suoi sottolivelli.
+
+
+Regole standard di hero
+-----------------------
+
+- nello stesso div dichiari sia _hero sia _layer-wrap
+- la classe _hero assegna diverse proprietà, inclusa l'altezza "normal" che ha diversi valori a seconda del breakpoint
+- altezza hero è di default in min-height in questo modo hero può eventualmente espandersi se il contenuto è maggiore (solo se _layer-content = relative se no non può spingere)
+- ci sono tre altezze (in min-height) di hero definite nelle variabili
+	--hero-short
+	--hero-normal
+	--hero-tall
+- par cambiare altezza alla classe _hero si agiungono le classi (senza _ perché sono classi atomiche)
+	- min-h-hero-short
+	- min-h-hero-tall
+- si può eventualmente anche aggiungere una classe ratio-X-Y ma in quel caso
+	- la priorità è la proporzione e il contenuto eccedente viene tagliato
+	- il _layer-content dentro il _layer-wrap deve essere absolute non relative
+
+*/
+
+
+._hero {
+    @apply relative overflow-hidden z-1;
+	display: flex; /* Importante, deve essere flex e non block perché così è in grado di passare ai div interni l'altezza totale e permette quindi di usare h-full dentro il _layer-content*/
+}
+
+@media (max-width: 374px) {
+	._hero 						{ min-height: var(--hero-normal-xs-min-height); }
+}
+
+@media (min-width: 375px) {
+	._hero 						{ min-height: var(--hero-normal-sm-min-height); }
+}
+
+@media (min-width: 640px) {
+	._hero 						{ min-height: var(--hero-normal-md-min-height); }
+}
+
+@media (min-width: 960px) {
+	._hero 						{ min-height: var(--hero-normal-lg-min-height); }
+}
+
+@media (min-width: 1280px) {
+	._hero 						{ min-height: var(--hero-normal-xl-min-height); }
+}
+
+@media (min-width: 1600px) {
+	._hero 						{ min-height: var(--hero-normal-xxl-min-height); }
+}
+
+
+
+/*------------------------------------*\
+	+Classi funzionali altezza
+\*------------------------------------*/
+
+
+@media (max-width: 374px) {
+	.min-h-hero-short	 		{ min-height: var(--hero-short-xs-min-height); }
+	.min-h-hero-tall			{ min-height: var(--hero-tall-xs-min-height); }
+}
+
+@media (min-width: 375px) {
+	.min-h-hero-short	 		{ min-height: var(--hero-short-sm-min-height); }
+	.min-h-hero-tall			{ min-height: var(--hero-tall-sm-min-height); }
+}
+
+@media (min-width: 640px) {
+	.min-h-hero-short	 		{ min-height: var(--hero-short-md-min-height); }
+	.min-h-hero-tall			{ min-height: var(--hero-tall-md-min-height); }
+}
+
+@media (min-width: 960px) {
+	.min-h-hero-short	 		{ min-height: var(--hero-short-lg-min-height); }
+	.min-h-hero-tall			{ min-height: var(--hero-tall-lg-min-height); }
+}
+
+@media (min-width: 1280px) {
+	.min-h-hero-short	 		{ min-height: var(--hero-short-xl-min-height); }
+	.min-h-hero-tall			{ min-height: var(--hero-tall-xl-min-height); }
+}
+
+@media (min-width: 1600px) {
+	.min-h-hero-short	 		{ min-height: var(--hero-short-xxl-min-height); }
+	.min-h-hero-tall			{ min-height: var(--hero-tall-xxl-min-height); }
+}

@@ -1,0 +1,42 @@
+/* Fix for Gutenberg tables inside figure tag */
+
+.wp-block-table {
+    @apply block;
+}
+
+
+/* Table */
+
+.wp-block-table table {
+    @apply table-fixed w-full border-collapse;
+}
+
+.wp-block-table table tr th {
+    @apply p-2 text-left text-black text-sm font-primary border-b border-gray-200 font-normal;
+}
+
+.wp-block-table table tr td {
+    @apply p-2 text-base border-b border-gray-200;
+}
+
+.wp-block-table table tr:last-child td {
+    @apply border-0;
+}
+
+.wp-block-table table th:nth-child(even),
+.wp-block-table table td:nth-child(even) {
+    @apply bg-gray-100;
+}
+
+
+/* Alternate rows */
+
+div.alt-rows>div:nth-child(1n),
+table.alt-rows tbody tr:nth-child(1n) {
+    @apply bg-gray-100;
+}
+
+div.alt-rows>div:nth-child(2n),
+table.alt-rows tbody tr:nth-child(2n) {
+    @apply bg-white;
+}

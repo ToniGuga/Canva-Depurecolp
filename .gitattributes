@@ -1,0 +1,4 @@
+README.md merge=ours
+.gitattributes merge=ours
+.gitignore merge=ours
+style.css merge=ours

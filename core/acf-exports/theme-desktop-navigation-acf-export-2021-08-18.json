@@ -1,0 +1,55 @@
+[
+    {
+        "key": "group_60c15ea69cdcb",
+        "title": "[Canva] Desktop navigation",
+        "fields": [
+            {
+                "key": "field_60c15eb075d52",
+                "label": "Desktop navigation",
+                "name": "desktop_navigation",
+                "type": "button_group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "scroll-menu": "Scroll",
+                    "absolute-menu": "Absolute",
+                    "fixed-menu": "Fixed"
+                },
+                "allow_null": 0,
+                "default_value": "",
+                "layout": "horizontal",
+                "return_format": "value"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "settore"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "side",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    }
+]

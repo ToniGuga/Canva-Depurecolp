@@ -1,0 +1,144 @@
+/*
+La struttura dei wrap serve ogni volta che si devono visualizzare bg video filtri e contenuti più o meno sovrapposti.
+Si utilizza tipicamente per
+    - hero
+    - photobutton
+    - Card
+
+Il _layer-wrap è il contenitore di tutti gli altri layer
+La struttura dei layer è questa
+
+_layer-wrap (al layer wrap si accoppiano le classi :hero-short _hero _card _photobutton ...)
+    _layer-visual (contiene tutta la parte visiva, se serve ratio-X-Y si mette qui)
+        _layer-bg (qui si mettono le immagini come background)
+        _layer-picture (qui si mettono asset immagine o video)
+        _layer-filter,
+        _layer-graphics,
+        _layer-date,
+        _layer-status,
+        _layer-info
+    _layer-content
+
+Il principio di tutti questi strati è quello di gestire la parte visiva con tutti gli strati interni che è _layer-content e la parte di contenuto che è _layer-content.
+
+A seconda delle necessità dell'elemento ci possono essere diversi scenari
+
+A - Hero classico
+    In questo caso Visual e Content sono tutti sovrapposti, per tutti i breakpoint, l'hero è elastico e si espande in base al contenuto. Per farlo servono:
+    - hero con min-height definita in qualche unità di misura (es. px, rem, vh, vw...)
+    - _layer-visual in absolute
+    - _layer-content in relative
+	NOTA: se il content è agganciato in alto rispetto all'hero no problem, se il content è agganciato in basso allora deve essere flex flex-col justify-end e avere anche lui la classe _hero che gli dà la stessa altezza minima del _layer-wrap. Diversamente senza flex non puoi posizionare il contenuto in basso a meno di padding-top o di position absolute.
+
+B - Hero a Struttura variabile
+    In questo caso tipicamente Visual e Content sono sovrapposti in large ma poi in medium/small sono impilati uno sopra l'altro.
+	Per farlo servono
+    - _hero-* che ha min-height definita di default dentro le variabili (es. px, rem, vh, vw...)
+    - _layer-visual tipicamente in relative per small/medium (quindi visual sopra e content sotto stackato) e in absolute per large (quindi tutti gli strati sovrapposti). In questo caso in absolute l'altezza viene ereditata dal contenitore, ma in relative deve essere dichiarata se no viene altezza 0.
+
+C - Photobutton classico
+    E' il classico photobutton dove le proporzioni vincono su tutto e quindi il contenuto eccedente viene tagliato per avere tutti i photobutton allineati tra loro. In questo caso servono
+    - _layer-wrap affiancato a qualche classe di tipo ratio-X-Y (quindi height = 0)
+    - _layer-visual in absolute
+    - _layer-content in absolute
+
+	Nel photobutton alle classi _layer-bg e _layer-filter vanno aggiunte le classi _pb-layer-bg e _pb-layer-filter che ampliano e sovrascrivono gli attributi di _layer-bg
+
+D - Photobutton a struttura variabile
+	Come per hero, può essere un photobutton in cui è tutto sovrapposto in large, ma in cui poi in small i visual e content si impilano uno sotto l'altro. Ci sono tante combinazioni a seconda dei casi, la più semplice è che _layer-visual sia in relative per small/medium, e in absolute per large
+
+E - Card classica elastica
+	In questo caso potrebbe anche non servire la struttura a layer, ma quasi subito poi si aggiunge la necessità di avere strati in più nel Visual e quindi ha senso usare di default _layer-wrap anche con la card. In questo caso si usa
+	- _layer-wrap in relative con eventuale min-width e altre classi che gli aggiungono il look della card (es. classe _card a cui sono collegati padding, border, shadow hover etc...)
+	- _layer-visual in relative con eventuale dimensione in ratio-X-Y. In pratica questo div diventa il corrispondente del vecchio figure-container. L'immagine dentro la card può essere inserita come background del _layer-bg ma ancora meglio come immagine dentro il layer-img e piazzata con classe object-cover che equivale a bg-cover ma per un oggetto
+	- _layer-content in relative, più contenuto c'è, più si allunga la card
+
+F - Card con dimensioni/proporzioni fisse
+	In questo caso è come sopra ma
+	- _layer-wrap relative con eventuale ratio-X-Y o qualsiasi altro metodo di definizione proporzioni
+	- _layer-visual in absolute con eventuale ratio-X-Y, agganciato al wrap con top-0
+	- _layer-content in absolute con eventuale ratio-x-Y, agganciato al wrap con bottom-0
+
+
+*/
+
+
+._layer-wrap {
+    @apply relative overflow-hidden;
+}
+
+	._layer-visual {
+		@apply w-full h-auto inset-0 overflow-hidden;
+		background: var(--layer-visual-bg);
+		/* Non serve attribuire un position specifico relative/absolute se non c'è la necessità, tanto le classi w-full h-auto bastano per tenere in piedi tutto */
+	}
+
+		._layer-bg,
+		._layer-picture,
+		._layer-filter,
+		._layer-graphics,
+		._layer-date,
+		._layer-status,
+		._layer-info {
+			@apply absolute w-full h-auto inset-0 overflow-hidden;
+		}
+
+		/* In caso di card a _layer-bg si accoppia la classe _card-bg che amplia e sovrascrive gli attributi di _layer-bg */
+		/* In caso di photobutton a _layer-bg si accoppia la classe _pb-bg che amplia e sovrascrive gli attributi di _layer-bg */
+		._layer-bg {
+			@apply z-1 bg-cover bg-center;
+		}
+
+		._layer-picture {
+			@apply z-2;
+		}
+
+		._layer-picture video,
+		._layer-picture figure {
+			@apply absolute w-full h-full;
+		}
+
+			/* In caso di immagini dentro layer picture => object cover */
+			._layer-picture figure img {
+				@apply object-cover object-center;
+			}
+
+			/* In caso di video: stesso comportamento */
+			._layer-picture video {
+				@apply object-cover object-center;
+			}
+
+
+		/* In caso di card a _layer-filter si accoppia la classe _card-filter che amplia e sovrascrive gli attributi di _layer-filter */
+		/* In caso di photobutton a _layer-filter si accoppia la classe _pb-filter che amplia e sovrascrive gli attributi di _layer-filter */
+		._layer-filter {
+			@apply z-3;
+			background: var(--layer-filter-bg);
+			opacity: var(--layer-filter-opacity);
+			mix-blend-mode: var(--layer-filter-mix-blend-mode);
+		}
+
+		._layer-graphics {
+			@apply z-4;
+		}
+
+		._layer-date {
+			@apply z-5;
+		}
+
+		._layer-status {
+			@apply z-6;
+		}
+
+		._layer-info {
+			@apply z-6;
+		}
+
+	._layer-content {
+		@apply z-10;
+		/*
+		Layer content non ha di default relative/absolute ma vanno dichiarati di volta in volta
+		- Relative, se il wrapper non ha dimensioni in ratio-X-Y ed è elastico e si adatta al contenuto
+		- Absolute, se il wrapper ha dimensioni in ratio-X-Y e il contenuto può essere tagliato se non ci sta
+		*/
+	}

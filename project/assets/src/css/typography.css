@@ -1,0 +1,458 @@
+/*----------- Apre Layer Base ------------ */
+
+@layer base {
+
+	/*-----------  ------------ */
+
+		html {
+			font-size: 100%;
+			font-family: var(--body-font-family);
+			color: var(--body-color);
+			font-weight: var(--body-font-weight);
+			line-height: var(--body-line-height);
+			letter-spacing:  var(--body-font-weight);
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		@media (min-width:230px) {
+			html { font-size: var(--html-font-size-xs); }
+		}
+
+		@media (min-width:360px) {
+			html { font-size: var(--html-font-size-sm); }
+		}
+
+		@media (min-width:640px) {
+			html { font-size: var(--html-font-size-md); }
+		}
+
+		@media (min-width:960px) {
+			html { font-size: var(--html-font-size-lg); }
+		}
+
+		@media (min-width:1280px) {
+			html { font-size: var(--html-font-size-xl); }
+		}
+
+		@media (min-width:1600px) {
+			html { font-size: var(--html-font-size-xxl); }
+		}
+
+
+		/*------------------------------------*\
+			Stili base e Utilities
+		\*------------------------------------*/
+
+
+		b, strong {
+			font-weight: var(--bold-font-weight);
+			color: var(--bold-color);
+		}
+
+		p > a, span > a, *:not(nav) li > a {
+			font-weight: var(--anchor-font-weight);
+			color: var(--anchor-color);
+			transition: var(--anchor-transition);
+			text-decoration: var(--anchor-text-decoration);
+			overflow-wrap: break-word; /* permette di andare a capo con i link lunghi se necessario */
+		}
+
+		p > a:hover, span > a:hover,
+		*:not(nav) li > a:hover {
+			color: var(--anchor-hover-color);
+			text-decoration: var(--anchor-hover-text-decoration);
+		}
+
+		::selection {
+			color: var(--text-selection-color);
+			background: var(--text-selection-bg);
+		}
+
+		/* Main fonts */
+
+		.font-primary {
+			font-family: var(--primary-font-family) !important;
+		}
+
+		.font-secondary {
+			font-family: var(--secondary-font-family) !important;
+		}
+
+		.font-extra {
+			font-family: var(--extra-font-family) !important;
+		}
+
+		.font-body {
+			font-family: var(--body-font-family) !important;
+		}
+
+		.font-headings {
+			font-family: var(--headings-font-family) !important;
+		}
+
+		/*
+		Queste classi si scrivono alla vecchia maniera perché non si devono confondere con quelle di tailwind se no ci sono valori che si sovrappongono.
+		Font-weight lo usiamo numerico perché se ci sono due font diversi che usano pesi diversi non si può usare una stessa classe che si riferisce a pesi diversi quindi meglio avere il numero esplicito.
+		*/
+
+		.lh-10 { line-height: 1 !important; }
+		.lh-11 { line-height: 1.1 !important; }
+		.lh-12 { line-height: 1.2 !important; }
+		.lh-13 { line-height: 1.3 !important; }
+		.lh-14 { line-height: 1.4 !important; }
+		.lh-15 { line-height: 1.5 !important; }
+		.lh-16 { line-height: 1.6 !important; }
+		.lh-17 { line-height: 1.7 !important; }
+
+		.fw-100 { font-weight: 100 !important; }
+		.fw-200 { font-weight: 200 !important; }
+		.fw-300 { font-weight: 300 !important; }
+		.fw-400 { font-weight: 400 !important; }
+		.fw-500 { font-weight: 500 !important; }
+		.fw-600 { font-weight: 600 !important; }
+		.fw-700 { font-weight: 700 !important; }
+		.fw-800 { font-weight: 800 !important; }
+		.fw-900 { font-weight: 900 !important; }
+
+
+		.max-w-32ch 	{ max-width: 32ch; }
+		.max-w-48ch 	{ max-width: 48ch; }
+		.max-w-64ch 	{ max-width: 64ch; }
+
+
+		/* Classi truncate-1-line etc....
+
+		Non si usano più, si usa line-clamp di Tailwind */
+
+
+
+
+		/*------------------------------------*\
+			Headings e dimensioni
+		\*------------------------------------*/
+
+		h1, h2, h3, h4, h5, h6,
+		.huge, .h1, .h2, .h3, .h4, .h5, .h6, .h7 {
+			font-family: var(--headings-font-family);
+			color: var( --headings-color);
+			font-weight: var(--headings-font-weight);
+			line-height: var(--headings-line-height);
+			letter-spacing: var(--headings-letter-spacing);
+			margin-bottom: var(--headings-margin-bottom);
+		}
+
+
+		.huge {
+			font-size: var(--huge-font-size-large);
+		}
+
+		h1, .h1 {
+			font-size: var(--h1-font-size-large);
+			/* margin-bottom: .5em; */
+		}
+		h2, .h2 {
+			font-size: var(--h2-font-size-large);
+			/* margin-bottom: .5em; */
+		}
+		h3, .h3 {
+			font-size: var(--h3-font-size-large);
+			/* margin-bottom: .75em; */
+		}
+		h4, .h4 {
+			font-size: var(--h4-font-size-large);
+			/* margin-bottom: .75em; */
+		}
+		h5, .h5 {
+			font-size: var(--h5-font-size-large);
+			/* margin-bottom: 1em; */
+		}
+		h6, .h6 {
+			font-size: var(--h6-font-size-large);
+			/* margin-bottom: 1em; */
+		}
+		.h7 {
+			font-size: var(--h7-font-size-large);
+			/* margin-bottom: 1em; */
+		}
+
+
+		._toptitle, ._title, ._subtitle {
+			display: block;
+		}
+
+		._toptitle {
+			font-family: var(--toptitle-font-family);
+			font-size: var(--toptitle-font-size-large);
+			color: var(--toptitle-color);
+			font-weight: var(--toptitle-font-weight);
+			line-height: var(--toptitle-line-height);
+			letter-spacing: var(--toptitle-letter-spacing);
+			text-transform: var(--toptitle-text-transform);
+		}
+
+		._subtitle {
+			font-family: var(--subtitle-font-family);
+			color: var(--subtitle-color);
+			font-weight: var(--subtitle-font-weight) !important;
+			line-height: var(--subtitle-line-height);
+			font-style: var(--subtitle-font-style);
+		}
+
+		p {
+			font-family: var(--paragraph-font-family);
+			font-size: var(--paragraph-font-size-large);
+			color: var(--paragraph-color);
+			line-height: var(--paragraph-line-height);
+			letter-spacing: var(--paragraph-letter-spacing);
+			margin-bottom: var(--paragraph-margin-bottom);
+		}
+
+		.lead {
+			font-family: var(--lead-font-family);
+			font-size: var(--lead-font-size-large);
+			color: var(--lead-color);
+			line-height: var(--lead-line-height);
+			letter-spacing: var(--lead-letter-spacing);
+			margin-bottom: var(--lead-margin-bottom);
+		}
+
+
+		/* Font Size -------- */
+
+		.fs-huge 			{ font-size: var(--huge-font-size-large) !important; }
+		.fs-h1	 			{ font-size: var(--h1-font-size-large) !important; }
+		.fs-h2	 			{ font-size: var(--h2-font-size-large) !important; }
+		.fs-h3	 			{ font-size: var(--h3-font-size-large) !important; }
+		.fs-h4	 			{ font-size: var(--h4-font-size-large) !important; }
+		.fs-h5	 			{ font-size: var(--h5-font-size-large) !important; }
+		.fs-h6	 			{ font-size: var(--h6-font-size-large) !important; }
+		.fs-h7	 			{ font-size: var(--h7-font-size-large) !important; }
+		.fs-toptitle 		{ font-size: var(--toptitle-font-size-large) !important; }
+		.fs-p 				{ font-size: var(--paragraph-font-size-large) !important; }
+		.fs-sm 				{ font-size: var(--text-small-font-size-large) !important; }
+		.fs-xs 				{ font-size: var(--text-xsmall-font-size-large) !important; }
+		.fs-xxs 			{ font-size: var(--text-xxsmall-font-size-large) !important; }
+		.fs-lead 			{ font-size: var(--lead-font-size-large) !important; }
+		.fs-blockquote 		{ font-size: var(--blockquote-font-size-large) !important; }
+		.fs-body	 		{ font-size: var(--body-font-size) !important; }
+
+
+
+		/* Classi responsive -------- */
+
+		@media (min-width:230px) {
+			.xs\:fs-huge 			{ @apply fs-huge !important; }
+			.xs\:fs-h1	 			{ @apply fs-h1 !important; }
+			.xs\:fs-h2	 			{ @apply fs-h2 !important; }
+			.xs\:fs-h3	 			{ @apply fs-h3 !important; }
+			.xs\:fs-h4	 			{ @apply fs-h4 !important; }
+			.xs\:fs-h5	 			{ @apply fs-h5 !important; }
+			.xs\:fs-h6	 			{ @apply fs-h6 !important; }
+			.xs\:fs-h7	 			{ @apply fs-h7 !important; }
+			.xs\:fs-toptitle 		{ @apply fs-toptitle !important; }
+			.xs\:fs-p 				{ @apply fs-p !important; }
+			.xs\:fs-sm 				{ @apply fs-sm !important; }
+			.xs\:fs-xs 				{ @apply fs-xs !important; }
+			.xs\:fs-xxs 			{ @apply fs-xxs !important; }
+			.xs\:fs-lead 			{ @apply fs-lead !important; }
+			.xs\:fs-blockquote 		{ @apply fs-blockquote !important; }
+			.xs\:fs-blockquote 		{ @apply fs-blockquote !important; }
+		}
+
+		@media (min-width:360px) {
+			.sm\:fs-huge 			{ @apply fs-huge !important; }
+			.sm\:fs-h1	 			{ @apply fs-h1 !important; }
+			.sm\:fs-h2	 			{ @apply fs-h2 !important; }
+			.sm\:fs-h3	 			{ @apply fs-h3 !important; }
+			.sm\:fs-h4	 			{ @apply fs-h4 !important; }
+			.sm\:fs-h5	 			{ @apply fs-h5 !important; }
+			.sm\:fs-h6	 			{ @apply fs-h6 !important; }
+			.sm\:fs-h7	 			{ @apply fs-h7 !important; }
+			.sm\:fs-toptitle 		{ @apply fs-toptitle !important; }
+			.sm\:fs-p 				{ @apply fs-p !important; }
+			.sm\:fs-sm 				{ @apply fs-sm !important; }
+			.sm\:fs-xs 				{ @apply fs-xs !important; }
+			.sm\:fs-xxs 			{ @apply fs-xxs !important; }
+			.sm\:fs-lead 			{ @apply fs-lead !important; }
+			.sm\:fs-blockquote 		{ @apply fs-blockquote !important; }
+		}
+
+		@media (min-width:640px) {
+			.md\:fs-huge 			{ @apply fs-huge !important; }
+			.md\:fs-h1	 			{ @apply fs-h1 !important; }
+			.md\:fs-h2	 			{ @apply fs-h2 !important; }
+			.md\:fs-h3	 			{ @apply fs-h3 !important; }
+			.md\:fs-h4	 			{ @apply fs-h4 !important; }
+			.md\:fs-h5	 			{ @apply fs-h5 !important; }
+			.md\:fs-h6	 			{ @apply fs-h6 !important; }
+			.md\:fs-h7	 			{ @apply fs-h7 !important; }
+			.md\:fs-toptitle 		{ @apply fs-toptitle !important; }
+			.md\:fs-p 				{ @apply fs-p !important; }
+			.md\:fs-sm 				{ @apply fs-sm !important; }
+			.md\:fs-xs 				{ @apply fs-xs !important; }
+			.md\:fs-xxs 			{ @apply fs-xxs !important; }
+			.md\:fs-lead 			{ @apply fs-lead !important; }
+			.md\:fs-blockquote 		{ @apply fs-blockquote !important; }
+		}
+
+		@media (min-width:960px) {
+			.lg\:fs-huge 			{ @apply fs-huge !important; }
+			.lg\:fs-h1	 			{ @apply fs-h1 !important; }
+			.lg\:fs-h2	 			{ @apply fs-h2 !important; }
+			.lg\:fs-h3	 			{ @apply fs-h3 !important; }
+			.lg\:fs-h4	 			{ @apply fs-h4 !important; }
+			.lg\:fs-h5	 			{ @apply fs-h5 !important; }
+			.lg\:fs-h6	 			{ @apply fs-h6 !important; }
+			.lg\:fs-h7	 			{ @apply fs-h7 !important; }
+			.lg\:fs-toptitle 		{ @apply fs-toptitle !important; }
+			.lg\:fs-p 				{ @apply fs-p !important; }
+			.lg\:fs-sm 				{ @apply fs-sm !important; }
+			.lg\:fs-xs 				{ @apply fs-xs !important; }
+			.lg\:fs-xxs 			{ @apply fs-xxs !important; }
+			.lg\:fs-lead 			{ @apply fs-lead !important; }
+			.lg\:fs-blockquote 		{ @apply fs-blockquote !important; }
+		}
+
+		@media (min-width:1280px) {
+			.xl\:fs-huge 			{ @apply fs-huge !important; }
+			.xl\:fs-h1	 			{ @apply fs-h1 !important; }
+			.xl\:fs-h2	 			{ @apply fs-h2 !important; }
+			.xl\:fs-h3	 			{ @apply fs-h3 !important; }
+			.xl\:fs-h4	 			{ @apply fs-h4 !important; }
+			.xl\:fs-h5	 			{ @apply fs-h5 !important; }
+			.xl\:fs-h6	 			{ @apply fs-h6 !important; }
+			.xl\:fs-h7	 			{ @apply fs-h7 !important; }
+			.xl\:fs-toptitle 		{ @apply fs-toptitle !important; }
+			.xl\:fs-p 				{ @apply fs-p !important; }
+			.xl\:fs-sm 				{ @apply fs-sm !important; }
+			.xl\:fs-xs 				{ @apply fs-xs !important; }
+			.xl\:fs-xxs 			{ @apply fs-xxs !important; }
+			.xl\:fs-lead 			{ @apply fs-lead !important; }
+			.xl\:fs-blockquote 		{ @apply fs-blockquote !important; }
+		}
+
+		@media (min-width:1600px) {
+			.xxl\:fs-huge 			{ @apply fs-huge !important; }
+			.xxl\:fs-h1	 			{ @apply fs-h1 !important; }
+			.xxl\:fs-h2	 			{ @apply fs-h2 !important; }
+			.xxl\:fs-h3	 			{ @apply fs-h3 !important; }
+			.xxl\:fs-h4	 			{ @apply fs-h4 !important; }
+			.xxl\:fs-h5	 			{ @apply fs-h5 !important; }
+			.xxl\:fs-h6	 			{ @apply fs-h6 !important; }
+			.xxl\:fs-h7	 			{ @apply fs-h7 !important; }
+			.xxl\:fs-toptitle 		{ @apply fs-toptitle !important; }
+			.xxl\:fs-p 				{ @apply fs-p !important; }
+			.xxl\:fs-sm 			{ @apply fs-sm !important; }
+			.xxl\:fs-xs 			{ @apply fs-xs !important; }
+			.xxl\:fs-xxs 			{ @apply fs-xxs !important; }
+			.xxl\:fs-lead 			{ @apply fs-lead !important; }
+			.xxl\:fs-blockquote 	{ @apply fs-blockquote !important; }
+		}
+
+
+
+		/*------------------------------------*\
+			Lists
+		\*------------------------------------*/
+
+
+		/* Unordered list */
+
+		.ul-dot,
+		.wp-block-list:not([class*="menu-"]):not([class*="menu-"]),
+		.canva-ul {
+			margin-bottom: var(--ul-margin-bottom);
+		}
+
+			.ul-dot li,
+			.wp-block-list:not([class*="menu-"]) li,
+			.canva-ul li {
+				@apply relative;
+				padding-left: var(--ul-li-padding-left);
+				margin-bottom: var(--ul-li-margin-bottom);
+				font-size: var(--ul-li-font-size);
+				line-height: var(--ul-li-line-height);
+			}
+
+			.ul-dot li:last-of-type,
+			.wp-block-list:not([class*="menu-"]) li:last-of-type,
+			.canva-ul li:last-of-type {
+				margin-bottom: 0;
+			}
+
+				.ul-dot li::before,
+				.wp-block-list:not([class*="menu-"]) li::before,
+				.canva-ul li::before {
+					@apply block absolute w-1 h-1;
+					content: '';
+					top: var(--ul-li-dot-top);
+					left: var(--ul-li-dot-left);
+					width: var(--ul-li-dot-width);
+					height: var(--ul-li-dot-height);
+					background: var(--ul-li-dot-bg);
+					border-radius: var(--ul-li-dot-radius);
+				}
+
+				/* Isdark */
+				.isdark .ul-dot li::before,
+				.isdark .wp-block-list:not([class*="menu-"]) li::before,
+				.isdark .canva-ul li::before {
+					background: var(--ul-li-dot-isdark-bg);
+				}
+
+
+
+		/* Unordered Check list */
+
+		.ul-check,
+		.wp-block-list:not([class*="menu-"]).ul-check,
+		.canva-ul.ul-check { }
+
+			.ul-check li,
+			.wp-block-list:not([class*="menu-"]).ul-check li,
+			.canva-ul.ul-check li {
+				padding-left: var(--ul-li-check-padding-left);
+				margin-bottom: var(--ul-li-check-margin-bottom);
+			}
+
+				.ul-check li::before,
+				.wp-block-list:not([class*="menu-"]).ul-check li::before,
+				.canva-ul.ul-check li::before {
+					@apply block absolute bg-no-repeat bg-cover bg-transparent rounded-none;
+					content: '';
+					top: var(--ul-li-check-top);
+					left: var(--ul-li-check-left);
+					width: var(--ul-li-check-width);
+					height: var(--ul-li-check-height);
+					background-image: var(--ul-li-check-bg-img);
+				}
+
+				/* Isdark */
+				.isdark .ul-check li::before,
+				.isdark .wp-block-list:not([class*="menu-"]).ul-check li::before,
+				.isdark .canva-ul.ul-check li::before {
+					background-image: var(--ul-li-check-isdark-bg-img);
+				}
+
+
+
+		.list-comma span,
+		.list-hyphen span {
+			@apply inline-block;
+		}
+
+		.list-comma span:not(:last-of-type):after {
+			content: ', ';
+		}
+
+		.list-hyphen span:not(:last-of-type):after {
+			content: ' - ';
+		}
+
+
+
+
+	/*----------- Chiude Layer Base ------------ */
+	}
+	/*-----------  ------------ */

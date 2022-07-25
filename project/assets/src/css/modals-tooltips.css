@@ -1,0 +1,233 @@
+/*------------------------------------*\
+	Transition templates IN
+\*------------------------------------*/
+
+#modal-post-opener { }
+
+._modal-post-opener {
+    @apply fixed flex inset-0 h-full flex-wrap content-center justify-center overflow-hidden;
+    z-index: 100;
+    width: 100vw;
+}
+
+._modal-close-button {
+    z-index: 120;
+    opacity: 0;
+    transition: $transition-normal;
+    line-height: .1;
+}
+
+._modal-loading {
+    @apply absolute w-full h-full inset-0 flex content-center justify-center overflow-hidden;
+    z-index: 90;
+}
+
+._modal-filter{
+    @apply absolute w-full h-full inset-0 opacity-0 flex content-center justify-center overflow-hidden;
+    z-index: 100;
+    background: var(--modal-filter-background);
+    mix-blend-mode: var(--modal-filter-mix-blend-mode);
+    transition: var(--modal-filter-transition);
+}
+
+
+/* Qui si devono mettere i parametri di come è la modale aperta */
+
+._modal-content {
+    @apply flex flex-wrap content-start justify-center overflow-y-auto;
+    z-index: 110;
+    width: 95vw;
+    max-width: 95vw;
+    height: 90vh;
+    top: 5vh;
+    left: 2.5vw;
+    /* visibility: hidden;  bisogna metterlo oppure basta hidden nel post-opener? */
+}
+
+._modal-post-opener.modal-out {
+    visibility: hidden;
+}
+
+._modal-post-opener.modal-in {
+    visibility: visible;
+}
+
+.modal-in ._modal-close-button {
+    opacity: 1;
+}
+
+.modal-in ._modal-filter {
+    opacity: var(--modal-filter-opacity);
+}
+
+
+/*------------------------------------*\
+	Transition templates IN
+\*------------------------------------*/
+
+.modal-out.modal-in-from-bottom {
+    transform: translateY(100vh);
+}
+
+.modal-in.modal-in-from-bottom {
+    transform: none;
+}
+
+
+/*------------------------------------*\
+	Transition templates OUT
+\*------------------------------------*/
+
+.modal-in.modal-out-to-top {
+    transform: translateY(-100vh);
+}
+
+.modal-in.modal-out-to-right {
+    transform: translateX(100vw);
+}
+
+.modal-in.modal-out-to-bottom {
+    transform: translateY(100vh);
+}
+
+.modal-in.modal-out-to-left {
+    transform: translateX(-100vw);
+}
+
+
+/* Round  modal */
+
+.modal-post-open.modal-round-expansion {
+    @apply flex fixed justify-center items-center w-16 h-16 rounded-full bg-primary text-white shadow-xl cursor-pointer right-4 z-50 transition-transform ease-in-out transform-gpu scale-100 translate-y-1/2;
+	top: 10rem;
+    transition-duration: var(--duration-slow);
+}
+
+.modal-post-open.modal-round-expansion.active {
+    transform: scale(50);
+}
+
+/* #modal-post-opener.modal-round-opener ._modal-filter {
+    display: none !important;
+} */
+
+
+/*------------------------------------*\
+	Modal Search Menu
+\*------------------------------------*/
+
+._modal-search {
+	@apply fixed justify-center inset-0 bg-white bg-opacity-95 z-50 fade-in w-full h-full overflow-y-auto p-8 md:p-16;
+}
+
+
+
+
+/*------------------------------------*\
+	Tooltips
+\*------------------------------------*/
+
+
+/* Di base sono i tooltip presi da W3C
+funzionano piuttosto bene i top e i bottom.
+I left e right funzionano abbastanza con testi agganciati che siano dei p, su quelli grandi tipo h2 ancora da sistemare le formule.
+*/
+
+
+.tooltip {
+    position: relative;
+    display: inline-flex;
+    border-bottom: var(--tooltip-border-bottom);
+    color: var(--tooltip-link-color);
+	font-weight: var(--tooltip-font-weight);
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    width: var(--tooltiptext-width);
+    height: var(--tooltiptext-height);
+    padding: var(--tooltiptext-p-y) var(--tooltiptext-p-x);
+	font-size: var(--tooltiptext-font-size);
+    border-radius: var(--tooltiptext-border-radius);
+    color: var(--tooltiptext-color) !important; /* Important sovrascrive eventuali isdark nei contenitori */
+    background-color: var(--tooltiptext-bg);
+    text-align: var(--tooltiptext-text-align);
+    z-index: 1;
+    opacity: 0;
+    transition: var(--tooltiptext-transition);
+    margin-top: 10px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+	.tooltiptext.tooltip-left {
+		margin-top: 0;
+		top: -1em; /* è in em e non rem perché è agganciato alla dimensione del testo che fa da tooltip */
+		right: 128%;
+	}
+
+	.tooltip-left::after {
+		content: "";
+		position: absolute;
+		/* top: calc(1em - (.25 * var(--tooltiptext-arrow-size))); */
+		top: 1em;
+		left: 100%;
+		border-width: var(--tooltiptext-arrow-size);
+		border-style: solid;
+		border-color: transparent transparent transparent var(--tooltiptext-bg);
+	}
+
+	.tooltiptext.tooltip-right {
+		margin-top: 0;
+		top: -1em;  /* è in em e non rem perché è agganciato alla dimensione del testo che fa da tooltip */
+		left: 125%;
+	}
+
+	.tooltip-right::after {
+		content: "";
+		position: absolute;
+		/* top: calc(1em - (.25 * var(--tooltiptext-arrow-size))); */
+		top: 1em;
+		right: 100%;
+		border-width: var(--tooltiptext-arrow-size);
+		border-style: solid;
+		border-color: transparent var(--tooltiptext-bg) transparent transparent;
+	}
+
+.tooltip-top {
+    bottom: 125%;
+    left: 50%;
+    margin-left: calc(-.5 * var(--tooltiptext-width));
+}
+
+	.tooltip-top::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: calc(-1 * var(--tooltiptext-p-x));
+		border-width: var(--tooltiptext-arrow-size);
+		border-style: solid;
+		border-color: var(--tooltiptext-bg) transparent transparent transparent;
+	}
+
+.tooltip-bottom {
+	top: 135%;
+	left: 50%;
+	margin-left: calc(-.5 * var(--tooltiptext-width));
+}
+
+	.tooltip-bottom::after {
+		content: "";
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		margin-left: calc(-1 * var(--tooltiptext-p-x));
+		border-width: var(--tooltiptext-arrow-size);
+		border-style: solid;
+		border-color: transparent transparent var(--tooltiptext-bg) transparent;
+	}

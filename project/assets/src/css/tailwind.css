@@ -1,0 +1,60 @@
+@import '_variables.css';
+@import '../../../../node_modules/tailwindcss/base';
+@import '../../../../node_modules/tailwindcss/components';
+
+/* Don't add anything before these 2 lines*/
+
+
+/* import here custom css files created in project/assets/src folder */
+
+
+/* @import 'wp-blocks.css'; */
+
+
+/* Core */
+
+@import 'default.css';
+@import 'grid-spacing.css';
+@import 'container.css';
+@import 'animations-lazyload.css';
+@import 'typography.css';
+@import 'tables.css';
+@import 'nav-main';
+@import 'nav-desktop-curtain-coind.css';
+@import 'buttons.css';
+@import 'layers.css';
+@import 'hero.css';
+@import 'photobuttons.css';
+@import 'forms.css';
+@import 'modals-tooltips.css';
+@import 'isdark.css';
+@import 'accessibility.css';
+
+
+/* Plugins */
+@import 'swiper-bundle.css';
+@import 'photoswipe.css';
+@import 'photoswipe-default-skin.css';
+
+
+/* Third party*/
+@import 'embed.css';
+@import 'google-maps.css';
+
+
+/* WooCommerce style */
+/* @import 'woocommerce.css'; */
+
+
+/* Use project.css for custom styles */
+@import '_style-project.css';
+
+
+/* Insert WP blocks here*/
+@import 'wp-blocks.css';
+@import 'wp-block-accordion.css';
+
+
+/* Don't add anything after these 2 lines*/
+
+@import '../../../../node_modules/tailwindcss/utilities';

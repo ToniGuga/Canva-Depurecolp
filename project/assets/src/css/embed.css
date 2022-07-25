@@ -1,0 +1,44 @@
+/* Video embed */
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    max-width: 100%;
+    height: 0;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.wp-block-embed {
+	position: relative;
+	overflow: hidden;
+	max-width: 100%;
+}
+
+.wp-block-embed.wp-embed-aspect-16-9 {
+	height: 0;
+	padding-bottom: 56.25%;
+}
+
+.wp-block-embed.wp-embed-aspect-4-3 {
+	height: 0;
+	padding-bottom: 66%;
+}
+
+	.wp-block-embed iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
