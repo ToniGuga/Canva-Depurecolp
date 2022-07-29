@@ -843,7 +843,7 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 			di quello bottom aiuta a centrare un po' meglio la scritta, che viene centrata
 			rispetto alla baseline e non al sotto delle lettere tipo g,p, q etc.- */
 		--input-border: 1px solid var(--color-black);
-		--input-border-radius: 1.25em;
+		--input-border-radius: .25em;
 		--input-background: var(--color-white);
 		--input-shadow: none;
 		--input-font-family: var(--primary-font-family);
