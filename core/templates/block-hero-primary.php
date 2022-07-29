@@ -69,7 +69,7 @@ if (!$layer_content_output) {
 canva_the_layer([
 	'layer_type' => '_hero', // _hero, _card, _photobutton
 	'layer_id' => esc_attr($id),
-	'layer_class' => '' . esc_attr($className),
+	'layer_class' => '' . esc_attr($class_name),
 
 	'img_id' => $bg_image,
 	'img_small_id' => $bg_image_small,
