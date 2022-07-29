@@ -151,9 +151,8 @@ if (is_admin()) {
 
 	$form = '';
 	if (get_field('post_object')) {
-		$form = do_shortcode('[contact-form-7 id="' . get_field('post_object') . '"]');
+		$form = '[contact-form-7 id="' . get_field('post_object') . '"]';
 	}
-
 
 	$toptitle = get_field('toptitle');
 	$title = get_field('title');
@@ -168,14 +167,6 @@ if (is_admin()) {
 		$layer_picture = 'on';
 	}
 
-	$layer_filter = 'on';
-	$layer_content = 'on';
-
-	if (!$layer_content_output) {
-		$layer_filter = 'off';
-		$layer_content = 'off';
-	}
-
 	$template_name = 'block-hero-primary';
 	if(get_field('template_name')){
 		$template_name = esc_attr(get_field('template_name'));
@@ -188,11 +179,8 @@ if (is_admin()) {
 		'bg_image_small' => $bg_image_small,
 		'video_bg_file_url' => $video_bg_file_url,
 		'layer_picture' => $layer_picture,
-		'layer_filter' => $layer_filter,
-		'layer_content' => $layer_content,
 		'action_link' => $action_link,
 		'action_link_2' => $action_link_2,
-		'layer_content' => $layer_content,
 		'toptitle' => $toptitle,
 		'title' => $title,
 		'toptitle' => $toptitle,
@@ -203,7 +191,6 @@ if (is_admin()) {
 		'form' => $form,
 	];
 
-	canva_get_template($template_name, $args);
-
+	echo canva_get_template($template_name, $args);
 
 }

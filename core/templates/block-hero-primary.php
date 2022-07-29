@@ -15,11 +15,8 @@ if (!$post_id) {
 // 'bg_image_small' => $bg_image_small,
 // 'video_bg_file_url' => $video_bg_file_url,
 // 'layer_picture' => $layer_picture,
-// 'layer_filter' => $layer_filter,
-// 'layer_content' => $layer_content,
 // 'action_link' => $action_link,
 // 'action_link_2' => $action_link_2,
-// 'layer_content' => $layer_content,
 // 'toptitle' => $toptitle,
 // 'title' => $title,
 // 'toptitle' => $toptitle,
@@ -29,7 +26,6 @@ if (!$post_id) {
 // 'cta_2' => $cta_2,
 // 'form' => $form,
 // ];
-
 
 $layer_content_output = '';
 
@@ -54,12 +50,19 @@ if ($toptitle || $title || $subtitle || $content || $cta || $cta_2 || $form) {
 	}
 
 	if ($form) {
-		$layer_content_output .= '<div class="_hero-form-box pt-4">' . $form . '</div>';
+		$layer_content_output .= '<div class="_hero-form-box pt-4">' . do_shortcode($form) . '</div>';
 	} else {
 		$layer_content_output .= '<div class="_hero-button-box pt-4 isdark">' . $cta . ' ' . $cta_2 . '</div>';
 	}
 
 	$layer_content_output .= '</div>';
+}
+
+$layer_filter = 'on';
+$layer_content = 'on';
+if (!$layer_content_output) {
+	$layer_filter = 'off';
+	$layer_content = 'off';
 }
 
 
