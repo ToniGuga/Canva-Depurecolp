@@ -58,7 +58,7 @@ if (!$post_id) {
 					'img_id' => $bg_image,
 					'img_type' => 'img', // img, bg, url
 					'thumb_size' => '640-11',
-					'figure_class' => '_product-figure',
+					'wrapper_class' => '_product-figure',
 					'img_class' => '',
 					'bg_content' => '',
 					'caption' => 'off',
