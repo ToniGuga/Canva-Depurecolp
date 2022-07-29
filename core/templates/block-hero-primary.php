@@ -31,7 +31,9 @@ $layer_content_output = '';
 
 if ($toptitle || $title || $subtitle || $content || $cta || $cta_2 || $form) {
 
-	$layer_content_output .= '<div class="flex h-full flex-col justify-end p-4 sm:p-8 lg:p-12 xl:p-16 pt-32">';
+	$layer_content_output .= '<div class="_main__section wp-block-columns grid-cols-1 md:grid-cols-2 h-full items-center">';
+
+	$layer_content_output .= '<div class="wp-block-column">';
 
 	if ($toptitle) {
 		$layer_content_output .= '<span class="block h3 fw-300 text-white">' . $toptitle . '</span>';
@@ -48,11 +50,17 @@ if ($toptitle || $title || $subtitle || $content || $cta || $cta_2 || $form) {
 	if ($content) {
 		$layer_content_output .= '<div class="_hero-primary-content mt-8">' . $content . '</div>';
 	}
+	if (!$form) {
+		$layer_content_output .= '<div class="_hero-button-box pt-4 isdark">' . $cta . ' ' . $cta_2 . '</div>';
+	}
+
+	$layer_content_output .= '</div>';
+
 
 	if ($form) {
+		$layer_content_output .= '<div class="wp-block-column">';
 		$layer_content_output .= '<div class="_hero-form-box pt-4">' . do_shortcode($form) . '</div>';
-	} else {
-		$layer_content_output .= '<div class="_hero-button-box pt-4 isdark">' . $cta . ' ' . $cta_2 . '</div>';
+		$layer_content_output .= '</div>';
 	}
 
 	$layer_content_output .= '</div>';
@@ -101,6 +109,6 @@ canva_the_layer([
 	'layer_info_class' => '',
 
 	'layer_content' => $layer_content,
-	'layer_content_class' => 'relative',
+	'layer_content_class' => 'relative w-full',
 	'layer_content_output' => $layer_content_output,
 ]);

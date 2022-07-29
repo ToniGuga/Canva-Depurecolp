@@ -136,7 +136,7 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		/* Dimensioni tutte le tipografie */
 		/* Tutti i valori sopra i 18px sono ridotti a 0.8 per assomigliare al progetto, includendo anche l'aggiunstamento dato dal 105% del font-size html */
 
-		--huge-font-size-large:   			5rem; 		/* = 64px su base 16px */
+		--huge-font-size-large:   			6.5rem; 		/* = 64px su base 16px */
 		--h1-font-size-large:     			3.75rem; 	/* =  originali progetto 60/* = 3.5rem */
 		--h2-font-size-large:     			2.8125rem; 	/* =  originali progetto 45/* = 2.125rem  */
 		--h3-font-size-large:     			2.1875rem; 	/* =  originali progetto 35/* = 1.5rem */
@@ -355,11 +355,11 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		\*------------------------------------*/
 
 		/* margin-top Main ----- */
-		--main-mt-xs: 48px;
-		--main-mt-sm: 48px;
-		--main-mt-md: 108px;
-		--main-mt-lg: 108px;
-		--main-mt-xl: 108px;
+		--main-mt-xs: 0px;
+		--main-mt-sm: 0px;
+		--main-mt-md: 0px;
+		--main-mt-lg: 0px;
+		--main-mt-xl: 0px;
 
 
 		/* Regole comuni ----- */
