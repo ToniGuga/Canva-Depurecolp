@@ -106,7 +106,7 @@ function canva_load_fields_theme()
 					'maxlength' => '',
 				),
 				array(
-					'key' => 'field_6080546ce4c4c',
+					'key' => 'field_6qrz8g1lkh1d3c6w',
 					'label' => 'Email',
 					'name' => 'email',
 					'type' => 'text',
