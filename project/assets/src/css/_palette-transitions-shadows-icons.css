@@ -22,38 +22,38 @@ Prevariabili tipo sono
 			+Palette
 		\*------------------------------------*/
 
-		--color-abc-blue-100: #D5E2F0; /* Ricreato aggiungendo bianco */
-		--color-abc-blue-300: #558AC3; /* Ricreato aggiungendo bianco */
-		--color-abc-blue: #2b6db4;
-		--color-abc-blue-700: #225790;
+		--color-dpc-red-100: #D5E2F0; /* Ricreato aggiungendo bianco */
+		--color-dpc-red-300: #558AC3; /* Ricreato aggiungendo bianco */
+		--color-dpc-red: #aa1917;
+		--color-dpc-red-700: #225790;
 
-        --color-abc-yellow-100: #Fdf3d0;
-        --color-abc-yellow-200: #FFd966;
-        --color-abc-yellow-300: #FFd24d;
-        --color-abc-yellow: #FFBF00;
-        --color-abc-yellow-700: #CC9900;
+        --color-dpc-yellow-100: #Fdf3d0;
+        --color-dpc-yellow-200: #FFd966;
+        --color-dpc-yellow-300: #FFd24d;
+        --color-dpc-yellow: #ffd017;
+        --color-dpc-yellow-700: #CC9900;
 
-        --color-abc-clear-gray: #f5f5f5; /* Usato per bg sovrascrive Gray-100 */
-        --color-abc-light-gray: #999999; /* Sovrascrive Gray-400 */
-        --color-abc-darkest-gray: #333333; /* Sovrascrive Gray-700 */
+        --color-dpc-clear-gray: #f5f5f5; /* Usato per bg sovrascrive Gray-100 */
+        --color-dpc-light-gray: #999999; /* Sovrascrive Gray-400 */
+        --color-dpc-darkest-gray: #292929; /* Sovrascrive Gray-900 */
 
 
         /*------------------------------------*\
 			+Colori Main Progetto
 		\*------------------------------------*/
 
-        --color-primary-100: var(--color-abc-blue-100);
-        --color-primary-300: var(--color-abc-blue-300);
-        --color-primary: var(--color-abc-blue); /*  */
-        --color-primary-700: var(--color-abc-blue-700);
-        --color-secondary-100: var(--color-abc-yellow-100);
-        --color-secondary-200: var(--color-abc-yellow-200);
-        --color-secondary-300: var(--color-abc-yellow-300);
-        --color-secondary: var(--color-abc-yellow); /* */
-        --color-secondary-700: var(--color-abc-yellow-700);
-        --color-accent-300: var(--color-abc-darkest-gray); /*  */
-        --color-accent: var(--color-abc-darkest-gray); /*  */
-        --color-accent-700: var(--color-abc-darkest-gray); /*  */
+        --color-primary-100: var(--color-dpc-red-100);
+        --color-primary-300: var(--color-dpc-red-300);
+        --color-primary: var(--color-dpc-red); /*  */
+        --color-primary-700: var(--color-dpc-red-700);
+        --color-secondary-100: var(--color-dpc-yellow-100);
+        --color-secondary-200: var(--color-dpc-yellow-200);
+        --color-secondary-300: var(--color-dpc-yellow-300);
+        --color-secondary: var(--color-dpc-yellow); /* */
+        --color-secondary-700: var(--color-dpc-yellow-700);
+        --color-accent-300: var(--color-dpc-darkest-gray); /*  */
+        --color-accent: var(--color-dpc-darkest-gray); /*  */
+        --color-accent-700: var(--color-dpc-darkest-gray); /*  */
 
 		--color-success-50: #ecfdf5; /* TW Emerald-50 */
 		--color-success-300: #34d399; /* TW Emerald-400 */
