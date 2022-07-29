@@ -41,7 +41,7 @@
 \*------------------------------------*/
 
 ._card ._product-figure {
-	transition: var(--default-button-transition);
+	transition: var(--button-default-transition);
 }
 
 ._card:hover ._product-figure {
