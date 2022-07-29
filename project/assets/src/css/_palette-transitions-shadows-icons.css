@@ -76,31 +76,32 @@ Prevariabili tipo sono
 
 
 
+
+
 		/*------------------------------------*\
 			+Colori Isdark / Islight
 		\*------------------------------------*/
-		/* Ci sono tre gradazioni di colore chiaro: full, default, weak, rispettivamente per gli elementi in evidenza, normali e in secondo piano. Poi c'è il colore interattivo di default e quello per i disabled.
+
+		/* Ci sono tre gradazioni di colore chiaro: 700, 400, 300, rispettivamente per gli elementi in evidenza, normali e in secondo piano. Poi c'è il colore interattivo di default e quello per i disabled.
 		Gli stessi colori vengono poi ridefiniti per l'isdark */
 
 
 		/* Colori Islight */
-		--color-islight-full:  var(--color-black); /* Il più scuro e pieno per gli elementi in evidenza */
-		--color-islight-default:  var(--color-abc-darkest-gray); /* Un po' meno scuro e pieno del full */
-		--color-islight-weak:  var(--color-abc-light-gray); /* Un po' meno scuro e pieno del full */
-		--color-islight-interactive:  var(--color-primary); /* Colore del link */
-		--color-islight-interactive-hover:  var(--color-primary-300); /* Colore del link hover*/
-		--color-islight-disabled:  #aaa; /* Di solito grigio chiaro del disabilitato */
+		--islight-color-700: var(--color-black); /* Il più scuro e pieno per gli elementi in evidenza */
+		--islight-color-400:  var(--color-dpc-darkest-gray); /* Un po' meno scuro e pieno del full */
+		--islight-color-300:  var(--color-dpc-light-gray); /* Un po' meno scuro e pieno del full */
+		--islight-interactive-color:  var(--color-primary); /* Colore del link */
+		--islight-interactive-hover-color:  var(--color-primary-300); /* Colore del link hover*/
+		--islight-disabled-color:  #aaa; /* Di solito grigio chiaro del disabilitato */
 
 
 		/* Colori Isdark */
-		--color-isdark-full:  var(--color-white); /* Il più scuro e pieno per far risaltare le cose */
-		--color-isdark-default:  var(--color-abc-clear-gray); /* Un po' meno scuro e pieno del full */
-		--color-isdark-weak:  #ddd; /* Colore del link */
-		--color-islight-interactive:  var(--color-primary); /* Colore del link */
-		--color-isdark-interactive-hover:  var(--color-primary-300); /* Colore del link hover*/
-		--color-isdark-disabled:  #aaa; /* Di solito grigio chiaro del disabilitato */
-
-
+		--isdark-color-700: var(--color-white); /* Il più scuro e pieno per far risaltare le cose */
+		--isdark-color-400: var(--color-dpc-light-grayy); /* Un po' meno scuro e pieno del full */
+		--isdark-color-300: #ddd; /* Colore del link */
+		--isdark-interactive-color:  var(--color-primary); /* Colore del link */
+		--isdark-interactive-hover-color: var(--color-primary-300); /* Colore del link hover*/
+		--isdark-disabled-color: #aaa; /* Di solito grigio chiaro del disabilitato */
 
 
        	/*------------------------------------*\

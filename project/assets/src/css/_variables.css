@@ -108,15 +108,15 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		/* Basefont */
 		--body-font-family: var(--primary-font-family);
 		--body-font-size: 1rem; /* usato solo per fs-body */
-		--body-color: var(--color-islight-default);
+		--body-color: var(--islight-color-400);
 		--body-font-weight: 400;
 		--body-line-height: 1.35;
 		--body-letter-spacing: .01rem;
 
 
 		/* Text Selection */
-		--text-selection-color: var(--color-islight-default);
-		--text-selection-bg: var(--color-abc-yellow-300);
+		--text-selection-color: var(--islight-color-400);
+		--text-selection-bg: var(--color-secondary-300);
 
 
 		/* Bold */
@@ -166,7 +166,7 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 
 		/* Toptitle */
 		--toptitle-font-family: var(--primary-font-family);
-		--toptitle-color: var(--color-eqp-grey);
+		--toptitle-color: var(--color-dpc-light-gray);
 		--toptitle-font-weight: 400;
 		--toptitle-line-height: 1.2;
 		--toptitle-letter-spacing: 0;
@@ -357,9 +357,9 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		/* margin-top Main ----- */
 		--main-mt-xs: 48px;
 		--main-mt-sm: 48px;
-		--main-mt-md: 48px;
-		--main-mt-lg: 86px;
-		--main-mt-xl: 86px;
+		--main-mt-md: 108px;
+		--main-mt-lg: 108px;
+		--main-mt-xl: 108px;
 
 
 		/* Regole comuni ----- */
@@ -1109,27 +1109,28 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 			+Is Dark
 		\*------------------------------------*/
 
-		--isdark-body-color: var(--color-isdark-default);
+		--isdark-body-color: var(--isdark-color-400);
 
 		--isdark-text-selection-color: var(--text-selection-color);
-		--isdark-text-selection-bg: var(--text-selection-bg);
+		--isdark-text-selection-bg: var(--color-primary); /*var(--text-selection-bg); */
 
-		--isdark-anchor-color: var(--color-isdark-interactive);
-		--isdark-anchor-text-decoration: underline solid var(--color-isdark-weak);
-		--isdark-anchor-hover-color:  var(--color-isdark-interactive-hover);
-		--isdark-anchor-hover-text-decoration: underline solid var(--color-isdark-full);
-		--isdark-headings-color: var(--color-isdark-full);
-		--isdark-toptitle-color: var(--color-isdark-default);
-		--isdark-subtitle-color: var(--color-isdark-default);
-		--isdark-paragraph-color: var(--color-isdark-weak);
-		--isdark-lead-color: var(--color-isdark-default);
-		--isdark-li-color: var(--isdark-body-color); /* Ancora da capire come gestirlo nel css */
+		--isdark-anchor-color: var(--isdark-interactive-color);
+		--isdark-anchor-text-decoration: underline solid var(--isdark-color-300);
+		--isdark-anchor-hover-color:  var(--isdark-interactive-hover-color);
+		--isdark-anchor-hover-text-decoration: underline solid var(--isdark-color-700);
+		--isdark-headings-color: var(--isdark-color-700);
+		--isdark-toptitle-color: var(--isdark-color-400);
+		--isdark-subtitle-color: var(--isdark-color-400);
+		--isdark-paragraph-color: var(--isdark-color-300);
+		--isdark-lead-color: var(--isdark-color-400);
+		--isdark-ul-li-color: var(--isdark-body-color); /* Ancora da capire come gestirlo nel css */
+		--isdark-ul-li-dot-bg: var(--isdark-color-400);
 
-		--isdark-menu-hv-color: var(--color-isdark-default);
-		--isdark-menu-hv-text-decoration: underline solid var(--color-isdark-default);
-		--isdark-menu-hv-hover-text-decoration: underline solid var(--color-isdark-weak);
+		--isdark-menu-hv-color: var(--isdark-color-400);
+		--isdark-menu-hv-text-decoration: underline solid var(--isdark-color-400);
+		--isdark-menu-hv-hover-text-decoration: underline solid var(--isdark-color-300);
 
-		--isdark-input-color: var(--color-isdark-full);
+		--isdark-input-color: var(--isdark-color-700);
 
 
 	}
