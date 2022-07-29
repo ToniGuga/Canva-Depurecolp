@@ -149,32 +149,20 @@ if (is_admin()) {
 		$cta_2 = '<a class="' . $link_2_classes . '" href="' . esc_url($action_link_2['url']) . '" ' . $target_link_2 . ' ' . $track_event_2 . '>' . esc_html($action_link_2['title']) . '</a>';
 	}
 
-
-
-	$layer_content_output = '';
-	if (get_field('toptitle') || get_field('title') || get_field('subtitle') || get_field('action_link')) {
-		$layer_content_output = '
-				<div class="flex h-full flex-col justify-end p-4 sm:p-8 lg:p-12 xl:p-16 pt-32">
-
-					<span class="block h3 fw-300 text-white">
-						' . get_field('toptitle') . '
-					</span>
-					<h2 class="_title h1 lh-11 text-white">
-						' . get_field('title') . '
-					</h2>
-					<span class="block mt-2 h4 font-secondary text-primary">
-						' . get_field('subtitle') . '
-					</span>
-
-					<div class="_hero-primary-content mt-8">' . get_field('content') . '</div>
-					<div class="_hero-button-box pt-4 isdark">
-						' . $cta . '
-						' . $cta_2 . '
-					</div>
-
-				</div>
-			';
+	$form = '';
+	if (get_field('post_object')) {
+		$form = do_shortcode('[contact-form-7 id="' . get_field('post_object') . '"]');
 	}
+
+
+	$toptitle = get_field('toptitle');
+	$title = get_field('title');
+	$subtitle = get_field('subtitle');
+	$content = get_field('content');
+
+	$bg_image = get_field('bg_image');
+	$bg_image_small = get_field('bg_image_small');
+	$video_bg_file_url = get_field('video_bg_file_url');
 
 	if (get_field('video_bg_file_url')) {
 		$layer_picture = 'on';
@@ -183,47 +171,39 @@ if (is_admin()) {
 	$layer_filter = 'on';
 	$layer_content = 'on';
 
-	if(!$layer_content_output){
+	if (!$layer_content_output) {
 		$layer_filter = 'off';
 		$layer_content = 'off';
 	}
 
-	canva_the_layer([
-		'layer_type' => '_hero', // _hero, _card, _photobutton
-		'layer_id' => esc_attr($id),
-		'layer_class' => '' . esc_attr($className),
+	$template_name = 'block-hero-primary';
+	if(get_field('template_name')){
+		$template_name = esc_attr(get_field('template_name'));
+	}
 
-		'img_id' => get_field('bg_image'),
-		'img_small_id' => get_field('bg_image_small'),
-		'thumb_size' => '1920-free',
-		'thumb_small_size' => '640-free',
-		'video_url' => get_field('video_bg_file_url'),
-
-		'layer_visual_class' => 'absolute',
-
-		'layer_bg' => 'on',
-		'layer_bg_class' => '',
-
+	$args = [
+		'id' => $id,
+		'class_name' => $className,
+		'bg_image' => $bg_image,
+		'bg_image_small' => $bg_image_small,
+		'video_bg_file_url' => $video_bg_file_url,
 		'layer_picture' => $layer_picture,
-		'layer_picture_class' => '',
-
 		'layer_filter' => $layer_filter,
-		'layer_filter_class' => '',
-
-		'layer_graphics' => 'off',
-		'layer_graphics_class' => '',
-
-		'layer_date' => 'off',
-		'layer_date_class' => '',
-
-		'layer_status' => 'off',
-		'layer_status_class' => '',
-
-		'layer_info' => 'off',
-		'layer_info_class' => '',
-
 		'layer_content' => $layer_content,
-		'layer_content_class' => 'relative',
-		'layer_content_output' => $layer_content_output,
-	]);
+		'action_link' => $action_link,
+		'action_link_2' => $action_link_2,
+		'layer_content' => $layer_content,
+		'toptitle' => $toptitle,
+		'title' => $title,
+		'toptitle' => $toptitle,
+		'toptitle' => $toptitle,
+		'content' => $content,
+		'cta' => $cta,
+		'cta_2' => $cta_2,
+		'form' => $form,
+	];
+
+	canva_get_template($template_name, $args);
+
+
 }
