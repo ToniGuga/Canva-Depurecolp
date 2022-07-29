@@ -41,132 +41,75 @@ if (!$post_id) {
 
 <div id="<?php echo esc_attr($id); ?>" class="wp-block-photobutton">
 
-		<?php if ($link_wrap) : ?>
+	<?php if ($link_wrap) : ?>
 
-			<a class="<?php echo esc_attr($modal_class); ?>" <?php echo $href . ' ' . $target_link; ?> <?php echo canva_get_ga_event_tracker($eventCategory = 'Action-Link', $eventAction = 'Photobutton', $eventLabel = $event_label);  ?> <?php echo $modal_data_contet; ?>>
+		<a class="<?php echo esc_attr($modal_class); ?>" <?php echo $href . ' ' . $target_link; ?> <?php echo canva_get_ga_event_tracker($eventCategory = 'Action-Link', $eventAction = 'Photobutton', $eventLabel = $event_label);  ?> <?php echo $modal_data_contet; ?>>
 
-			<?php endif; ?>
+		<?php endif; ?>
 
-			<?php
-			// Il _pb-fixed-ratio dà al photobutton un ratio di deafult definito nella variabile --pb-ratio, ma si può poi sovrascrivere da template o da backend wp con ratio-X-Y md:ratio-X-Y
-			?>
-			<div class="_card text-center <?php echo esc_attr($class_name); ?> <?php echo esc_attr($isdark); ?>">
+		<?php
+		// Il _pb-fixed-ratio dà al photobutton un ratio di deafult definito nella variabile --pb-ratio, ma si può poi sovrascrivere da template o da backend wp con ratio-X-Y md:ratio-X-Y
+		?>
+		<div class="_card text-center <?php echo esc_attr($class_name); ?> <?php echo esc_attr($isdark); ?>">
 
-				<div class="_card-img">
-					<?php
-					if ($bg_image) {
-						$bg_image = canva_get_img([
-							'img_id' => $bg_image,
-							'img_type' => 'url', // img, bg, url
-							'thumb_size' => '640-11',
-							'figure_class' => '_product-figure',
-							'img_class' => '',
-							'bg_content' => '',
-							'caption' => 'off',
-							'blazy' => 'on',
-							'srcset' => 'off',
-							'data_attr' => '',
-							'width' => '',
-							'height' => '',
-						]);
-
-						$image = 'data-src = "' . $bg_image . '"';
-					}
-
-					if ($bg_image_small) {
-						$bg_image_small = canva_get_img([
-							'img_id' => $bg_image_small,
-							'img_type' => 'url', // img, bg, url
-							'thumb_size' => '640-11',
-							'figure_class' => '',
-							'img_class' => '',
-							'bg_content' => '',
-							'caption' => 'off',
-							'blazy' => 'on',
-							'srcset' => 'off',
-							'data_attr' => '',
-							'width' => '',
-							'height' => '',
-						]);
-
-						$image_small = 'data-src-small="' . $bg_image_small . '"';
-					}
-					?>
-
-					<?php
-					if ($video_bg_file_url) :
-
-						$poster = '';
-
-						if ($bg_image) {
-							$video_poster = canva_get_img([
-								'img_id' => $bg_image,
-								'img_type' => 'url', // img, bg, url
-								'thumb_size' => '960-free',
-								'figure_class' => '',
-								'img_class' => '',
-								'bg_content' => '',
-								'caption' => 'off',
-								'blazy' => 'off',
-								'srcset' => 'off',
-								'data_attr' => '',
-								'width' => '',
-								'height' => '',
-							]);
-
-							$poster = 'poster = "' . $video_poster . '"';
-						}
-					?>
-
-					<?php else : ?>
-
-						<div class="" <?php echo $image . ' ' . $image_small; ?>></div>
-
-					<?php endif; ?>
-
-				</div>
-
-
-
-				<!-- Layer content -->
-				<div class="_title ">
-
-					<?php if ($photobutton_toptitle) : ?>
-						<h3 class="_pb-toptitle block fs-p mb-2"><?php echo $photobutton_toptitle; ?></h3>
-					<?php endif; ?>
-					<?php if ($photobutton_title) : ?>
-						<h4 class="_pb-title block font-primary lh-11 mb-0"><?php echo $photobutton_title; ?></h4>
-					<?php endif; ?>
-					<?php if ($photobutton_subtitle) : ?>
-						<span class="_pb-subtitle h5 mt-4 mb-0"><?php echo $photobutton_subtitle; ?></span>
-					<?php endif; ?>
-					<?php if ($photobutton_text) : ?>
-						<span class="_pb-text block mt-4 mb-0"><?php echo $photobutton_text; ?></span>
-					<?php endif; ?>
-
-				</div>
+			<div class="_card-img">
+				<?php
+				echo canva_get_img([
+					'img_id' => $bg_image,
+					'img_type' => 'img', // img, bg, url
+					'thumb_size' => '640-11',
+					'figure_class' => '_product-figure',
+					'img_class' => '',
+					'bg_content' => '',
+					'caption' => 'off',
+					'blazy' => 'on',
+					'srcset' => 'off',
+					'data_attr' => '',
+					'width' => '',
+					'height' => '',
+				]);
+				?>
 			</div>
 
-			<?php if ($link_wrap) : ?>
-			</a>
+			<!-- Layer content -->
+			<div class="_title">
+
+				<?php if ($photobutton_toptitle) : ?>
+					<h3 class="_pb-toptitle block fs-p mb-2"><?php echo $photobutton_toptitle; ?></h3>
+				<?php endif; ?>
+				<?php if ($photobutton_title) : ?>
+					<h4 class="_pb-title block font-primary lh-11 mb-0"><?php echo $photobutton_title; ?></h4>
+				<?php endif; ?>
+				<?php if ($photobutton_subtitle) : ?>
+					<span class="_pb-subtitle h5 mt-4 mb-0"><?php echo $photobutton_subtitle; ?></span>
+				<?php endif; ?>
+				<?php if ($photobutton_text) : ?>
+					<span class="_pb-text block mt-4 mb-0"><?php echo $photobutton_text; ?></span>
+				<?php endif; ?>
+
+			</div>
+		</div>
+
+		<?php if ($link_wrap) : ?>
+		</a>
+	<?php endif; ?>
+
+	<?php if ($modal) : ?>
+
+		<?php if ($modal_content === 'modal_content_html') : ?>
+
+			<div class="hide <?php echo esc_attr($id); ?>">
+				<?php echo $wysiwyg; ?>
+			</div>
+
+		<?php else : ?>
+
+			<div class="hide <?php echo esc_attr($id); ?>">
+				<?php echo $post_content; ?>
+			</div>
+
 		<?php endif; ?>
 
-		<?php if ($modal) : ?>
+	<?php endif; ?>
 
-			<?php if ($modal_content === 'modal_content_html') : ?>
-
-				<div class="hide <?php echo esc_attr($id); ?>">
-					<?php echo $wysiwyg; ?>
-				</div>
-
-			<?php else : ?>
-
-				<div class="hide <?php echo esc_attr($id); ?>">
-					<?php echo $post_content; ?>
-				</div>
-
-			<?php endif; ?>
-
-		<?php endif; ?>
-
-	</div>
+</div>
