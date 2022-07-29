@@ -49,6 +49,7 @@ button, .button, .tag,
     border-color: var(--button-hover-border-color);
 	text-decoration: var(--button-hover-text-decoration);
 	shadow: var(--button-hover-shadow);
+	transform: var(--button-hover-transformation);
 }
 
 .button:hover .icon, .tag:hover .icon,
