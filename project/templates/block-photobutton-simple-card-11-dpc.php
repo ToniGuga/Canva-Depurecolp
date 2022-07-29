@@ -60,13 +60,6 @@ if (!$post_id) {
 					'thumb_size' => '640-11',
 					'wrapper_class' => '_product-figure',
 					'img_class' => '',
-					'bg_content' => '',
-					'caption' => 'off',
-					'blazy' => 'on',
-					'srcset' => 'off',
-					'data_attr' => '',
-					'width' => '',
-					'height' => '',
 				]);
 				?>
 			</div>
