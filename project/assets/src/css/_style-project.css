@@ -40,3 +40,10 @@
     UI
 \*------------------------------------*/
 
+._card ._product-figure {
+	transition: var(--default-button-transition);
+}
+
+._card:hover ._product-figure {
+	transform: scale(1.05);
+}

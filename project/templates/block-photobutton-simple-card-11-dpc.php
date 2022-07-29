@@ -52,7 +52,7 @@ if (!$post_id) {
 		?>
 		<div class="_card text-center <?php echo esc_attr($class_name); ?> <?php echo esc_attr($isdark); ?>">
 
-			<div class="_card-img">
+			<div class="_card-img border border-white mb-4 overflow-hidden">
 				<?php
 				echo canva_get_img([
 					'img_id' => $bg_image,
@@ -78,7 +78,7 @@ if (!$post_id) {
 					<h3 class="_pb-toptitle block fs-p mb-2"><?php echo $photobutton_toptitle; ?></h3>
 				<?php endif; ?>
 				<?php if ($photobutton_title) : ?>
-					<h4 class="_pb-title block font-primary lh-11 mb-0"><?php echo $photobutton_title; ?></h4>
+					<h5 class="_pb-title block px-8 font-primary lh-11 mb-0"><?php echo $photobutton_title; ?></h5>
 				<?php endif; ?>
 				<?php if ($photobutton_subtitle) : ?>
 					<span class="_pb-subtitle h5 mt-4 mb-0"><?php echo $photobutton_subtitle; ?></span>

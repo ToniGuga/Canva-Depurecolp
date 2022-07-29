@@ -106,4 +106,5 @@ Qui si inseriscono le diverse classi, via via che si inseriscono nelle pagine.
 
 
 <!-- LP ATEX -->
-<span class="col-span-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4"></span>
+<span class="p-4 lg:p-8 bg-black rounded-md border border-white"></span>
+<span class="col-span-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 font-primary"></span>

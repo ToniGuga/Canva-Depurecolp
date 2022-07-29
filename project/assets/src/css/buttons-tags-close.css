@@ -8,6 +8,7 @@ button, .button, .tag,
     @apply inline-flex items-center justify-center cursor-pointer fill-current;
 	padding: var(--button-py) var(--button-px);
 	color: var(--button-color);
+	font-family: var(--button-font-family);
 	font-size: var(--button-font-size);
 	font-weight: var(--button-font-weight);
 	line-height: var(--button-line-height);
