@@ -104,3 +104,6 @@ Qui si inseriscono le diverse classi, via via che si inseriscono nelle pagine.
 
 <!-- Customer Support -->
 
+
+<!-- LP ATEX -->
+<span class="col-span-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4"></span>

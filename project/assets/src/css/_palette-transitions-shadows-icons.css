@@ -1,5 +1,6 @@
 /*------------------------------------*\
 		Palette
+		Transitions etc...
 \*------------------------------------
 
 /* Qui dentro si mettono tutte le "pre-variabili" da cui poi attingono gli altri campi.
@@ -22,16 +23,16 @@ Prevariabili tipo sono
 			+Palette
 		\*------------------------------------*/
 
-		--color-dpc-red-100: #D5E2F0; /* Ricreato aggiungendo bianco */
-		--color-dpc-red-300: #558AC3; /* Ricreato aggiungendo bianco */
+		--color-dpc-red-100: #EED1D1; /* Ricreato aggiungendo bianco */
+		--color-dpc-red-300: #BB4745; /* Ricreato aggiungendo bianco */
 		--color-dpc-red: #aa1917;
-		--color-dpc-red-700: #225790;
+		--color-dpc-red-700: #660F0E;
 
-        --color-dpc-yellow-100: #Fdf3d0;
-        --color-dpc-yellow-200: #FFd966;
-        --color-dpc-yellow-300: #FFd24d;
+        --color-dpc-yellow-100: #FFF6D1;
+        --color-dpc-yellow-200: #FFE78B;
+        --color-dpc-yellow-300: #FFE374;
         --color-dpc-yellow: #ffd017;
-        --color-dpc-yellow-700: #CC9900;
+        --color-dpc-yellow-700: #B29210;
 
         --color-dpc-clear-gray: #f5f5f5; /* Usato per bg sovrascrive Gray-100 */
         --color-dpc-light-gray: #999999; /* Sovrascrive Gray-400 */
@@ -161,7 +162,7 @@ Prevariabili tipo sono
 		Se servono concatenazioni di transition per usarle poi nel css finale come variabile unica allora si inseriscono qui sotto
 		*/
 
-		--button-default-transition: var(--transition-property-all) var(--transition-bezier) var(--duration-normal);
+		--button-default-transition: var(--transition-property-all) var(--transition-bezier) var(--duration-fast);
 		--anchor-default-transition: var(--transition-property-all) var(--transition-bezier) var(--duration-normal);
 
 

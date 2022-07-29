@@ -50,7 +50,7 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		--screen-md: 640px;
 		--screen-lg: 960px;
 		--screen-xl: 1280px;
-		--screen-xxl: 1600px;
+		--screen-xxl: 1440px;
 
 
 
@@ -245,7 +245,7 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		/* Button regular ----- */
 
 		/* Dimensioni */
-		--button-py: 1em; /* tenerlo in em per avere la proporzionalità rispetto a font-size */
+		--button-py: .75em; /* tenerlo in em per avere la proporzionalità rispetto a font-size */
 		--button-px: 4em;
 		--button-icon-ratio: 1em;
 		--button-mb: 0;
@@ -307,15 +307,15 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 
 		/* Button Hollow */
 		--button-hollow-background: transparent;
-		--button-hollow-color: var(--color-black); /* Tutte le scritte compresi toptitle e subtitle */
+		--button-hollow-color: var(--color-primary); /* Tutte le scritte compresi toptitle e subtitle */
 		/* --button-hollow-icon-color: var(--color-black); */ /* Sostituito da fill-current */
-		--button-hollow-border-color: var(--color-black);
+		--button-hollow-border-color: var(--color-primary);
 
 		/* Button Hollow hover*/
-		--button-hollow-hover-background: var(--color-black);
+		--button-hollow-hover-background: var(--color-primary);
 		--button-hollow-hover-color: var(--color-white);
 		/* --button-hollow-hover-icon-color: var(--color-white); */ /* Sostituito da fill-current */
-		--button-hollow-hover-border-color: var(--color-black);
+		--button-hollow-hover-border-color: var(--color-primary);
 
 			/* Isdark Button Hollow  */
 			--isdark-button-hollow-background: transparent;
