@@ -100,8 +100,8 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		*/
 
 
-		--primary-font-family: 'Name Sans', sans-serif;
-		--secondary-font-family: 'Parabole', sans-serif;
+		--primary-font-family: 'Lato', sans-serif;
+		--secondary-font-family: 'BebasNeue', sans-serif;
 		--extra-font-family: var(--primary-font-family);
 
 
@@ -137,31 +137,31 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		/* Tutti i valori sopra i 18px sono ridotti a 0.8 per assomigliare al progetto, includendo anche l'aggiunstamento dato dal 105% del font-size html */
 
 		--huge-font-size-large:   			5rem; 		/* = 64px su base 16px */
-		--h1-font-size-large:     			2.625rem; 	/* =  originali progetto 56/62 = 3.5rem */
-		--h2-font-size-large:     			1.7rem; 	/* =  originali progetto 34/38 = 2.125rem  */
-		--h3-font-size-large:     			1.25rem; 	/* =  originali progetto 24/30 = 1.5rem */
-		--h4-font-size-large:     			1.025rem; 	/* =  originali progetto 18/24 = 1.125rem */
-		--h5-font-size-large:     			1rem; 		/* =  originali progetto 16/18 = 1rem */
-		--h6-font-size-large:     			.9375rem; 	/* =  originali progetto 14/18 = .875rem */
-		--h7-font-size-large:    			.875rem; 	/* =  non esiste in progetto */
+		--h1-font-size-large:     			3.75rem; 	/* =  originali progetto 60/* = 3.5rem */
+		--h2-font-size-large:     			2.8125rem; 	/* =  originali progetto 45/* = 2.125rem  */
+		--h3-font-size-large:     			2.1875rem; 	/* =  originali progetto 35/* = 1.5rem */
+		--h4-font-size-large:     			1.25rem; 	/* =  originali progetto 20/* = 1.125rem */
+		--h5-font-size-large:     			1.125rem; 	/* =  originali progetto 18/* = 1rem */
+		--h6-font-size-large:     			1rem; 	/* =  originali progetto 14/18 = .875rem */
+		--h7-font-size-large:    			.9375rem; 	/* =  non esiste in progetto */
 
 		--toptitle-font-size-large: 		.9375rem; 	/* = originali progetto 15px = .9375rem */
-		--paragraph-font-size-large: 		.9375rem;	    /* = originali progetto 16px = 1rem */
-		--text-small-font-size-large: 		.8125rem; 	/* = originali progetto 14px = .875rem */
+		--paragraph-font-size-large: 		1rem;	    /* = originali progetto 16px = 1rem */
+		--text-small-font-size-large: 		.875rem; 	/* = originali progetto 14px = .875rem */
 		--text-xsmall-font-size-large: 		.75rem; 	/* = originali progetto 13px = .8125rem */
 		--text-xxsmall-font-size-large: 	.6875rem; 	/* = originali progetto 12px = .75rem */
 
-		--lead-font-size-large: 			1.125rem; 		/* = 24px su base 16px */
+		--lead-font-size-large: 			1.25rem; 		/* = 20px su base 16px */
 		--blockquote-font-size-large: 		2.625rem; 		/* = 42px su base 16px */
 
 
 		/* Headings */
-		--headings-font-family: var(--primary-font-family);
+		--headings-font-family: var(--secondary-font-family);
 		--headings-color: var(--color-black);
 		--headings-font-weight: 700;
-		--headings-line-height: 1.2;
-		--headings-letter-spacing: .015rem;
-		--headings-margin-bottom: 1rem;
+		--headings-line-height: .9;
+		--headings-letter-spacing: 0;
+		--headings-margin-bottom: 1.5rem;
 
 
 		/* Toptitle */
@@ -245,11 +245,11 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		/* Button regular ----- */
 
 		/* Dimensioni */
-		--button-py: .5em; /* tenerlo in em per avere la proporzionalità rispetto a font-size */
-		--button-px: 1.5em;
+		--button-py: 1em; /* tenerlo in em per avere la proporzionalità rispetto a font-size */
+		--button-px: 4em;
 		--button-icon-ratio: 1em;
 		--button-mb: 0;
-		--button-rounded: 0;
+		--button-rounded: .25em;
 			/* border-width di default è 2px e non ha variabile, per cambiarlo usare style */
 
 		/* Colori */
@@ -259,8 +259,8 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		--button-border-color: var(--button-background); /* di solito uguale a background color per avere effetto pieno */
 
 		/* Tipografia */
-		--button-font-family: var(--primary-font-family);
-		--button-font-size: .9375em; /* Per i button come per le icone usiamo font-size proporzionale */
+		--button-font-family: var(--secondary-font-family);
+		--button-font-size: 1em; /* Per i button come per le icone usiamo font-size proporzionale */
 		--button-font-weight: 700;
 		--button-line-height: 1;
 		--button-letter-spacing: 0.05em;

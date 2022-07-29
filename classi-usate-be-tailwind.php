@@ -80,17 +80,17 @@ Qui si inseriscono le diverse classi, via via che si inseriscono nelle pagine.
 <span class="overflow-y-hidden"></span>
 
 
+<!-- Palette -->
+<span class="bg-gray-900"></span>
+
+
 <!-- Menu -->
-<span class="w-32 sm:w-36 p-2 lg:w-48 lg:p-4 xl:w-56">
 
 
 <!-- Footer -->
-<span class="py-32 py-24 col-span-12 md:col-span-3 lg:col-span-2 lg:col-start-3"></span>
 
 
 <!-- Home page -->
-<span class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 mb-20 "></span>
-<span class="md:grid-cols-2 lg:grid-cols-3"></span>
 
 
 <!-- Prodotto singolo -->
