@@ -962,14 +962,12 @@ function canva_slider_post_ids($attributes = [])
 
 		<script>
 			/* swiper slider post */
-			var <?php echo $element_id; ?> = new Swiper('.<?php echo esc_js($element_id); ?>', {
+			const <?php echo $element_id; ?> = new Swiper('.<?php echo esc_js($element_id); ?>', {
 				preloadImages: false,
 				lazy: false,
 				grabCursor: true,
 				<?php if ($autoplay == 'true') { ?>
-					autoplay: {
-						delay: 8000,
-					},
+					autoplay: {delay: 8000,},
 				<?php } else { ?>
 					autoplay: <?php echo $autoplay; ?>,
 				<?php } ?>
