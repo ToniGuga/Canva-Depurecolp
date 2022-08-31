@@ -365,13 +365,13 @@
 		/* Unordered list */
 
 		.ul-dot,
-		.wp-block-list:not([class*="menu-"]):not([class*="menu-"]),
+		ul.wp-block-list:not([class*="menu-"]),
 		.canva-ul {
 			margin-bottom: var(--ul-margin-bottom);
 		}
 
 			.ul-dot li,
-			.wp-block-list:not([class*="menu-"]) li,
+			ul.wp-block-list:not([class*="menu-"]) li,
 			.canva-ul li {
 				@apply relative;
 				color: var(--ul-li-color);
@@ -382,13 +382,13 @@
 			}
 
 			.ul-dot li:last-of-type,
-			.wp-block-list:not([class*="menu-"]) li:last-of-type,
+			ul.wp-block-list:not([class*="menu-"]) li:last-of-type,
 			.canva-ul li:last-of-type {
 				margin-bottom: 0;
 			}
 
 				.ul-dot li::before,
-				.wp-block-list:not([class*="menu-"]) li::before,
+				ul.wp-block-list:not([class*="menu-"]) li::before,
 				.canva-ul li::before {
 					@apply block absolute w-1 h-1;
 					content: '';
@@ -398,13 +398,6 @@
 					height: var(--ul-li-dot-height);
 					background: var(--ul-li-dot-bg);
 					border-radius: var(--ul-li-dot-radius);
-				}
-
-				/* Isdark */
-				.isdark .ul-dot li::before,
-				.isdark .wp-block-list:not([class*="menu-"]) li::before,
-				.isdark .canva-ul li::before {
-					background: var(--ul-li-dot-isdark-bg);
 				}
 
 
@@ -434,12 +427,21 @@
 					background-image: var(--ul-li-check-bg-img);
 				}
 
-				/* Isdark */
-				.isdark .ul-check li::before,
-				.isdark .wp-block-list:not([class*="menu-"]).ul-check li::before,
-				.isdark .canva-ul.ul-check li::before {
-					background-image: var(--ul-li-check-isdark-bg-img);
-				}
+
+		/* Ordered list */
+
+		ol,
+		ol.wp-block-list {
+			list-style-type: decimal;
+			padding-left: var(--ol-pl);
+		}
+
+			ol li,
+			ol.wp-block-list li {
+				margin-bottom: var(--ul-li-margin-bottom);
+			}
+
+
 
 
 

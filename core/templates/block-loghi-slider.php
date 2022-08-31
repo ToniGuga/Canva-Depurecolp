@@ -12,9 +12,9 @@ if (!defined('ABSPATH')) {
 	echo canva_get_img([
 		'img_id' => $post_id,
 		'img_type' => 'img', // img, bg, url
-		'thumb_size' => '320-11',
-		'wrapper_class' => '_swiper-thumb-wrap relative ratio-1-1 group',
-		'img_class' => 'absolute object-cover object-center transform-gpu transition-all duration-slow group-hover:scale-105 w-32',
+		'thumb_size' => '320-free',
+		'wrapper_class' => '_swiper-thumb-wrap w-24 h-24 overflow-hidden',
+		'img_class' => 'object-contain h-24 object-center',
 		'blazy' => 'on',
 		'srcset' => 'on',
 	]);

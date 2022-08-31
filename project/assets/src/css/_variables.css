@@ -237,6 +237,8 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		--ul-li-check-bg-img: var(--icon-check);
 		--ul-li-check-isdark-bg-img: var(--icon-check-isdark);
 
+		--ol-pl: 1em; /* 1em vale tendenzialmente la larghezza di un numero a una cifra */
+
 
 
 
@@ -765,16 +767,16 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 
 		--swiper-arrow-icon: var(--icon-arrow-right);
 
-		--swiper-bullet-size: .75rem;
-		--swiper-bullet-gap: .25rem;
+		--swiper-bullet-size: .5rem;
+		--swiper-bullet-gap: .375rem;
 		--swiper-bullet-border-radius: 50%;
-		--swiper-bullet-border: 2px solid var(--color-abc-darkest-gray);
-		--swiper-bullet-bg-color: var(--color-white);
-		--swiper-bullet-opacity: 1;
-		--swiper-bullet-current-size: .75rem;
-		--swiper-bullet-current-border: 2px solid  var(--color-white);
-		--swiper-bullet-current-bg-color: var(--color-abc-darkest-gray);
-		--swiper-bullet-opacity: 1;
+		--swiper-bullet-border: none; /* .125rem solid var(--color-dpc-light-gray); */
+		--swiper-bullet-bg-color: var(--color-dpc-darkest-gray);
+		--swiper-bullet-opacity: .1;
+		--swiper-bullet-current-size: .5rem;
+		--swiper-bullet-current-border: none;
+		--swiper-bullet-current-bg-color: var(--color-dpc-darkest-gray);
+		--swiper-bullet-current-opacity: .35;
 
 
 

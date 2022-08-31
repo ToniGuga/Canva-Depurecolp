@@ -82,7 +82,7 @@ if (is_admin()) {
 				'post_ids' => $slider_loghi,
 				'template_name' => $template_name,
 				'swiper_hero_class' => '',
-				'swiper_container_class' => '',
+				'swiper_container_class' => 'pb-12',
 				'slides_per_view_xsmall' => 1,
 				'slides_per_view_small' => get_field('slides_per_view_small'),
 				'slides_per_view_medium' => get_field('slides_per_view_medium'),

@@ -23,7 +23,7 @@ Se dentro la classe isdark c'è poi una classe islight, vince su isdark perché 
 
 .isdark p > a,
 .isdark span > a,
-.isdark *:not(nav) a {
+.isdark *:not(nav) li > a {
 	color: var(--isdark-anchor-color);
 	text-decoration: var(--isdark-anchor-text-decoration);
 }
@@ -56,9 +56,23 @@ Se dentro la classe isdark c'è poi una classe islight, vince su isdark perché 
 	--lead-color: var(--isdark-lead-color);
 }
 
-.isdark ul li {
+.isdark ul li,
+.isdark ol li {
 	--ul-li-color: var(--isdark-ul-li-color);
 }
+
+	.isdark .ul-dot li::before,
+	.isdark ul.wp-block-list:not([class*="menu-"]) li::before,
+	.isdark .canva-ul li::before {
+		background: var(--ul-li-dot-isdark-bg);
+	}
+
+	.isdark .ul-check li::before,
+	.isdark .wp-block-list:not([class*="menu-"]).ul-check li::before,
+	.isdark .canva-ul.ul-check li::before {
+		background-image: var(--ul-li-check-isdark-bg-img);
+	}
+
 
 .isdark .menu-v li a,
 .isdark .menu-h li a {

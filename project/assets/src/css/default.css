@@ -4,10 +4,12 @@
         background: var(--body-bg);
         scroll-behavior: smooth;
     }
+
     body {
 		color: var(--body-color);
         background: var(--body-bg);
     }
+
     figure {
         display: flex;
         flex-wrap: wrap;
@@ -17,6 +19,7 @@
         margin: 0;
         padding: 0;
     }
+
     img {
         display: inline-block;
         height: auto;
