@@ -218,6 +218,17 @@ function canva_be_acf_init()
 		]);
 
 		acf_register_block([
+			'name' 				=> 'loghi-slider', //modificare slug del blocco
+			'title' 			=> __('Loghi Slider', 'canva-backend'), //modificare titolo del blocco
+			'description' 		=> __('Loghi slider to be presented with a custom template', 'canva-backend'), //modificare azione del blocco
+			'render_callback' 	=> 'canva_be_block_callback', //non modificare
+			'category' 			=> 'canva_block_category', //non modificare
+			'icon' 				=> 'dashicons-images-alt2',
+			'keywords' 			=> ['loghi', 'slider'],
+			'supports'			=> array('align' => false, 'multiple' => true, 'anchor' => true),
+		]);
+
+		acf_register_block([
 			'name' 				=> 'faq-selector', //modificare slug del blocco
 			'title' 			=> __('FAQ Selector', 'canva-backend'), //modificare titolo del blocco
 			'description' 		=> __('Select FAQ Posts to be presented with a custom template', 'canva-backend'), //modificare azione del blocco
@@ -477,6 +488,7 @@ function canva_allowed_blocks($allowed_blocks)
 		'acf/posts-selector',
 		'acf/common-block-selector',
 		'acf/common-block-slider',
+		'acf/loghi-slider',
 		'acf/faq-selector',
 		'acf/faq-selector-new',
 		'acf/posts-per-term-selector',
