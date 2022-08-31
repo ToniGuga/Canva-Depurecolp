@@ -50,6 +50,11 @@
 			color: var(--bold-color);
 		}
 
+		a {
+			transition: var(--a-transition);
+		}
+
+
 		p > a, span > a, *:not(nav) li > a {
 			font-weight: var(--anchor-font-weight);
 			color: var(--anchor-color);
@@ -369,6 +374,7 @@
 			.wp-block-list:not([class*="menu-"]) li,
 			.canva-ul li {
 				@apply relative;
+				color: var(--ul-li-color);
 				padding-left: var(--ul-li-padding-left);
 				margin-bottom: var(--ul-li-margin-bottom);
 				font-size: var(--ul-li-font-size);

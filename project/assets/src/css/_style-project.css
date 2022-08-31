@@ -40,6 +40,11 @@
     UI
 \*------------------------------------*/
 
+
+.button {
+	padding: .75em var(--button-px) .6em;
+}
+
 ._card ._product-figure {
 	transition: var(--button-default-transition);
 }

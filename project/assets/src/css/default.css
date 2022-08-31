@@ -5,6 +5,7 @@
         scroll-behavior: smooth;
     }
     body {
+		color: var(--body-color);
         background: var(--body-bg);
     }
     figure {

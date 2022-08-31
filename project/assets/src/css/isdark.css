@@ -13,7 +13,7 @@ Se dentro la classe isdark c'è poi una classe islight, vince su isdark perché 
 \*----------------------------------- */
 
 .isdark {
-	--boby-color: var(--isdark-body-color);
+	color: var(--isdark-body-color);
 }
 
 .isdark::selection {
@@ -23,16 +23,16 @@ Se dentro la classe isdark c'è poi una classe islight, vince su isdark perché 
 
 .isdark p > a,
 .isdark span > a,
-.isdark *:not(nav) li > a {
-	--anchor-color: var(--isdark-anchor-color);
-	--anchor-text-decoration: var(--isdark-anchor-text-decoration);
+.isdark *:not(nav) a {
+	color: var(--isdark-anchor-color);
+	text-decoration: var(--isdark-anchor-text-decoration);
 }
 
 .isdark p > a:hover,
 .isdark span > a:hover,
 .isdark *:not(nav) li > a:hover {
-	--anchor-hover-color: var(--isdark-anchor-hover-color);
-	--anchor-hover-text-decoration: var(--isdark-anchor-hover-text-decoration);
+	color: var(--isdark-anchor-hover-color);
+	text-decoration: var(--isdark-anchor-hover-text-decoration);
 }
 
 .isdark h1, .isdark h2, .isdark h3, .isdark h4, .isdark h5, .isdark h6,
@@ -54,6 +54,10 @@ Se dentro la classe isdark c'è poi una classe islight, vince su isdark perché 
 
 .isdark .lead {
 	--lead-color: var(--isdark-lead-color);
+}
+
+.isdark ul li {
+	--ul-li-color: var(--isdark-ul-li-color);
 }
 
 .isdark .menu-v li a,

@@ -88,6 +88,7 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 			+Base
 		\*------------------------------------*/
 
+		--body-color: var(--islight-color-400);
 		--body-bg: var(--color-white);
 
 
@@ -108,7 +109,6 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		/* Basefont */
 		--body-font-family: var(--primary-font-family);
 		--body-font-size: 1rem; /* usato solo per fs-body */
-		--body-color: var(--islight-color-400);
 		--body-font-weight: 400;
 		--body-line-height: 1.35;
 		--body-letter-spacing: .01rem;
@@ -209,19 +209,21 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 
 
 		/* Lists */
+
 		--ul-margin-bottom: var(--paragraph-margin-bottom);
 
 		--ul-li-font-size: 1em;
 		--ul-li-line-height: var(--paragraph-line-height);
 		--ul-li-padding-left: 1em;
 		--ul-li-margin-bottom: calc(var(--paragraph-margin-bottom) / 3);
+		--ul-li-color: var(--body-color);
 
 		--ul-li-dot-top: .6em;
 		--ul-li-dot-left: .25em;
 		--ul-li-dot-width: .25em;
 		--ul-li-dot-height: .25em;
 		--ul-li-dot-bg: var(--body-color);
-		--ul-li-dot-isdark-bg: var(--isdark-default-color);
+		--ul-li-dot-isdark-bg: var(--isdark-color-400);
 		--ul-li-dot-radius: 0; /* 0 = quadrato */
 
 		--ul-li-check-padding-left: 2em;
@@ -260,7 +262,7 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 
 		/* Tipografia */
 		--button-font-family: var(--secondary-font-family);
-		--button-font-size: 1em; /* Per i button come per le icone usiamo font-size proporzionale */
+		--button-font-size: 1.25em; /* Per i button come per le icone usiamo font-size proporzionale */
 		--button-font-weight: 700;
 		--button-line-height: 1;
 		--button-letter-spacing: 0.05em;
@@ -611,9 +613,9 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 
 		--layer-visual-bg: var(--color-white); /* Background di deafult che ha il layer visual quando non è ancora caricato nessun asset */
 
-		--layer-filter-bg: var(--color-primary);
-		--layer-filter-opacity: .5;
-		--layer-filter-mix-blend-mode: multiply;
+		--layer-filter-bg: transparent;
+		--layer-filter-opacity: 0;
+		--layer-filter-mix-blend-mode: normal;
 
 
 
@@ -1121,7 +1123,7 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		--isdark-headings-color: var(--isdark-color-700);
 		--isdark-toptitle-color: var(--isdark-color-400);
 		--isdark-subtitle-color: var(--isdark-color-400);
-		--isdark-paragraph-color: var(--isdark-color-300);
+		--isdark-paragraph-color: var(--isdark-body-color);
 		--isdark-lead-color: var(--isdark-color-400);
 		--isdark-ul-li-color: var(--isdark-body-color); /* Ancora da capire come gestirlo nel css */
 		--isdark-ul-li-dot-bg: var(--isdark-color-400);
@@ -1131,7 +1133,6 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		--isdark-menu-hv-hover-text-decoration: underline solid var(--isdark-color-300);
 
 		--isdark-input-color: var(--isdark-color-700);
-
 
 	}
 }
