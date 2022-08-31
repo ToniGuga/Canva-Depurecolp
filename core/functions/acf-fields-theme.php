@@ -3831,6 +3831,67 @@ function canva_load_fields_theme()
 					'new_lines' => '',
 				),
 				array(
+					'key' => 'field_ajl4ky31caa1qjtx',
+					'label' => 'Notices',
+					'name' => '',
+					'type' => 'accordion',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'open' => 0,
+					'multi_expand' => 0,
+					'endpoint' => 0,
+				),
+				array(
+					'key' => 'field_u6nx3yy69s9s4fhm',
+					'label' => 'Before navigation nar',
+					'name' => 'notices_posts_before_navigation',
+					'type' => 'post_object',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'post_type' => array(
+						0 => 'common-blocks',
+					),
+					'taxonomy' => '',
+					'allow_null' => 0,
+					'multiple' => 1,
+					'return_format' => 'id',
+					'ui' => 1,
+				),
+				array(
+					'key' => 'field_grdhotyb6oyeutrg',
+					'label' => 'After navigation nar',
+					'name' => 'notices_posts_after_navigation',
+					'type' => 'post_object',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'post_type' => array(
+						0 => 'common-blocks',
+					),
+					'taxonomy' => '',
+					'allow_null' => 0,
+					'multiple' => 1,
+					'return_format' => 'id',
+					'ui' => 1,
+				),
+				array(
 					'key' => 'field_60d09dd26dee0',
 					'label' => 'Footer',
 					'name' => '',
@@ -4290,6 +4351,46 @@ function canva_load_fields_theme()
 			'description' => '',
 		));
 
+		acf_add_local_field_group(array(
+			'key' => 'group_630f0fca976de',
+			'title' => '[Canva Media] - Media Fields',
+			'fields' => array(
+				array(
+					'key' => 'field_630f0fda61758',
+					'label' => 'External URL',
+					'name' => 'external_url',
+					'type' => 'url',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+				),
+			),
+			'location' => array(
+				array(
+					array(
+						'param' => 'attachment',
+						'operator' => '==',
+						'value' => 'image',
+					),
+				),
+			),
+			'menu_order' => 0,
+			'position' => 'normal',
+			'style' => 'default',
+			'label_placement' => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen' => '',
+			'active' => true,
+			'description' => '',
+			'show_in_rest' => 0,
+		));
 	}
 }
 add_action('acf/init', 'canva_load_fields_theme');
