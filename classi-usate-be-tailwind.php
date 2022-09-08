@@ -18,7 +18,7 @@ Qui si inseriscono le diverse classi, via via che si inseriscono nelle pagine.
 <span class="items-center items-start items-end items-stretch"></span>
 <span class="justify-start justify-center justify-end justify-between justify-around justify-evenly"></span>
 <span class="z-0 z-1 z-2 z-3 z-4 z-5 z-6 z-7 z-8 z-9 z-10 z-11 z-12 z-13 z-14 z-15 z-20 z-30 z-40 z-50 z-auto"></span>
-<span class="pt-2 pt-4 pt-6 pt-8 pt-12 pt-16 pb-2 pb-4 pb-6 pb-8 pb-12 pb-16 pl-2 pl-4 pl-6 pl-8 pr-2 pr-4 pr-6 pr-8 py-2 py-4 py-8 py-12 py-16 py-24"></span>
+<span class="pt-2 pt-4 pt-6 pt-8 pt-12 pt-16 pt-24 pt-32 pt-48 pt-64 pb-2 pb-4 pb-6 pb-8 pb-12 pb-16 pb-24 pb-32 pb-48 pb-64 pl-2 pl-4 pl-6 pl-8 pr-2 pr-4 pr-6 pr-8 py-2 py-4 py-8 py-12 py-16 py-24 py-32 px-2 px-4 px-6 px-8 px-12 px-16 px-24"></span>
 <span class="mt-2 mt-4 mt-6 mt-8 mt-12 mt-16 mb-2 mb-4 mb-6 mb-8 mb-12 mb-16 mb-24 mb-32 ml-2 ml-4 ml-6 ml-8 mr-2 mr-4 mr-6 mr-8"></span>
 <span class="w-2 w-3 w-4 w-5 w-6 w-8 w-10 w-12 w-14 w-16 w-20 w-24 w-28 w-32 w-36 w-40 w-48 w-56 w-64 w-3/5 w-3/4 w-4/5"></span>
 <span class="min-h-100vh"></span>

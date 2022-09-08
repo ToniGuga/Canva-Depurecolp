@@ -34,6 +34,7 @@
 
 /* Plugins */
 @import 'swiper-bundle.css';
+@import 'swiper-layouts.css';
 @import 'photoswipe.css';
 @import 'photoswipe-default-skin.css';
 

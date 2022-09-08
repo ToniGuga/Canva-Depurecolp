@@ -1,0 +1,96 @@
+/*------------------------------------*\
+
+
+		Classi Schiavone & Guga
+ 		per personalizzare i layout di Swiper v 6.7.0
+
+		https://swiperjs.com
+
+
+\*------------------------------------*/
+
+
+/* Aggiungendo queste classi dentro uno Swiper, al livello dello _swp-hero, vengono in automatico riposizionati gli elementi dentro lo swiper per avere in un attimo diversi layout */
+
+
+/* Fondamentale per il funzionamento dello swiper ora che abbiamo posizionato le frecce fuori da swiper-container */
+
+
+
+._swp-hero {
+	position: relative;
+}
+
+
+
+/*------------------------------------*\
+	Layout 1
+	Swiper container ristretto
+\*------------------------------------*/
+
+/* Con questo layout le frecce non sono in sovrapposizione rispetto al contenuto
+	- Container ristretto
+	- Frecce ridotte al 75% e messe ai lati
+	- Pagination sotto
+*/
+
+
+
+	._swp-layout-1 .swiper-container {
+		width: calc(100% - 2 * var(--swiper-gallery-button-size));
+	}
+
+	._swp-layout-1 .swiper-button-next,
+	._swp-layout-1 .swiper-button-prev {
+		width: calc(.75 * var(--swiper-gallery-button-size));
+		height: calc(.75 * var(--swiper-gallery-button-size));
+		opacity: 1;
+	}
+
+		/*
+		._swp-layout-1 .swiper-button-next,
+		._swp-layout-1.swiper-container-rtl .swiper-button-prev {
+			right: 0;
+		}
+
+		._swp-layout-1 .swiper-button-prev,
+		._swp-layout-1.swiper-container-rtl .swiper-button-next {
+			left: 0;
+		}
+		*/
+
+
+
+/*------------------------------------*\
+	Layout 2
+	Stile Teoresi
+\*------------------------------------*/
+
+/*
+	- Container full
+	- Frecce in basso a destra
+	- Pagination in basso a sinistra
+*/
+
+
+._swp-layout-2 .swiper-container {
+	padding-bottom: calc(1.5 * var(--swiper-gallery-button-size));
+}
+
+._swp-layout-2 .swiper-button-next,
+._swp-layout-2 .swiper-button-prev {
+	top: auto;
+	bottom: 0;
+	opacity: 1;
+}
+
+	._swp-layout-2 .swiper-button-next,
+	._swp-layout-2.swiper-container-rtl .swiper-button-prev {
+		right: 0;
+	}
+
+	._swp-layout-2 .swiper-button-prev,
+	._swp-layout-2.swiper-container-rtl .swiper-button-next {
+		left: auto;
+		right: calc(var(--swiper-gallery-button-size) + var(--swiper-gallery-button-gap));
+	}
