@@ -907,7 +907,7 @@ function canva_slider_post_ids($attributes = [])
 	extract(shortcode_atts([
 		'post_ids' => array(),
 		'template_name' => 'render-blocks',
-		'swiper_hero_class' => '',
+		'swiper_hero_class' => '_swp-hero',
 		'swiper_container_class' => 'row unexpanded',
 		'slides_per_view_xsmall' => 1,
 		'slides_per_view_small' => 2,
