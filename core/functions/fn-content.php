@@ -908,7 +908,7 @@ function canva_slider_post_ids($attributes = [])
 		'post_ids' => array(),
 		'template_name' => 'render-blocks',
 		'swiper_hero_class' => '',
-		'swiper_container_class' => 'row unexpanded',
+		'swiper_container_class' => '',
 		'slides_per_view_xsmall' => 1,
 		'slides_per_view_small' => 2,
 		'slides_per_view_medium' => 3,
@@ -933,7 +933,7 @@ function canva_slider_post_ids($attributes = [])
 
 ?>
 		<!-- ///////// Slider Posts ///////// -->
-		<div id="<?php echo $element_id; ?>" class="<?php echo esc_attr($swiper_hero_class); ?>">
+		<div id="<?php echo $element_id; ?>" class="_swp-hero <?php echo esc_attr($swiper_hero_class); ?>">
 
 			<div class="swiper-container <?php echo $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
 
@@ -951,13 +951,13 @@ function canva_slider_post_ids($attributes = [])
 					<div class="swiper-pagination"></div>
 				<?php } ?>
 
-				<?php if ('true' === $prev_next) { ?>
-					<div class="swiper-button-next"></div>
-					<div class="swiper-button-prev"></div>
-				<?php } ?>
+
 
 			</div>
-
+			<?php if ('true' === $prev_next) { ?>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+			<?php } ?>
 		</div>
 
 		<script>
@@ -967,7 +967,9 @@ function canva_slider_post_ids($attributes = [])
 				lazy: false,
 				grabCursor: true,
 				<?php if ($autoplay == 'true') { ?>
-					autoplay: {delay: 8000,},
+					autoplay: {
+						delay: 8000,
+					},
 				<?php } else { ?>
 					autoplay: <?php echo $autoplay; ?>,
 				<?php } ?>
