@@ -747,7 +747,10 @@ Qualsiasi variabile inserita qui passa al foglio di stile indipendentemente dal 
 		Ogni volta che c'è più di un oggetto visualizza i pulsanti prev next e i bullet, che sono definiti qui come aspetto.
 		I pulsanti prev-next sono riscritti per avere area di interazione e bg con le icone coordinate. Le unità di misura di grandezza pulsanti in linea di massima son sempre in rem, ma potrebbero anche essere in % (cioé pulsanti grandi in percentuale a quanto è grande es. div della gallery).e
 
-		Queste variabili finiscono nel file Swiper-Bundle.css
+		Queste variabili finiscono nei file
+			- Swiper-Bundle.css (originale dello sviluppatore rimappato con le nostre variabili)
+			- swiper-layouts.css (creato da noi per fare switch tra diversi posizionamenti degli elementi
+
 		*/
 
 		--swiper-gallery-button-size: 2.75rem; /* default 44px come photoswipe */
