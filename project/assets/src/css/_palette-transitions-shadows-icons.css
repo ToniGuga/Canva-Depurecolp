@@ -96,11 +96,11 @@ Prevariabili tipo sono
 
 
 		/* Colori Isdark */
-		--isdark-color-700: var(--color-white); /* Il più scuro e pieno per far risaltare le cose */
-		--isdark-color-400: var(--color-dpc-light-grayy); /* Un po' meno scuro e pieno del full */
-		--isdark-color-300: #ddd; /* Colore del link */
-		--isdark-interactive-color:  var(--color-primary); /* Colore del link */
-		--isdark-interactive-hover-color: var(--color-primary-300); /* Colore del link hover*/
+		--isdark-color-700: var(--color-dpc-clear-gray); /* Il più scuro e pieno per far risaltare le cose */
+		--isdark-color-400: #ddd; /* Un po' meno scuro e pieno del full */
+		--isdark-color-300: var(--color-dpc-light-gray); /* Colore del link */
+		--isdark-interactive-color:  var(--color-primary-300); /* Colore del link */
+		--isdark-interactive-hover-color: var(--color-primary-100); /* Colore del link hover*/
 		--isdark-disabled-color: #aaa; /* Di solito grigio chiaro del disabilitato */
 
 

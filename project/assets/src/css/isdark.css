@@ -13,7 +13,7 @@ Se dentro la classe isdark c'è poi una classe islight, vince su isdark perché 
 \*----------------------------------- */
 
 .isdark {
-	--boby-color: var(--isdark-body-color);
+	color: var(--isdark-body-color);
 }
 
 .isdark::selection {
@@ -24,15 +24,15 @@ Se dentro la classe isdark c'è poi una classe islight, vince su isdark perché 
 .isdark p > a,
 .isdark span > a,
 .isdark *:not(nav) li > a {
-	--anchor-color: var(--isdark-anchor-color);
-	--anchor-text-decoration: var(--isdark-anchor-text-decoration);
+	color: var(--isdark-anchor-color);
+	text-decoration: var(--isdark-anchor-text-decoration);
 }
 
 .isdark p > a:hover,
 .isdark span > a:hover,
 .isdark *:not(nav) li > a:hover {
-	--anchor-hover-color: var(--isdark-anchor-hover-color);
-	--anchor-hover-text-decoration: var(--isdark-anchor-hover-text-decoration);
+	color: var(--isdark-anchor-hover-color);
+	text-decoration: var(--isdark-anchor-hover-text-decoration);
 }
 
 .isdark h1, .isdark h2, .isdark h3, .isdark h4, .isdark h5, .isdark h6,
@@ -55,6 +55,24 @@ Se dentro la classe isdark c'è poi una classe islight, vince su isdark perché 
 .isdark .lead {
 	--lead-color: var(--isdark-lead-color);
 }
+
+.isdark ul li,
+.isdark ol li {
+	--ul-li-color: var(--isdark-ul-li-color);
+}
+
+	.isdark .ul-dot li::before,
+	.isdark ul.wp-block-list:not([class*="menu-"]) li::before,
+	.isdark .canva-ul li::before {
+		background: var(--ul-li-dot-isdark-bg);
+	}
+
+	.isdark .ul-check li::before,
+	.isdark .wp-block-list:not([class*="menu-"]).ul-check li::before,
+	.isdark .canva-ul.ul-check li::before {
+		background-image: var(--ul-li-check-isdark-bg-img);
+	}
+
 
 .isdark .menu-v li a,
 .isdark .menu-h li a {
