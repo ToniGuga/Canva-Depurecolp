@@ -81,7 +81,7 @@ if (is_admin()) {
 			canva_slider_post_ids([
 				'post_ids' => $slider_loghi,
 				'template_name' => $template_name,
-				'swiper_hero_class' => '',
+				'swiper_hero_class' => get_field('css_classes'),
 				'swiper_container_class' => 'py-4',
 				'slides_per_view_xsmall' => 1,
 				'slides_per_view_small' => get_field('slides_per_view_small'),
