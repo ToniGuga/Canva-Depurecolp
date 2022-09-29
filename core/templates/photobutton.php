@@ -54,18 +54,18 @@ if (!$post_id) {
 							'layer_id' => esc_attr($id),
 							'layer_class' => '' . esc_attr($className) . esc_attr($isdark),
 
-							'img_id' => get_field('bg_image'),
-							'img_small_id' => get_field('bg_image_small'),
+							'img_id' => $bg_image,
+							'img_small_id' => $bg_image_small,
 							'thumb_size' => '960-free',
 							'thumb_small_size' => '640-free',
-							'video_url' => get_field('video_bg_file_url'),
+							'video_url' => $video_bg_file_url,
 
 							'layer_visual_class' => 'absolute h-80',
 
 								'layer_bg' => 'on',
 								'layer_bg_class' => 'bg-cover bg-center',
 
-								'layer_picture' => 'off',
+								'layer_picture' => 'on',
 								'layer_picture_class' => '',
 
 								'layer_filter' => 'on',

@@ -52,17 +52,51 @@ if (!$post_id) {
 		?>
 		<div class="_card text-center <?php echo esc_attr($class_name); ?> <?php echo esc_attr($isdark); ?>">
 
-			<div class="_card-img border border-white mb-4 overflow-hidden">
-				<?php
-				echo canva_get_img([
-					'img_id' => $bg_image,
-					'img_type' => 'img', // img, bg, url
-					'thumb_size' => '640-11',
-					'wrapper_class' => '_product-figure',
-					'img_class' => '',
-				]);
-				?>
-			</div>
+			<?php
+			if ($video_bg_file_url) :
+
+				$poster = '';
+
+				if ($bg_image) {
+					$video_poster = canva_get_img([
+						'img_id' => $bg_image,
+						'img_type' => 'url', // img, bg, url
+						'thumb_size' => '960-free',
+						'figure_class' => '_layer-bg',
+						'img_class' => '',
+						'bg_content' => '',
+						'caption' => 'off',
+						'blazy' => 'on',
+						'srcset' => 'off',
+						'data_attr' => '',
+						'width' => '',
+						'height' => '',
+					]);
+
+					$poster = 'poster = "' . $video_poster . '"';
+				}
+			?>
+
+				<div class="_card-video border border-white mb-4 overflow-hidden">
+					<video class="" loop="loop" muted playsinline autoplay <?php echo $poster; ?>>
+						<source src='<?php echo esc_attr($video_bg_file_url); ?>' type='video/mp4'>
+					</video>
+				</div>
+
+			<?php else : ?>
+
+				<div class="_card-img border border-white mb-4 overflow-hidden">
+					<?php
+					echo canva_get_img([
+						'img_id' => $bg_image,
+						'img_type' => 'img', // img, bg, url
+						'thumb_size' => '640-11',
+						'wrapper_class' => '_product-figure',
+						'img_class' => '',
+					]);
+					?>
+				</div>
+			<?php endif; ?>
 
 			<!-- Layer content -->
 			<div class="_title">
