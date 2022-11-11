@@ -1,3 +1,13 @@
+<?php
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
+if (!$post_id) {
+	$post_id = get_the_ID();
+}
+?>
+
 <div class="_gallery_container relative">
 
 	<?php
@@ -20,7 +30,7 @@
 
 	<?php
 	if (!$css_class) {
-		$css_class = 'grid items-center grid-cols-2 md:grid-cols-' . esc_attr($columns);
+		$css_class = 'grid items-center gap-2 grid-cols-2 md:grid-cols-' . esc_attr($columns);
 	}
 	?>
 

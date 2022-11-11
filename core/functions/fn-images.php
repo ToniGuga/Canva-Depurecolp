@@ -1056,7 +1056,7 @@ function canva_render_core_image_block($block_content, $block)
 					'img_type' => 'img', //'img', 'bg', 'url'
 					'thumb_size' => $sizeSlug, //'640-free',
 					'wrapper_class' => $parent_classes,
-					'img_class' => $child_classes,
+					'img_class' => 'photoswipe-item pointer gallery-item gallery-item-1 ' . $child_classes,
 					'bg_content' => '',
 					'caption' => $caption,
 					'blazy' => 'on',
@@ -1125,11 +1125,11 @@ function canva_render_core_image_block($block_content, $block)
 
 			$gallery_caption = wp_strip_all_tags(@$FC->saveHTML());
 
-			// ob_start();
+			ob_start();
 
 			canva_get_template($template_name = 'block-gallery-flex', ['img_ids' => $ids, 'captions' => $captions, 'thumb_size' => $sizeSlug, 'size' => $sizeSlug, 'limit' => $limit, 'columns' => $columns, 'galleryID' => $block_id, 'css_class' => $className]);
 
-			// return ob_get_clean();
+			return ob_get_clean();
 		}
 
 		return $block_content;

@@ -902,11 +902,11 @@ function canva_posts_per_acf_post_object($post_id = '', $acf_field_name = '', $t
  * @author Toni Guga <toni@schiavoneguga.com>
  * @param $attributes array
  */
-function canva_slider_post_ids($attributes = [])
+function canva_gallery_slider($attributes = [])
 {
 	extract(shortcode_atts([
-		'post_ids' => array(),
-		'template_name' => 'render-blocks',
+		'img_ids' => [],
+		'template_name' => 'gallery-slider',
 		'swiper_hero_class' => '',
 		'swiper_container_class' => '',
 		'slides_per_view_xsmall' => 1,
@@ -927,22 +927,22 @@ function canva_slider_post_ids($attributes = [])
 	], $attributes));
 
 
-	if ($post_ids) {
+	if ($img_ids) {
 
 		$element_id = esc_attr(wp_generate_password(16, false, false));
 
 ?>
 		<!-- ///////// Slider Posts ///////// -->
-		<div id="<?php echo $element_id; ?>" class="_swp-hero <?php echo esc_attr($swiper_hero_class); ?>">
+		<div id="<?php echo 'sw' . $element_id; ?>" class="_swp-hero <?php echo esc_attr($swiper_hero_class); ?>">
 
-			<div class="swiper-container <?php echo $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
+			<div class="swiper-container <?php echo 'sw' . $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
 
 				<div class="swiper-wrapper">
 
 					<?php
-					foreach ($post_ids as $post_id) {
+					foreach ($img_ids as $img_id) {
 						echo '<div class="swiper-slide">';
-						canva_get_template(sanitize_text_field($template_name), ['post_id' => $post_id]);
+						canva_get_template(sanitize_text_field($template_name), ['post_id' => $img_id]);
 						echo '</div>';
 					} ?>
 				</div>
@@ -951,18 +951,18 @@ function canva_slider_post_ids($attributes = [])
 					<div class="swiper-pagination"></div>
 				<?php } ?>
 
-
-
 			</div>
+
 			<?php if ('true' === $prev_next) { ?>
 				<div class="swiper-button-next"></div>
 				<div class="swiper-button-prev"></div>
 			<?php } ?>
+
 		</div>
 
 		<script>
 			/* swiper slider post */
-			const <?php echo $element_id; ?> = new Swiper('.<?php echo esc_js($element_id); ?>', {
+			const <?php echo 'sw' . $element_id; ?> = new Swiper('.<?php echo 'sw' . $element_id; ?>', {
 				preloadImages: false,
 				lazy: false,
 				grabCursor: true,
@@ -1025,7 +1025,153 @@ function canva_slider_post_ids($attributes = [])
 
 			});
 
-			<?php echo $element_id; ?>.on('slideChange', function() {
+			<?php echo 'sw' . $element_id; ?>.on('slideChange', function() {
+				// console.log('slide changed');
+				var bLazy = new Blazy();
+				bLazy.revalidate(); // eg bLazy.revalidate()
+			});
+		</script>
+	<?php
+	}
+}
+
+/**
+ * stampa i post scelti con il post object di ACF con impostazione formato di ritorno ID e genera uno slider con swiper.
+ *
+ * @author Toni Guga <toni@schiavoneguga.com>
+ * @param $attributes array
+ */
+function canva_slider_post_ids($attributes = [])
+{
+	extract(shortcode_atts([
+		'post_ids' => array(),
+		'template_name' => 'render-blocks',
+		'swiper_hero_class' => '',
+		'swiper_container_class' => '',
+		'slides_per_view_xsmall' => 1,
+		'slides_per_view_small' => 2,
+		'slides_per_view_medium' => 3,
+		'slides_per_view_large' => 4,
+		'slides_per_view_xlarge' => 4,
+		'prev_next' => 'true',
+		'pagination' => 'true',
+		'autoplay' => 'false',
+		'loop' => 'true',
+		'centered_slides_bounds' => 'false',
+		'centered_slides' => 'false',
+		'center_insufficient_slides' => 'false',
+		'slides_offset_before' => 0,
+		'slides_offset_after' => 0,
+		'free_mode' => 'false',
+	], $attributes));
+
+
+	if ($post_ids) {
+
+		$element_id = esc_attr(wp_generate_password(16, false, false));
+
+	?>
+		<!-- ///////// Slider Posts ///////// -->
+		<div id="<?php echo 'sw' . $element_id; ?>" class="_swp-hero <?php echo esc_attr($swiper_hero_class); ?>">
+
+			<div class="swiper-container <?php echo 'sw' . $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
+
+				<div class="swiper-wrapper">
+
+					<?php
+					// var_dump($post_ids);
+					foreach ($post_ids as $post_id) {
+						echo '<div class="swiper-slide">';
+						canva_get_template(sanitize_text_field($template_name), ['post_id' => $post_id]);
+						echo '</div>';
+					}
+					unset($posts_id);
+					?>
+				</div>
+
+				<?php if ('true' === $pagination) { ?>
+					<div class="swiper-pagination"></div>
+				<?php } ?>
+
+			</div>
+
+			<?php if ('true' === $prev_next) { ?>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+			<?php } ?>
+
+		</div>
+
+		<script>
+			/* swiper slider post */
+			const <?php echo 'sw' . $element_id; ?> = new Swiper('.<?php echo 'sw' . $element_id; ?>', {
+				preloadImages: false,
+				lazy: false,
+				grabCursor: true,
+				<?php if ($autoplay == 'true') { ?>
+					autoplay: {
+						delay: 8000,
+					},
+				<?php } else { ?>
+					autoplay: <?php echo $autoplay; ?>,
+				<?php } ?>
+				loop: <?php echo $loop; ?>,
+				centeredSlidesBounds: <?php echo $centered_slides_bounds; ?>,
+				centeredSlides: <?php echo $centered_slides; ?>,
+				centerInsufficientSlides: <?php echo $center_insufficient_slides; ?>,
+				slidesOffsetBefore: <?php echo $slides_offset_before; ?>,
+				slidesOffsetAfter: <?php echo $slides_offset_after; ?>,
+				freeMode: <?php echo $free_mode; ?>,
+				speed: 300,
+				/* watchOverflow: true, */
+				/* freeMode: true, */
+				slidesPerView: 1,
+				spaceBetween: 0,
+				<?php if ('true' === $pagination) { ?>
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: 'true',
+					dynamicBullets: true,
+					dynamicMainBullets: 5,
+				},
+				<?php } ?>
+				<?php if ('true' === $prev_next) { ?>
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+				<?php } ?>
+				breakpoints: {
+					<?php if ($slides_per_view_xsmall) { ?>
+						300: {
+							slidesPerView: <?php echo $slides_per_view_xsmall; ?>,
+						},
+					<?php }
+					if ($slides_per_view_small) { ?>
+						320: {
+							slidesPerView: <?php echo $slides_per_view_small; ?>,
+						},
+					<?php }
+					if ($slides_per_view_medium) { ?>
+						640: {
+							slidesPerView: <?php echo $slides_per_view_medium; ?>,
+						},
+					<?php }
+					if ($slides_per_view_large) { ?>
+						960: {
+							slidesPerView: <?php echo $slides_per_view_large; ?>,
+						},
+					<?php }
+					if ($slides_per_view_xlarge) { ?>
+						1200: {
+							slidesPerView: <?php echo $slides_per_view_xlarge; ?>,
+						},
+					<?php } ?>
+				}
+
+			});
+
+			<?php echo 'sw' . $element_id; ?>.on('slideChange', function() {
 				// console.log('slide changed');
 				var bLazy = new Blazy();
 				bLazy.revalidate(); // eg bLazy.revalidate()
@@ -1110,9 +1256,9 @@ function canva_get_slider_posts_per_term($attributes = [])
 	?>
 
 		<!-- ///////// Slider Posts ///////// -->
-		<div id="<?php echo $element_id; ?>" class="hero-slider <?php echo esc_attr($swiper_hero_class); ?>">
+		<div id="<?php echo 'sw' . $element_id; ?>" class="hero-slider <?php echo esc_attr($swiper_hero_class); ?>">
 
-			<div class="swiper-container <?php echo $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
+			<div class="swiper-container <?php echo 'sw' . $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
 
 				<div class="swiper-wrapper">
 
@@ -1141,7 +1287,7 @@ function canva_get_slider_posts_per_term($attributes = [])
 
 		<script>
 			/* swiper slider post */
-			var <?php echo $element_id; ?> = new Swiper('.<?php echo esc_js($element_id); ?>', {
+			var <?php echo 'sw' . $element_id; ?> = new Swiper('.<?php echo 'sw' . $element_id; ?>', {
 				preloadImages: false,
 				lazy: false,
 				grabCursor: true,
@@ -1196,7 +1342,7 @@ function canva_get_slider_posts_per_term($attributes = [])
 
 			});
 
-			<?php echo $element_id; ?>.on('slideChange', function() {
+			<?php echo 'sw' . $element_id; ?>.on('slideChange', function() {
 				// console.log('slide changed');
 				var bLazy = new Blazy();
 				bLazy.revalidate(); // eg bLazy.revalidate()
@@ -1273,9 +1419,9 @@ function canva_get_slider_posts_per_field($attributes = [])
 	?>
 
 		<!-- ///////// Slider Posts ///////// -->
-		<div id="<?php echo $element_id; ?>" class="hero-slider <?php echo esc_attr($swiper_hero_class); ?>">
+		<div id="<?php echo 'sw' . $element_id; ?>" class="hero-slider <?php echo esc_attr($swiper_hero_class); ?>">
 
-			<div class="swiper-container <?php echo $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
+			<div class="swiper-container <?php echo 'sw' . $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
 
 				<div class="swiper-wrapper">
 
@@ -1304,7 +1450,7 @@ function canva_get_slider_posts_per_field($attributes = [])
 
 		<script>
 			/* swiper slider post */
-			var <?php echo $element_id; ?> = new Swiper('.<?php echo esc_js($element_id); ?>', {
+			var <?php echo 'sw' . $element_id; ?> = new Swiper('.<?php echo 'sw' . $element_id; ?>', {
 				preloadImages: false,
 				lazy: false,
 				grabCursor: true,
@@ -1359,7 +1505,7 @@ function canva_get_slider_posts_per_field($attributes = [])
 
 			});
 
-			<?php echo $element_id; ?>.on('slideChange', function() {
+			<?php echo 'sw' . $element_id; ?>.on('slideChange', function() {
 				// console.log('slide changed');
 				var bLazy = new Blazy();
 				bLazy.revalidate(); // eg bLazy.revalidate()
@@ -1409,9 +1555,9 @@ function canva_slider_acf_post_object($attributes = [])
 		$element_id = esc_attr(wp_generate_password(16, false, false));
 	?>
 		<!-- ///////// Slider Posts ///////// -->
-		<div id="<?php echo $element_id; ?>" class="hero-slider <?php echo esc_attr($swiper_hero_class); ?>">
+		<div id="<?php echo 'sw' . $element_id; ?>" class="hero-slider <?php echo esc_attr($swiper_hero_class); ?>">
 
-			<div class="swiper-container <?php echo $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
+			<div class="swiper-container <?php echo 'sw' . $element_id; ?> <?php echo esc_attr($swiper_container_class); ?>">
 
 				<div class="swiper-wrapper">
 
@@ -1440,7 +1586,7 @@ function canva_slider_acf_post_object($attributes = [])
 
 		<script>
 			/* swiper slider post */
-			var <?php echo $element_id; ?> = new Swiper('.<?php echo $element_id; ?>', {
+			var <?php echo 'sw' . $element_id; ?> = new Swiper('.<?php echo 'sw' . $element_id; ?>', {
 				preloadImages: false,
 				lazy: true,
 				grabCursor: true,
@@ -1495,7 +1641,7 @@ function canva_slider_acf_post_object($attributes = [])
 
 			});
 
-			<?php echo $element_id; ?>.on('slideChange', function() {
+			<?php echo 'sw' . $element_id; ?>.on('slideChange', function() {
 				// console.log('slide changed');
 				var bLazy = new Blazy();
 				bLazy.revalidate(); // eg bLazy.revalidate()
@@ -1506,21 +1652,6 @@ function canva_slider_acf_post_object($attributes = [])
 	}
 }
 
-/**
- * stampa il breadcrumb
- *
- * @return void
- */
-function canva_get_breadcrumbs()
-{
-	if (is_home() || is_front_page() || is_category() || is_archive()) {
-		//print nothing
-	} else {
-		if (function_exists('yoast_breadcrumb')) {
-			return yoast_breadcrumb();
-		}
-	}
-}
 
 /**
  * Crea modali come il blocco modale
@@ -1531,16 +1662,17 @@ function canva_get_breadcrumbs()
  */
 function canva_get_modal($args = [])
 {
+	// modal type documentation
+	// _modal-post-opener-left,_modal-post-opener-center, _modal-post-opener-right = ajax post opener
+	// _modal-opener-left,_modal-opener-center, _modal-opener-right = inline modal opener
 	extract(shortcode_atts([
 		'post_id' => '',
-		'inline_mode' => true,
-		'round_expansion_mode' => false,
-		'button' => 'button',
+		'css_classes' => 'button',
 		'template_name' => 'render-post-content',
-		'animation_in' => 'modal-in-from-bottom',
-		'animation_out' => 'modal-out-to-bottom',
-		'modal_delay' => 500,
-		'modal_container' => '',
+		'modal_type' => '_modal-post-opener-right',
+		'overlay_position' => 'below-the-top',
+		// 'animation_in' => 'modal-in-from-r', // Deprecated
+		// 'animation_out' => 'modal-out-to-r', // Deprecated
 		'icon' => '', // percorso tipo fontawesome fontawesome/regular/check
 		'icon_css_classes' => '',
 		'icon_right' => false,
@@ -1550,6 +1682,8 @@ function canva_get_modal($args = [])
 		'title_css_classes' => '',
 		'subtitle' => '',
 		'subtitle_css_classes' => '',
+		'inline_mode' => false,
+		'round_expansion_mode' => false,
 	], $args));
 
 	if (!$post_id) {
@@ -1573,22 +1707,32 @@ function canva_get_modal($args = [])
 		$text_align = 'text-left';
 	}
 
-	if (!$inline_mode) {
-		$modal_mode = 'modal-post-open';
-	} else {
-		$modal_mode = 'inline-modal-post-open';
-	}
+	$modal_mode = '_modal-open';
 
 	if ($round_expansion_mode) {
-		$modal_mode .= ' modal-round-expansion';
+		$modal_mode .= '_modal-open modal-round-expansion';
 	}
+
 
 	$post = get_post($post_id);
 	$track_event = canva_get_ga_event_tracker('Modal', 'click', $post->post_name);
 
 	$html = '';
-
-	$html .= '<a id="' . esc_attr($post_id) . '" class="' . esc_attr($modal_mode) . ' inline-flex ' . esc_attr($button . ' ' . $icon_right) . '" data-post-id="' . esc_attr($post_id) . '" data-action-name="modal_post_opener" data-template-name="' . esc_attr($template_name) . '" data-animation-in="' . esc_attr($animation_in) . '" data-animation-out="' . esc_attr($animation_out) . '" data-modal-delay="' . esc_attr($modal_delay) . '" data-modal-container-class="' . esc_attr($modal_container) . '" href="' . get_the_permalink($post_id) . '" ' . $track_event . '>';
+	if (!$inline_mode) {
+		$html .= '<a id="' . esc_attr($post_id) . '" class="' . esc_attr($modal_mode) . ' inline-flex ' . esc_attr($css_classes) . '"
+		data-modal-content="_modal-post-opener-ajax"
+		data-post-id="' . esc_attr($post_id) . '"
+		data-template-name="' . esc_attr($template_name) . '"
+		data-modal-type="' . esc_attr($modal_type) . '"
+		data-modal-position="' . esc_attr($overlay_position) . '"
+		href="' . get_the_permalink($post_id) . '" ' . $track_event . '>';
+	} else {
+		$html .= '<a id="' . esc_attr($post_id) . '" class="' . esc_attr($modal_mode) . ' inline-flex ' . esc_attr($css_classes) . '"
+		data-modal-content="_modal-id-' . $post_id . '"
+		data-modal-type="' . esc_attr($modal_type) . '"
+		data-modal-position="' . esc_attr($overlay_position) . '"
+		href="' . get_the_permalink($post_id) . '" ' . $track_event . '>';
+	}
 
 	$html .= $icon_src;
 
@@ -1618,7 +1762,7 @@ function canva_get_modal($args = [])
 
 	if ($inline_mode) {
 		$modal_id = '_modal-id-' . $post_id;
-		$html .= '<div class="hide ' . esc_attr($modal_id) . '">';
+		$html .= '<div class="' . esc_attr($modal_id) . ' hidden">';
 		$html .= canva_get_render_blocks($post_id);
 		$html .= '</div>';
 	}
@@ -1628,8 +1772,8 @@ function canva_get_modal($args = [])
 
 
 /**
- * Local option for pages. In case you need to hide the content
- * of the pageThis function hides the page content by replacing it
+ * Local option for pages. In case you need to hidden the content
+ * of the pageThis function hiddens the page content by replacing it
  * with a default or custom message.
  *
  * @author Michele Tenaglia <info@micheletenaglia.it>
@@ -1713,7 +1857,7 @@ function canva_get_action_link($args = [])
 
 	$html = '';
 
-	$html .= '<a class="inline-flex ' . esc_attr($button . ' ' . $hollow . ' ' . $icon_right) . '" href="' . esc_url($url) . '" ' . $target . ' ' . $track_event . '>';
+	$html .= '<a class="' . esc_attr($button . ' ' . $hollow . ' ' . $icon_right) . '" href="' . esc_url($url) . '" ' . $target . ' ' . $track_event . '>';
 
 	$html .= $icon_src;
 

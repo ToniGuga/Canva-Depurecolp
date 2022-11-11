@@ -218,12 +218,23 @@ function canva_be_acf_init()
 		]);
 
 		acf_register_block([
+			'name' 				=> 'gallery-slider', //modificare slug del blocco
+			'title' 			=> __('Gallery Slider', 'canva-backend'), //modificare titolo del blocco
+			'description' 		=> __('Gallery slider to be presented with a custom template', 'canva-backend'), //modificare azione del blocco
+			'render_callback' 	=> 'canva_be_block_callback', //non modificare
+			'category' 			=> 'canva_block_category', //non modificare
+			'icon' 				=> 'images-alt2',
+			'keywords' 			=> ['gallery', 'slider'],
+			'supports'			=> array('align' => false, 'multiple' => true, 'anchor' => true),
+		]);
+
+		acf_register_block([
 			'name' 				=> 'loghi-slider', //modificare slug del blocco
 			'title' 			=> __('Loghi Slider', 'canva-backend'), //modificare titolo del blocco
 			'description' 		=> __('Loghi slider to be presented with a custom template', 'canva-backend'), //modificare azione del blocco
 			'render_callback' 	=> 'canva_be_block_callback', //non modificare
 			'category' 			=> 'canva_block_category', //non modificare
-			'icon' 				=> 'dashicons-images-alt2',
+			'icon' 				=> 'images-alt2',
 			'keywords' 			=> ['loghi', 'slider'],
 			'supports'			=> array('align' => false, 'multiple' => true, 'anchor' => true),
 		]);
@@ -488,6 +499,7 @@ function canva_allowed_blocks($allowed_blocks)
 		'acf/posts-selector',
 		'acf/common-block-selector',
 		'acf/common-block-slider',
+		'acf/gallery-slider',
 		'acf/loghi-slider',
 		'acf/faq-selector',
 		'acf/faq-selector-new',
